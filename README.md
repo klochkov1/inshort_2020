@@ -10,5 +10,5 @@ Service like bitly.com for creating and managing short links.
     * Windows: `venv/Scripts/activate`
     * Unix-like: `source venv/bin/activate` 
 4. Install all dependencies `pip install -r requirements.txt`
-5. Run server `python manage.py startapp polls`
+5. Run server `python manage.py runserver`
 
