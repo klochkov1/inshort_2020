@@ -4,7 +4,7 @@
 Service like bitly.com for creating and managing short links.
 
 ## Quickstart
-1. Clone repository `ssh://git@gl.knu.ua:22003/klochkov/inshort.git`
+1. Clone repository `git clone ssh://git@gl.knu.ua:22003/klochkov/inshort.git`
 2. Create virtual enviroment `python -m venv venv`
 3. Activate virtual enviroment:
     * Windows: `venv/Scripts/activate`
