@@ -9,7 +9,7 @@ class CustomUrl(models.Model):
     """ Model representing mapping bitwing short url and destination url """
     owner = models.CharField(null=True, blank=True, max_length=20)
     destination_url = models.URLField(max_length=2000)
-    short_url = models.CharField(max_length=20)
+    short_url = models.CharField(unique=True, max_length=20)
     description = models.CharField(null=True, blank=True, max_length=255)
     creation_date = models.DateTimeField(auto_now=True)
     expiration_date = models.DateTimeField(null=True, auto_now=False)
