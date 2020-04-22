@@ -1,0 +1,5 @@
+<ul>
+    {% for url in user_urls %}
+    <li><a href="{{ url.destination_url }}">{{ url }}</a></li>
+    {% endfor %}
+</ul>
