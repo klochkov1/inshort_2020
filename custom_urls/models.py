@@ -3,11 +3,13 @@ from django.db import models
 # Create your models here.
 
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class CustomUrl(models.Model):
     """ Model representing mapping bitwing short url and destination url """
-    owner = models.CharField(null=True, blank=True, max_length=20)
+    owner = models.ForeignKey(
+        User, null=True, blank=True, max_length=20, on_delete=models.CASCADE)
     destination_url = models.URLField(max_length=2000)
     short_url = models.CharField(unique=True, max_length=20)
     description = models.CharField(null=True, blank=True, max_length=255)
@@ -25,7 +27,7 @@ class CustomUrl(models.Model):
 
 
 class Visit(models.Model):
-    """ Model representing history of url visits"""
+    """ Model representing history of url visits """
     custom_url = models.ForeignKey(CustomUrl, on_delete=models.CASCADE)
     datetime = models.DateTimeField(auto_now=True)
     visitor_ip = models.GenericIPAddressField(null=True)

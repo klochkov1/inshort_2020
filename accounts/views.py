@@ -8,6 +8,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+
 class LoginView(TemplateView):
     template_name = "registration/login.html"
 
@@ -23,6 +24,8 @@ class LoginView(TemplateView):
             else:
                 context['error'] = "Логин или пароль неправильные"
         return render(request, self.template_name, context)
+
+
 class RegisterView(TemplateView):
     template_name = "registration/register.html"
 
