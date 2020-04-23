@@ -12,4 +12,5 @@ Service like bitly.com for creating and managing short links.
 4. Install all dependencies `pip install -r requirements.txt`
 5. Create database tables `python manage.py migrate`
 6. Run server `python manage.py runserver`
+7. Login: admin passwd www12345 
 
