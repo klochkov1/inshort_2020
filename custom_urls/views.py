@@ -1,17 +1,12 @@
-<<<<<<< HEAD
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
-=======
-from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
->>>>>>> klochkov
 
 # Create your views here.
 
 from .models import CustomUrl, Visit
 
-<<<<<<< HEAD
 def add_url(request):
     try:
         dest_url = request.POST['dest_url']
@@ -28,9 +23,6 @@ def add_url(request):
 def add_url_form(request):
     return render(request, 'urls/add_url_form.html')
 
-=======
->>>>>>> klochkov
-
 def detail(request, short_url):
     custom_url = get_object_or_404(CustomUrl, short_url)
     return HttpResponse("You're looking at custom_url {}.".format(custom_url))
@@ -44,12 +36,8 @@ def history(request, short_url):
 
 def user_urls(request, user):
     custom_urls = get_list_or_404(CustomUrl, owner__username=user)
-<<<<<<< HEAD
     context = {'user_urls': custom_urls}
     return render(request, 'urls/user_urls.html', context)
-=======
-    return HttpResponse(custom_urls)
->>>>>>> klochkov
 
 
 def redirect(request, requested_url):
