@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 
 from .models import CustomUrl, Visit
 
+
 def add_url(request):
     try:
         dest_url = request.POST['dest_url']
@@ -16,12 +17,15 @@ def add_url(request):
         # TODO
         return HttpResponse("error")
     else:
-        c = CustomUrl(owner=User.objects.get(username=request.user.username), destination_url=dest_url, short_url=short_url)
+        c = CustomUrl(owner=User.objects.get(
+            username=request.user.username), destination_url=dest_url, short_url=short_url)
         c.save()
         return HttpResponseRedirect(reverse('user_urls', args=(request.user.username,)))
 
+
 def add_url_form(request):
     return render(request, 'urls/add_url_form.html')
+
 
 def detail(request, short_url):
     custom_url = get_object_or_404(CustomUrl, short_url)
