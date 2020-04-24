@@ -27,6 +27,7 @@ class RegisterView(TemplateView):
     template_name = "registration/register.html"
 
     def dispatch(self, request, *args, **kwargs):
+        context={}
         if request.method == 'POST':
             username = request.POST.get('username')
             email = request.POST.get('email')
@@ -34,7 +35,11 @@ class RegisterView(TemplateView):
             password2 = request.POST.get('password2')
 
             if password == password2:
-                User.objects.create_user(username, email, password)
-                return redirect(reverse("login"))
+                if User.objects.filter(username=username).exists():
+                   context['error'] = "Таке ім'я вже існує"
+                else: 
+                    User.objects.create_user(username, email, password)
+                    return redirect(reverse("login"))
 
-        return render(request, self.template_name)
+
+        return render(request, self.template_name,context)

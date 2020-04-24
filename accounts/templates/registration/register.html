@@ -23,6 +23,9 @@
                 <div class="col-md-4 col-md-offset-4 well"> 
                     <form  method="post" class="form">
                         {% csrf_token %}
+                        {% if error %}
+                        <div style="color:red;">{{ error }}</div>
+                        {% endif %}
                         <div class="col-xs-12">
                             <div class="form-group">
                                 <label for="username" class="cols-sm-2 control-label">Ім'я</label>
