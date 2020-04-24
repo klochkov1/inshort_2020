@@ -33,7 +33,7 @@ class Visit(models.Model):
     visitor_location = models.CharField(null=True, max_length=200)
 
     def __str__(self):
-        return "{} - {}".format(self.visit_datetime, self.custom_url)
+        return "{} - {}".format(self.datetime, self.custom_url)
 
     class Meta:
         ordering = ["custom_url__owner", "datetime"]
