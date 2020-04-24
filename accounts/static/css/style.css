@@ -1,0 +1,71 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow:  hidden;
+}
+#header 
+{
+ background-color: #20b1aa;
+    position: relative;
+    height: 80px;
+}
+.row
+{
+    position: relative;
+    background-color: #20b2aa;
+    padding: 1.5%;   
+}
+.col-xs-6
+{
+    position: absolute;
+    left: 15%;
+}
+.btn-group{
+    padding-right: 2%;
+}
+#header .menulist{
+ margin: 0;
+    padding: 4px;
+}
+.container{
+    width: 100%;
+}
+   #button {
+    border: 1px solid #ccc;
+    margin-top: 28px;
+    padding: 6px 12px;
+    color: #666;
+    text-shadow: 0 1px #fff;
+    cursor: pointer;
+    border-radius: 3px 3px;
+    box-shadow: 0 1px #fff inset, 0 1px #ddd;
+    background: #f5f5f5;
+   }
+   .main-form{
+    
+       position: absolute;
+    margin-top: 30px;
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 10px 40px;
+
+   color: #FFF;
+   }
+   span.input-group-addon i {
+    color: #7ca772;
+    font-size: 17px;
+   }
+   .login-button{
+    margin-top: 5px;
+   }
+   .registrate{
+    color:#20b1aa;
+    background:#f9ffff;
+   }
+   .btn-default{
+       background-color:green;
+   }
+   h3.text-center{
+       padding-top: 2%;
+       padding-bottom: 1%;
+   }

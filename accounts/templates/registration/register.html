@@ -1,19 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Регистрация</h1>
-    <form method="post">
-        {% csrf_token %}
-        Имя пользователя: <input type="text" name="username"><br>
-        Email: <input type="email" name="email"><br>
-        Пароль: <input type="password" name="password"><br>
-        Пароль еще раз: <input type="password" name="password2"><br>
-
-        <input type="submit" value="Регистрация">
-    </form>
-</body>
+<html>
+    {% load static %}
+    <head>
+        <link rel="stylesheet" href="{% static "css/style.css" %}" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="row">
+                <div class="col-xs-12 col-md-8">INSHORT</div>
+                <div class="btn-group col-xs-6 col-md-4" role="group" aria-label="...">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-success">Войти</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-info">Регістрація  </button>
+                    </div>
+                </div>
+        </div>
+            <div class="row registrate">
+                <h3 class="text-center ">Регістрація</h3>
+                <div class="col-md-4 col-md-offset-4 well"> 
+                    <form  method="post" class="form">
+                        {% csrf_token %}
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label for="username" class="cols-sm-2 control-label">Ім'я</label>
+                            <input type="text" name="username" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label for="username" class="cols-sm-2 control-label">Email</label>
+                                <input type="email" name="email" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label for="username" class="cols-sm-2 control-label">Пароль</label>
+                                <input type="password" name="password" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label for="username" class="cols-sm-2 control-label">Підтвердження паролю</label>
+                                <input type="password" name="password2" class="form-control"  />
+                            </div>
+                        </div>
+                        <div class="text-center col-xs-12">
+                            <button type="submit" class="btn btn-success">Створити аккаунт</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    
+        
+    </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
