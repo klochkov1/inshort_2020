@@ -3,11 +3,12 @@ body{
     padding: 0;
     overflow:  hidden;
 }
+
 #header 
 {
  background-color: #20b1aa;
     position: relative;
-    height: 80px;
+  
 }
 .row
 {
@@ -32,7 +33,6 @@ body{
 }
    #button {
     border: 1px solid #ccc;
-    margin-top: 28px;
     padding: 6px 12px;
     color: #666;
     text-shadow: 0 1px #fff;
@@ -62,6 +62,11 @@ body{
     color:#20b1aa;
     background:#f9ffff;
    }
+   .container{
+    padding:3%;
+    border-radius: 10%;
+    background:#c0e4e4;
+   }
    .btn-default{
        background-color:green;
    }
@@ -69,3 +74,9 @@ body{
        padding-top: 2%;
        padding-bottom: 1%;
    }
+   .btn-facebook {background-color: #4267b2;width:30%;color: #fff;}
+.btn-facebook:hover {background-color: #365899; color: #fff;}
+ 
+.btn-twitter {background-color: #1da1f2;width:30%;color: #fff;}
+.btn-twitter {background-color: #1a91da; color: #fff;}
+ 
