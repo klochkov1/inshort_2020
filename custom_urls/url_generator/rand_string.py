@@ -1,4 +1,4 @@
-from fixed_string import RandFixedLenStrStorage as rand_str
+from .fixed_string import RandFixedLenStrStorage as rand_str
 
 class StringGenerator:
     def __init__(self, def_len=4, flow_percent=5, reserve_word_list=[]):
