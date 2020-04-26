@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, Http404
+from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.utils import timezone
 from .models import CustomUrl, Visit
@@ -12,26 +13,35 @@ def add_url(request):
         short_url = request.POST['short_url']
         time = request.POST['time']
     except (KeyError, CustomUrl.DoesNotExist):
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest("Bad request")
     else:
-        c = CustomUrl(owner=User.objects.get(
-            username=request.user.username), destination_url=dest_url, short_url=short_url)
+        if not request.session.session_key:
+            request.session.create()
+        session = Session.objects.get(pk=request.session.session_key)
+        print("DEBUG:" + str(session))
+        owner = None
+        if request.user.is_authenticated:
+            owner = User.objects.get(username=request.user.username)
+        c = CustomUrl(owner=owner, session=session,
+                      source_url=dest_url, short_url=short_url)
         c.save()
-        return HttpResponseRedirect(reverse('user_urls', args=(request.user.username,)))
+        return HttpResponseRedirect(reverse('user_urls'))
 
 
 def delete_url(request, short_url):
     try:
         short_url = request.POST['short_url']
     except (KeyError, CustomUrl.DoesNotExist):
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest("Bad request")
     else:
         c = get_list_or_404(CustomUrl, short_url=short_url)
         c.delete()
-        return HttpResponseRedirect(reverse('user_urls', args=(request.user.username,)))
+        return HttpResponseRedirect(reverse('user_urls'))
 
 
 def add_url_form(request):
+    if not request.session.session_key:
+        request.session.create()
     return render(request, 'urls/add_url_form.html')
 
 
@@ -41,9 +51,19 @@ def history(request, short_url):
     return render(request, 'urls/url_history.html', context)
 
 
-def user_urls(request, user):
-    custom_urls = get_list_or_404(CustomUrl, owner__username=user)
-    context = {'user_urls': custom_urls}
+def user_urls(request):
+    if request.user.is_authenticated:
+        custom_urls = get_list_or_404(
+            CustomUrl, owner__username=request.user.username)
+        visits = []
+    else:
+        # REMAKE
+        if not request.session.session_key: raise Http404()
+        custom_urls = get_list_or_404(
+            CustomUrl, session__pk=request.session.session_key)
+        visits = []
+    context = {'user_urls': custom_urls, 
+               'visits': visits }
     return render(request, 'urls/user_urls.html', context)
 
 
@@ -62,4 +82,4 @@ def redirect(request, requested_url):
         ip = request.META.get('REMOTE_ADDR')
     visit = Visit(custom_url=custom_url, visitor_ip=ip)
     visit.save()
-    return HttpResponseRedirect(custom_url.destination_url)
+    return HttpResponseRedirect(custom_url.source_url)
