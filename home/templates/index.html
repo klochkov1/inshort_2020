@@ -105,14 +105,14 @@
       <div class="col-6 col-md-3">
         goooogle.com12 
       </div>
-      <div class="col-6 col-md-3 value">
-        => googl.
+      <div  id="copyTarget2" class="col-6 col-md-3 value ">
+         saddasgoogl.
        </div>
       <div class="col-6 col-md-2">
        меньше місяця
       </div>
-      <div class="col-6 col-md-2">
-       <a type="button" class="copy" >Copy </a>
+      <div onclick="copyToClipboard(document.getElementById('copyTarget2'))" class="col-6 col-md-2">
+        <button>Copy</button>
       </div>
       <div class="dropdownlink row" >
         <div class="col-6 col-md-2">
@@ -148,14 +148,14 @@
         <div class="col-6 col-md-3">
           goooogle.com12 
         </div>
-        <div class="col-6 col-md-3">
-          => googl.
+        <div id="copyTarget1" class="col-6 col-md-3">
+          => google.
          </div>
         <div class="col-6 col-md-2">
          меньше місяця
         </div>
-        <div class="col-6 col-md-2">
-         <a class="copy">Copy </a>
+        <div onclick="copyToClipboard(document.getElementById('copyTarget1'))" class="col-6 col-md-2">
+          <button >Copy</button>
         </div>
         <div class="dropdownlink row" >
           <div class="col-6 col-md-2">
@@ -188,9 +188,9 @@
         </li>     
   </ul>
 </i>
-  <i id="urls_container"></i>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+  <div id="urls_container"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </body>
 
 </html>

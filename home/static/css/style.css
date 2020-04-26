@@ -146,7 +146,9 @@ background: #fff;
 border-radius: 4px;
 }
 
-
+.copy{
+  text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
+}
 .fa-chevron-down {
 
 right: 12px;
