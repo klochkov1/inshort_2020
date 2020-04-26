@@ -1,31 +1,34 @@
 <!DOCTYPE html>
+
 <head>
-    {% load static %}    
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static "css/style.css" %}" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="{% static 'script/jquery.js' %}" defer></script>
-        <script src="{% static 'script/history.js' %}" defer></script>
-        <script src="{% static 'script/menu.js' %}" defer></script>
-    </head>
-<title>inShort</title>
+  {% load static %}
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="{% static 'script/jquery.js' %}" defer></script>
+    <script src="{% static 'script/history.js' %}" defer></script>
+    <script src="{% static 'script/menu.js' %}" defer></script>
+  </head>
+  <title>inShort</title>
 </head>
+
 <body>
   <div class="row head">
     <div class="col-6 col-md-4 title">
-        inSHORT
+      inSHORT
     </div>
-		<div class="col-6 col-md-6">
+    <div class="col-6 col-md-6">
       <div class="content-menu">
         <div class="col-6 col-md-4 menu-item"><a href="#">Home</a></div>
-        <div  class="col-6 col-md-4 menu-item"><a href="#">FAQ</a></div>
+        <div class="col-6 col-md-4 menu-item"><a href="#">FAQ</a></div>
       </div>
       <div class="animation"></div>
-    </div>	
-    <div class="header-block btn-group col-6 col-md-2"  role="group" aria-label="...">
+    </div>
+    <div class="header-block btn-group col-6 col-md-2" role="group" aria-label="...">
       <div class="btn-group" role="group">
         <button type="button" class="btn btn-success">Увійти</button>
       </div>
@@ -33,159 +36,50 @@
         <button type="button" class="btn btn-info">Реєтрація </button>
       </div>
     </div>
-</div>
-<div class="headline">
-  <h1 class="text-center">INSHORT</h1>
-	<div class="form">
-	  <form>
-        <div class="input-group">
-            <input  size="80%" type="text" class="form-control"  placeholder="Paste long URL and shorten it">
-            <span class="input-group-btn">
-              <button class="btn btn-info btn_modal_window" type="button">
-                shorten
-              </button>
-            </span>
-        </div>
-      </form>
   </div>
-</div>
-  <div id="my_modal" class="modal">
-    <div class="modal_content">
-      <div class="col-xs-10">
-      <h3 class="text-center">Заповніть</h3>
-        <form class="form">
-              <div class="form-group">
-                  <label for="username" class="cols-sm-2 control-label">Скорочення</label>
-              <input type="text" class="form-control" />
-              <legend>Виберіть час</legend>
-              <label>Буде дійсна </label>
-             <select id = "myList">
-               <option value = "1">День</option>
-               <option value = "2">Тиждень</option>
-               <option value = "3">Місяць</option>
-               <option value = "4">Рік</option>
-               <option value = "4">Назавжди</option>
-             </select>
-              <button type="button" class="btn btn-success">Створити</button>
-              </div>
-          </div>
-          <div class="col-xs-2">
-            <span class="close_modal_window">×</span>
-          </div>
+  <div class="headline">
+    <h1 class="text-center">INSHORT</h1>
+    <div class="form">
+      <form>
+        <div class="input-group">
+          <input size="80%" type="text" class="form-control" placeholder="Paste long URL and shorten it">
+          <span class="input-group-btn">
+            <button class="btn btn-info btn_modal_window" type="button">
+              shorten
+            </button>
+          </span>
+        </div>
       </form>
     </div>
   </div>
- 
-  <ul class="accordion-menu">
-    <li>
-      <div class="col-6 col-md-3">
-        Посилання           
-      </div>
-      <div class="col-6 col-md-3">
-        Скорочення
-        </div>
-      <div class="col-6 col-md-2">
-        Час дії
-      </div>
-      <div class="col-6 col-md-2">
-        клацні
-      </div>
-      <div class="dropdownlink row" >
-        <div class="col-6 col-md-2">
-          Переходи
-        </div>
-      </div>
-    
-    </li>
-    <li>
-      <div class="col-6 col-md-3">
-        goooogle.com12 
-      </div>
-      <div class="col-6 col-md-3">
-        => googl.
-       </div>
-      <div class="col-6 col-md-2">
-       меньше місяця
-      </div>
-      <div class="col-6 col-md-2">
-       <a>Copy </a>
-      </div>
-      <div class="dropdownlink row" >
-        <div class="col-6 col-md-2">
-          5
-        </div>
-      </div>  
-      <ul class="submenuItems">
-          <div class="row title">
-            <div class="col-6 col-md-3">
-            Время
-            </div><div class="col-6 col-md-3">
-             IP
-            </div><div class="col-6 col-md-3">
-              Город
-            </div><div class="col-6 col-md-3">
-              Страна
-            </div>
-            <div class="row title">
-              <div class="col-6 col-md-3">
-              04.03.2000
-              </div><div class="col-6 col-md-3">
-               вичислю
-              </div><div class="col-6 col-md-3">
-                Запорожжя
-              </div><div class="col-6 col-md-3">
-                Не Україна
-              </div>
-          
-        </div>
-      </ul>
-      </li>
-      <li>
-        <div class="col-6 col-md-3">
-          goooogle.com12 
-        </div>
-        <div class="col-6 col-md-3">
-          => googl.
-         </div>
-        <div class="col-6 col-md-2">
-         меньше місяця
-        </div>
-        <div class="col-6 col-md-2">
-         <a>Copy </a>
-        </div>
-        <div class="dropdownlink row" >
-          <div class="col-6 col-md-2">
-            5
+  <div id="my_modal" class="modal">
+    <div class="modal_content">
+      <div class="col-xs-10">
+        <h3 class="text-center">Заповніть</h3>
+        <form class="form">
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Скорочення</label>
+            <input type="text" class="form-control" />
+            <legend>Виберіть час</legend>
+            <label>Буде дійсна </label>
+            <select id="myList">
+              <option value="1">День</option>
+              <option value="2">Тиждень</option>
+              <option value="3">Місяць</option>
+              <option value="4">Рік</option>
+              <option value="4">Назавжди</option>
+            </select>
+            <button type="button" class="btn btn-success">Створити</button>
           </div>
-        </div>  
-        <ul class="submenuItems">
-            <div class="row title">
-              <div class="col-6 col-md-3">
-              Время
-              </div><div class="col-6 col-md-3">
-               IP
-              </div><div class="col-6 col-md-3">
-                Город
-              </div><div class="col-6 col-md-3">
-                Страна
-              </div>
-              <div class="row title">
-                <div class="col-6 col-md-3">
-                04.03.2000
-                </div><div class="col-6 col-md-3">
-                 вичислю
-                </div><div class="col-6 col-md-3">
-                  Запорожжя
-                </div><div class="col-6 col-md-3">
-                  Не Україна
-                </div>
-            
-          </div>
-        </ul>
-        </li>     
-  </ul>
-</p>
-  {tyt}
+      </div>
+      <div class="col-xs-2">
+        <span class="close_modal_window">×</span>
+      </div>
+      </form>
+    </div>
+  </div>
+  <p id="urls_container"></p>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </body>
+
 </html>
