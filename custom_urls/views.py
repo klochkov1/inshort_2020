@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, Http404
+from django.contrib.sessions.backends.db import SessionStore
+from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.utils import timezone
 from .models import CustomUrl, Visit
@@ -8,7 +10,7 @@ from .models import CustomUrl, Visit
 
 def add_url(request):
     try:
-        dest_url = request.POST['dest_url']
+        dest_url = request.POST['source_url']
         short_url = request.POST['short_url']
         time = request.POST['time']
     except (KeyError, CustomUrl.DoesNotExist):
