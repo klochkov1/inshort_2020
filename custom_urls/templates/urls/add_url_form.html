@@ -4,7 +4,7 @@
 {% endif %}
 <form action="{% url 'add_url' %}" method="post">
     {% csrf_token %}
-    <input type="url" name="source_url" placeholder="URL">
+    <input type="url" name="long_url" placeholder="URL">
     <input type="text" name="short_url" placeholder="Shorten url">
     <input type="time" name="time">
     <input type="submit" value="Add">
