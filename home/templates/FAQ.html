@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    {% load static %}    
+    <head>
+        <link rel="stylesheet" href="{% static "css/faq.css" %}" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script href="{% static "script/script.js" %}"></script>
+    </head>
+<title>inShort</title>
+</head>
+<body>
+	<div class="row">
+		<div class="col-6 col-md-4 title">
+			inSHORT
+		</div>
+			<div class="col-6 col-md-6">
+		  <div class="content-menu">
+			<div class="col-6 col-md-4 menu-item"><a href="#">Home</a></div>
+			<div  class="col-6 col-md-4 menu-item"><a href="#">FAQ</a></div>
+		  </div>
+		  <div class="animation"></div>
+		</div>	
+		<div class="header-block btn-group col-6 col-md-2"  role="group" aria-label="...">
+		  <div class="btn-group" role="group">
+			<button type="button" class="btn btn-success">Увійти</button>
+		  </div>
+		  <div class="btn-group" role="group">
+			<button type="button" class="btn btn-info">Реєтрація </button>
+		  </div>
+		</div>
+	</div>
+<div class="search_field">
+    <div class="headline">
+      <h1 align="center">Чим можемо допомогти?</h1>
+	</div>
+	  <div class="form">
+	  <form>
+        <div class="col">
+          <div class="input-group">
+            <p><input type="search" class="form-control" name="q" size="80%" placeholder="Введіть ключові слова для пошуку"></p>
+		  </div>
+		</div>
+      </form>		
+	</div>
+	<div class="one_string">
+	<p>Ви також можете переглянути теми нижче, щоб знайти те, що шукаєте </p>
+	</div>
+	<hr>
+</div>
+<div class="text">
+    <div class="question">
+	<h4>Часті запитання</h4>
+	</div>	
+	<div class="text-block"><!--text-->
+	  <div class="text-block1 col-md-3" >
+	    <h4>У чому переваги коротких посилань?</h4>
+        <p>Простіше запам'ятати короткі URL-адреси. Вони також використовують менше пам'яті. На багатьох веб-сайтах є книги для гостей та поля коментарів, в які можна писати лише записи, обмежені максимальною кількістю символів<a href="#">...</a></p> 
+	  </div>
+	  <div class="text-block1 col-md-3">
+	    <h4>А як щодо фішинг-сайтів?</h4>
+		<p>Фішингові веб-сайти можуть бути настільки ж небезпечними, як і сайти зловмисних програм. Вони намагаються ввести своїх відвідувачів у розкриття особистих даних (таких як імена, паролі, адреси та дані облікового запису)<a href="#">...</a></p>
+	  </div>
+	  <div class="text-block1 col-md-3">
+	    <h4>Чи буде збережена моя IP-адреса чи інші особисті дані, коли я створю коротке посилання?</h4>
+		<p>Ні Ми нічого не економимо. Лише коротка URL-адреса, яку ви встановили, та пов’язані з цим налаштування. Ми не зацікавлені в тому, щоб ми самі стали прозорими громадянами</p>
+	  </div>
+	</div>
+</div>
+</body>
