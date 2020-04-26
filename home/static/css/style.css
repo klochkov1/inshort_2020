@@ -1,155 +1,180 @@
 body {
-    margin: 0;
-    padding: 0;
-	background-color:#f9ffff;
-    overflow-x: hidden;	
+  margin: 0;
+  padding: 0;
+background-color:#f9ffff;
+  overflow-x: hidden;	
 }
 .title{
-    font-size: 20px; 
-    color:white;
+  font-size: 20px; 
+  color:white;
+}
+.head{
+background-color: #20b1aa;
+position: relative;
+padding-top: 2.5%;
+padding-bottom: 2.5%;
+padding-left:2.5%;
+
+height: 15%;
 }
 .header 
 {
-   width: 100%;
-   height: 15%;
+ width: 100%;
+ height: 15%;
 }
 .menu{
-   
-    border-radius: 2%;
-   
+ 
+  border-radius: 2%;
+ 
 }
 .menu-item{
-    padding-left: 5%;
+  padding-left: 5%;
 }
 .form-group{
-    width: 40%;
-    margin: 0 auto;
-    border-radius: 10%;
-    background:#c0e4e4;
+  width: 40%;
+  margin: 0 auto;
+  border-radius: 10%;
+  background:#c0e4e4;
 }
-  .content-menu .menu-item a {
-    position: relative;
+.content-menu .menu-item a {
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  color:white;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.content-menu .menu-item a:hover {
+  color: #fff;
+}
+.content-menu .menu-item a:hover::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  background: #258fd6;
+  transition: 0.5s;
+  animation: animate .5s linear forwards; 
+}
+@keyframes animate {
+  0% {
+    top: calc(50% - 2px);
+    left: -100%;
+    height: 4px;
     z-index: 1;
-    text-transform: uppercase;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    color:white;
-    font-size: 20px;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: 0.5s;
   }
-  .content-menu .menu-item a:hover {
-    color: #fff;
+  50% {
+    top: calc(50% - 2px);
+    left: 0;
+    height: 4px;
+    z-index: 1;
   }
-  .content-menu .menu-item a:hover::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    background: #258fd6;
-    transition: 0.5s;
-    animation: animate .5s linear forwards; 
-  }
-  @keyframes animate {
-    0% {
-      top: calc(50% - 2px);
-      left: -100%;
-      height: 4px;
-      z-index: 1;
-    }
-    50% {
-      top: calc(50% - 2px);
-      left: 0;
-      height: 4px;
-      z-index: 1;
-    }
-    100% {
-      top: 0;
-      left: 0;
-      height: 100%;
-      z-index: -1;
-    }
-  }
-  .menu .animation {
-    position: absolute;
+  100% {
+    top: 0;
+    left: 0;
     height: 100%;
-    transition: all .5s ease 0s;
-    border-radius: 8px;
+    z-index: -1;
+  }
+}
+.menu .animation {
+  position: absolute;
+  height: 100%;
+  transition: all .5s ease 0s;
+  border-radius: 8px;
 }
 .row
 {
-    position: relative;
-    background-color: #20b1aa;
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
-    padding-left:2.5%;
-
-	height: 15%;
 }
 .headline{
-	position: relative;
-    margin-top: 5%;
-    margin-right: 5%;
-	margin-bottom:5%;
+position: relative;
+  margin-top: 5%;
+  margin-right: 5%;
+margin-bottom:5%;
 }
 .form
 {
-    padding-top: 5%;
-	position: relative;
-    display: flex;
-    justify-content: center; 	
+  padding-top: 5%;
+position: relative;
+  display: flex;
+  justify-content: center; 	
 }
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.6);
-    z-index: 1000;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 1000;
 }
 .modal .modal_content {
-    border-radius:22%;
-    background:#c0e4e4;
-    margin: 25% auto;
-    border-radius: 1px solid #888;
-    width: 40%;
-    height: 40%;
-    z-index: 99999;
+  border-radius:22%;
+  background:#c0e4e4;
+  margin: 25% auto;
+  border-radius: 1px solid #888;
+  width: 40%;
+  height: 40%;
+  z-index: 99999;
 }
 .modal .modal_content .close_modal_window {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
 }
 .form-control
 {
 
-    width: 50%;
-    padding-top: 5%;
-	position: relative;
-    display: flex;
-    justify-content: center; 	
+  width: 50%;
+  padding-top: 5%;
+position: relative;
+  display: flex;
+  justify-content: center; 	
+}
+ul {
+  
+list-style: none;
+}
+.accordion-menu {
+padding-top: 2%;
+padding-bottom: 2%;
+width: 60%;
+margin: 60px auto 20px;
+background: #fff;
+border-radius: 4px;
 }
 
 
+.fa-chevron-down {
+
+right: 12px;
+left: auto;
+}
+.dropdownlink {
+cursor: pointer;
 
 
+border-bottom: 1px solid #ccc;
+color: #212121;
 
+}
 
+.submenuItems {
 
+display: none;
+background: #C8E6C9;
 
-
-
-
-
-
-
-
-
-
-
+}
+li {
+padding-top: 2%;
+padding-bottom: 2%;
+width: 100%;
+font-size: 18px;
+border-bottom: 1px solid #B6B6B6;
+}
 

@@ -6,12 +6,13 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="{% static 'script/jquery.js' %}" defer></script>
+        <script src="{% static 'script/history.js' %}" defer></script>
         <script src="{% static 'script/menu.js' %}" defer></script>
     </head>
 <title>inShort</title>
 </head>
 <body>
-  <div class="row">
+  <div class="row head">
     <div class="col-6 col-md-4 title">
         inSHORT
     </div>
@@ -72,8 +73,75 @@
       </form>
     </div>
   </div>
+  <ul class="accordion-menu">
+    <li>
+      <div class="col-6 col-md-3">
+        Посилання           
+      </div>
+      <div class="col-6 col-md-3">
+        Скорочення
+        </div>
+      <div class="col-6 col-md-2">
+        Час дії
+      </div>
+      <div class="col-6 col-md-2">
+        клацні
+      </div>
+      <div class="dropdownlink row" >
+        <div class="col-6 col-md-2">
+          Переходи
+        </div>
+      </div>
+    
+    </li>
+    <li>
+      <div class="col-6 col-md-3">
+        goooogle.com12 
+      </div>
+      <div class="col-6 col-md-3">
+         googl.
+       </div>
+      <div class="col-6 col-md-2">
+       меньше місяця
+      </div>
+      <div class="col-6 col-md-2">
+       <a>Copy </a>
+      </div>
+      <div class="dropdownlink row" >
+        <div class="col-6 col-md-2">
+          5
+        </div>
+      </div>  
+    </div>
+      <ul class="submenuItems">
+          <div class="row title">
+            <div class="col-6 col-md-3">
+            Время
+            </div><div class="col-6 col-md-3">
+             IP
+            </div><div class="col-6 col-md-3">
+              Город
+            </div><div class="col-6 col-md-3">
+              Страна
+            </div>
+            <div class="row title">
+              <div class="col-6 col-md-3">
+              04.03.2000
+              </div><div class="col-6 col-md-3">
+               вичислю
+              </div><div class="col-6 col-md-3">
+                Запорожжя
+              </div><div class="col-6 col-md-3">
+                Не Україна
+              </div>
+          
+        </div>
+      </ul>
+      </li>    
+  </ul>
   <div id="urls_container">
 
   </div>
+ 
 </body>
 </html>
