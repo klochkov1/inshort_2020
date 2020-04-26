@@ -21,11 +21,11 @@ $(function () {
     }
   }
   var accordion = new Accordion($('.accordion-menu'), false);
-  
   load_user_urls()
 });
 
 
 function load_user_urls() {
+  console.log(5);
   $("#urls_container").load('/urls/my')
 }
