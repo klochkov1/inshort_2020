@@ -6,7 +6,7 @@ from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.utils import timezone
 from .models import CustomUrl, Visit
-from .url_generator.rand_string import StringGenerator 
+from .url_generator.rand_string import StringGenerator
 
 
 def add_url(request):
@@ -59,7 +59,8 @@ def user_urls(request):
             CustomUrl, owner__username=request.user.username)
     else:
         # REMAKE
-        if not request.session.session_key: raise Http404()
+        if not request.session.session_key:
+            raise Http404()
         custom_urls = get_list_or_404(
             CustomUrl, session__pk=request.session.session_key)
     context = {'user_urls': custom_urls}
