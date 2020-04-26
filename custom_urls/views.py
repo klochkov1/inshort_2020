@@ -5,6 +5,7 @@ from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.utils import timezone
 from .models import CustomUrl, Visit
+from .url_generator.rand_string import StringGenerator 
 
 
 def add_url(request):
