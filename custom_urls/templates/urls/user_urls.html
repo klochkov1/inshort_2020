@@ -22,8 +22,9 @@
         </div>
 
     </li>
+    {% for url in user_urls %}
     <li>
-        {% for url in user_urls %}
+        
         <div class="col-6 col-md-2">
             {{ url.source_url }}
         </div>
@@ -77,6 +78,7 @@
                 </div>
                 {% endfor %}
         </ul>
-        {% endfor %}
+        
     </li>
+    {% endfor %}
 </ul>

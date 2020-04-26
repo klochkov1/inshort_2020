@@ -2,12 +2,14 @@
 <html>
     {% load static %}    
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
         <link rel="stylesheet" href="{% static "css/reg.css" %}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
     <body>
-        <div class="row">
+        <div class="row head">
             <div class="col-6 col-md-4 title">
                 inSHORT
             </div>
@@ -26,7 +28,6 @@
                 <button type="button" class="btn btn-info">Реєтрація </button>
               </div>
             </div>
-        
         </div>
         <div class="row registrate">
             <h3 class="text-center ">Регістрація</h3>
@@ -39,32 +40,32 @@
                     {% endif %}
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="username" class="cols-sm-2 control-label">Ім'я</label>
-                        <input type="text"  name="username" class="form-control" />
+                            <label for="username" class="cols-sm-2 control-label" required>Ім'я</label>
+                        <input type="text"  name="username" class="form-control" required/>
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="username" class="cols-sm-2 control-label">Email</label>
-                            <input type="email" name="email" class="form-control" />
+                            <label for="username" class="cols-sm-2 control-label" required>Email</label>
+                            <input type="email" name="email" class="form-control" required/>
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="username" class="cols-sm-2 control-label">Пароль</label>
-                            <input type="password" name="password" class="form-control" />
+                            <label for="username" class="cols-sm-2 control-label" required>Пароль</label>
+                            <input type="password" name="password" class="form-control" required/>
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="username" class="cols-sm-2 control-label">Підтвердження паролю</label>
-                            <input type="password" name="password2" class="form-control"  />
+                            <label for="username" class="cols-sm-2 control-label" required>Підтвердження паролю</label>
+                            <input type="password" name="password2" class="form-control" required />
                         </div>
                     </div>
                     <div class="text-center col-xs-12 container">
-                        <button class="btn btn-facebook"  > Facebook</button>
+                        <a href="" class="btn btn-facebook" > Facebook</a>
                         <button type="submit" class="btn btn-success">Створити</button>
-                        <button  class=" btn btn-twitter"  > Twitter</button>
+                        <a  href="" class=" btn btn-twitter">Google</a>
                     </div>
                 </form>
             </div>
