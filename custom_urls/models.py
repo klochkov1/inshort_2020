@@ -5,15 +5,23 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib.sessions.models import Session
+<<<<<<< HEAD
 from django.utils import timezone
 import datetime
+=======
+
+>>>>>>> master
 
 class CustomUrl(models.Model):
     """ Model representing mapping bitwing short url and destination url """
     owner = models.ForeignKey(
         User, null=True, blank=True, max_length=20, on_delete=models.CASCADE)
+<<<<<<< HEAD
     session = models.ForeignKey(
         Session, null=True, blank=True, on_delete=models.SET_NULL)
+=======
+    session = models.ForeignKey(Session, null=True, blank=True, on_delete=models.SET_NULL)
+>>>>>>> master
     source_url = models.URLField(max_length=2000)
     short_url = models.CharField(primary_key=True, unique=True, max_length=20)
     creation_date = models.DateTimeField(auto_now=True)

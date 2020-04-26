@@ -11,11 +11,15 @@ import datetime
 
 
 def create_custom_url(dest_url, short_url, owner=None):
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     return CustomUrl.objects.create(owner=owner, destination_url=dest_url, short_url=short_url)
 =======
     return CustomUrl.objects.create(owner=owner, source_url=dest_url, short_url=short_url, expiration_date=timezone.now() + datetime.timedelta(days=30))
 >>>>>>> Stashed changes
+=======
+    return CustomUrl.objects.create(owner=owner, source_url=dest_url, short_url=short_url)
+>>>>>>> master
 
 
 class CustomUrlModelTests(TestCase):
@@ -33,7 +37,7 @@ class CustomUrlModelTests(TestCase):
         cu = create_custom_url("https://www.google.com", "google")
         response = self.client.get(
             reverse('redirection_url', args=("google",)))
-        self.assertRedirects(response, cu.destination_url,
+        self.assertRedirects(response, cu.source_url,
                              fetch_redirect_response=False)
 
     def test_add_url(self):

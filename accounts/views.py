@@ -1,12 +1,14 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.views.generic import TemplateView
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib.auth.models import User
+from custom_urls.models import CustomUrl
+
 
 
 class LoginView(TemplateView):
@@ -37,7 +39,16 @@ class RegisterView(TemplateView):
             password2 = request.POST.get('password2')
 
             if password == password2:
-                User.objects.create_user(username, email, password)
+                new_user = User.objects.create_user(username, email, password)
+                # Assing anonymus session urls to registerd user
+                urls = CustomUrl.objects.filter(session__pk=request.session.session_key)
+                for u in urls:
+                    u.owner = new_user
+                    u.save()       
                 return redirect(reverse("login"))
 
         return render(request, self.template_name)
+
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('add_url_form'))
