@@ -10,17 +10,18 @@
 <title>inShort</title>
 </head>
 <body>
-<div class="row">
-  <div class="header">
-    <div class="col-xs-3 col-md-3 " style="font-size: 30px; color:white; ">
+  <div class="row">
+    <div class="col-6 col-md-4 title">
         inSHORT
     </div>
-		<nav class="header-block col-xs-6 col-md-6" style="padding-left:10%;">
-      <a style="padding-left:9px" href="#">Home</a>
-      <a href="#">About</a>
-      <div class="animation start-home"></div>
-    </nav>	
-    <div class="header-block btn-group col-xs-3 col-md-3"  role="group" aria-label="...">
+		<div class="col-6 col-md-6">
+      <div class="content-menu">
+        <div class="col-6 col-md-4 menu-item"><a href="#">Home</a></div>
+        <div  class="col-6 col-md-4 menu-item"><a href="#">FAQ</a></div>
+      </div>
+      <div class="animation"></div>
+    </div>	
+    <div class="header-block btn-group col-6 col-md-2"  role="group" aria-label="...">
       <div class="btn-group" role="group">
         <button type="button" class="btn btn-success">Увійти</button>
       </div>
@@ -28,47 +29,47 @@
         <button type="button" class="btn btn-info">Реєтрація </button>
       </div>
     </div>
-	</div>
 </div>
 <div class="headline">
   <h1 class="text-center">INSHORT</h1>
-</div>
 	<div class="form">
 	  <form>
-        <div class="col input-group">
-            <input type="text" class="form-control"  placeholder="Paste long URL and shorten it">
+        <div class="input-group">
+            <input  size="80%" type="text" class="form-control"  placeholder="Paste long URL and shorten it">
             <span class="input-group-btn">
-              <button class="btn btn-info" type="button">
+              <button class="btn btn-info btn_modal_window" type="button">
                 shorten
               </button>
             </span>
         </div>
       </form>
-	</div>
-	<div class="registrate text-center">
-    <h3 class="text-center ">Заповніть поля</h3>
-    <div >
-	    <div class="container col-xl-6 col-xl-offset-6" style="width: 30%; margin: 0 auto;"> 
+  </div>
+</div>
+  <div id="my_modal" class="modal">
+    <div class="modal_content">
+      <div class="col-xs-10">
+      <h3 class="text-center">Заповніть</h3>
         <form class="form">
-          <div class="col-xs-12" style="width: 500px; margin: 0 auto;">
-            <div class="form-group" style="text-align:center;">
-              <label>Cкорочення</label> 
-              <label style="padding-left:12%;">
-                <input size="10%" name="text">
-              </label>
-              <label>Ваше посилання дійсне</label>
-              <select id = "myList">
-                <option value = "0">День</option>
-                <option value = "1">Тиждень</option>
-                <option value = "2">Місяць</option>
-                <option value = "3">Рік</option>
-                <option value = "4">Назавжди</option>
-              </select>
-            </div>
-					</div>
-				</form>
-	    </div>
-    </div> 
-	</div>
+              <div class="form-group">
+                  <label for="username" class="cols-sm-2 control-label">Скорочення</label>
+              <input type="text" class="form-control" />
+              <legend>Виберіть час</legend>
+              <label>Буде дійсна </label>
+             <select id = "myList">
+               <option value = "1">День</option>
+               <option value = "2">Тиждень</option>
+               <option value = "3">Місяць</option>
+               <option value = "4">Рік</option>
+               <option value = "4">Назавжди</option>
+             </select>
+              <button type="button" class="btn btn-success">Створити</button>
+              </div>
+          </div>
+          <div class="col-xs-2">
+            <span class="close_modal_window">×</span>
+          </div>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
