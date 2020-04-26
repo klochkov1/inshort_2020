@@ -11,16 +11,7 @@ import datetime
 
 
 def create_custom_url(dest_url, short_url, owner=None):
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    return CustomUrl.objects.create(owner=owner, destination_url=dest_url, short_url=short_url)
-=======
     return CustomUrl.objects.create(owner=owner, source_url=dest_url, short_url=short_url, expiration_date=timezone.now() + datetime.timedelta(days=30))
->>>>>>> Stashed changes
-=======
-    return CustomUrl.objects.create(owner=owner, source_url=dest_url, short_url=short_url)
->>>>>>> master
-
 
 class CustomUrlModelTests(TestCase):
 
@@ -56,3 +47,4 @@ class CustomUrlModelTests(TestCase):
         cu = CustomUrl.objects.get(owner__username='test')
         self.assertIsNot(cu, None)
         self.assertEqual(cu.source_url, 'https://www.google.com')
+        self.assertEqual(cu.short_url, 'google')
