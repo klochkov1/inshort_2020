@@ -1,3 +1,4 @@
+{% load static %} <!--This for routing-->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -9,6 +10,12 @@
     {% if error %}
         <div style="color:red;">{{ error }}</div>
     {% endif %}
+    <button class="btn btn-primary mb-2">
+        <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
+    </button>
+    <button class="btn btn-primary mb-2">
+        <a href="{% url 'social:begin' 'github' %}">Login with Github</a>
+    </button>
     <form method="post">
         {% csrf_token %}
         <input type="text" name="username" placeholder="Логин">

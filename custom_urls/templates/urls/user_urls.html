@@ -1,0 +1,82 @@
+<ul class="accordion-menu">
+    <li>
+        <div class="col-6 col-md-2">
+            Посилання
+        </div>
+        <div class="col-6 col-md-2">
+            Скорочення
+        </div>
+        <div class="col-6 col-md-2">
+            Час дії
+        </div>
+        <div class="col-6 col-md-2">
+            клацні
+        </div>
+        <div class="col-6 col-md-2">
+            клацні
+        </div>
+        <div class="dropdownlink row">
+            <div class="col-6 col-md-2">
+                Переходи
+            </div>
+        </div>
+
+    </li>
+    <li>
+        {% for url in user_urls %}
+        <div class="col-6 col-md-2">
+            {{ url.source_url }}
+        </div>
+        <div class="col-6 col-md-2">
+            => {{ url.short_url }}
+        </div>
+        <div class="col-6 col-md-2">
+            меньше місяця
+        </div>
+        <div class="col-6 col-md-2">
+            <a>Copy </a>
+        </div>
+        <div class="col-6 col-md-2">
+            <a> Qr-Code </a>
+        </div>
+        <div class="dropdownlink row">
+            <div class="col-6 col-md-2">
+                5
+            </div>
+        </div>
+        </div>
+
+        <ul class="submenuItems">
+            <div class="row title">
+                <div class="col-6 col-md-3">
+                    Время
+                </div>
+                <div class="col-6 col-md-3">
+                    IP
+                </div>
+                <div class="col-6 col-md-3">
+                    Город
+                </div>
+                <div class="col-6 col-md-3">
+                    Страна
+                </div>
+                {% for visit in url.visit_set.all %}
+                <div class="row title">
+                    <div class="col-6 col-md-3">
+                        {{ visit.datetime }}
+                    </div>
+                    <div class="col-6 col-md-3">
+                       {{ visit.visitor_ip }}
+                    </div>
+                    <div class="col-6 col-md-3">
+                        Запорожжя
+                    </div>
+                    <div class="col-6 col-md-3">
+                        Не Україна
+                    </div>
+                </div>
+                {% endfor %}
+        </ul>
+        {% endfor %}
+    </li>
+</ul>
