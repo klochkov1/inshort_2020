@@ -57,15 +57,12 @@ def user_urls(request):
     if request.user.is_authenticated:
         custom_urls = get_list_or_404(
             CustomUrl, owner__username=request.user.username)
-        visits = []
     else:
         # REMAKE
         if not request.session.session_key: raise Http404()
         custom_urls = get_list_or_404(
             CustomUrl, session__pk=request.session.session_key)
-        visits = []
-    context = {'user_urls': custom_urls, 
-               'visits': visits }
+    context = {'user_urls': custom_urls}
     return render(request, 'urls/user_urls.html', context)
 
 

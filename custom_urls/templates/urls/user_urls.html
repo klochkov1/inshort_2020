@@ -60,13 +60,13 @@
                 <div class="col-6 col-md-3">
                     Страна
                 </div>
-                {% for visit in visits %}
+                {% for visit in url.visit_set.all %}
                 <div class="row title">
                     <div class="col-6 col-md-3">
-                        visit.datetime
+                        {{ visit.datetime }}
                     </div>
                     <div class="col-6 col-md-3">
-                        visit.visitor_ip
+                       {{ visit.visitor_ip }}
                     </div>
                     <div class="col-6 col-md-3">
                         Запорожжя
