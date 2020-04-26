@@ -11,7 +11,7 @@ from .url_generator.rand_string import StringGenerator
 
 def add_url(request):
     try:
-        dest_url = request.POST['source_url']
+        dest_url = request.POST['long_url']
         short_url = request.POST['short_url']
         time = request.POST['time']
     except (KeyError, CustomUrl.DoesNotExist):
@@ -25,7 +25,7 @@ def add_url(request):
         if request.user.is_authenticated:
             owner = User.objects.get(username=request.user.username)
         c = CustomUrl(owner=owner, session=session,
-                      source_url=dest_url, short_url=short_url)
+                      long_url=dest_url, short_url=short_url)
         c.save()
         return HttpResponseRedirect(reverse('user_urls'))
 
@@ -84,4 +84,4 @@ def redirect(request, requested_url):
         ip = request.META.get('REMOTE_ADDR')
     visit = Visit(custom_url=custom_url, visitor_ip=ip)
     visit.save()
-    return HttpResponseRedirect(custom_url.source_url)
+    return HttpResponseRedirect(custom_url.long_url)

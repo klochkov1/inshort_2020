@@ -11,7 +11,7 @@ import datetime
 
 
 def create_custom_url(dest_url, short_url, owner=None):
-    return CustomUrl.objects.create(owner=owner, source_url=dest_url, short_url=short_url, expiration_date=timezone.now() + datetime.timedelta(days=30))
+    return CustomUrl.objects.create(owner=owner, long_url=dest_url, short_url=short_url, expiration_date=timezone.now() + datetime.timedelta(days=30))
 
 class CustomUrlModelTests(TestCase):
 
@@ -28,7 +28,7 @@ class CustomUrlModelTests(TestCase):
         cu = create_custom_url("https://www.google.com", "google")
         response = self.client.get(
             reverse('redirection_url', args=("google",)))
-        self.assertRedirects(response, cu.source_url,
+        self.assertRedirects(response, cu.long_url,
                              fetch_redirect_response=False)
 
     def test_add_url(self):
@@ -36,7 +36,7 @@ class CustomUrlModelTests(TestCase):
         post appropriate data to /urls/add must create custom url instance
         """
         request = self.factory.post(reverse('add_url'), {
-                                    'source_url': 'https://www.google.com', 'short_url': 'google', 'time': ''})
+                                    'long_url': 'https://www.google.com', 'short_url': 'google', 'time': ''})
         request.user = self.user
         request.session = SessionStore()
         request.session.create()
@@ -46,5 +46,5 @@ class CustomUrlModelTests(TestCase):
             'user_urls'), fetch_redirect_response=False)
         cu = CustomUrl.objects.get(owner__username='test')
         self.assertIsNot(cu, None)
-        self.assertEqual(cu.source_url, 'https://www.google.com')
+        self.assertEqual(cu.long_url, 'https://www.google.com')
         self.assertEqual(cu.short_url, 'google')
