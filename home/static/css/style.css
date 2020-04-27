@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-background-color:#f9ffff;
+  background-color:#f9ffff;
   overflow-x: hidden;	
 }
 .title{
@@ -14,7 +14,6 @@ position: relative;
 padding-top: 2.5%;
 padding-bottom: 2.5%;
 padding-left:2.5%;
-
 height: 15%;
 }
 .header 
@@ -149,31 +148,89 @@ border-radius: 4px;
 .copy{
   text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
 }
-.fa-chevron-down {
+ul {
+  
+  list-style: none;
+  }
+  .accordion-menu {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 60%;
+  margin: 60px auto 20px;
+  background: #fff;
+  border-radius: 4px;
+  padding-left: 0%;
+  
+  }
+  
+  
+  .fa-chevron-down {
+  
+  right: 12px;
+  left: auto;
+  }
+  .dropdownlink {
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  color: #212121;
+  }
+  .for_border{
+      border: 3px solid #20aca6;
+    margin-bottom: 3.5%;
+    padding-left:2%;
+    padding-right:3%;
+    width: 100%;	
+  }
+  .word-break{
+      word-break: break-all;
 
-right: 12px;
-left: auto;
-}
-.dropdownlink {
-cursor: pointer;
+    text-align:center;
+  }
+  .for_border_item1{
+    text-align:center;
+    border: 2px solid #82e8e4;
+  }
+  .for_border_item2{
+    text-align:center;
+    border: 2px solid #a4eeeb;
+  }
+  .for_border_item3{
+    text-align:center;
+    border: 2px solid #a4eeeb;
+  }
+  .for_border_item4{
+    text-align:center;
+    background-color:  #a4eeeb;
+  }
+  .submenuItems {
+  display: none;
+  background: #C8E6C9;
+  
+  }
+  li {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 100%;
+  font-size: 18px;
+  border-bottom: 1px solid #B6B6B6;
+  }
+  
+  
+.container{
+  padding-top:3%;
+  padding-bottom:3%;
+  padding-left:3%;
+  padding-right:3%;
+  border-radius: 10%;
+  background:#c0e4e4;
+ }
+ .btn-default{
+     background-color:green;
+ }
 
+ .btn-facebook {background-color: #4267b2;width:30%;color: #fff;}
+.btn-facebook:hover {background-color: #365899; color: #fff;}
 
-border-bottom: 1px solid #ccc;
-color: #212121;
-
-}
-
-.submenuItems {
-
-display: none;
-background: #C8E6C9;
-
-}
-li {
-padding-top: 2%;
-padding-bottom: 2%;
-width: 100%;
-font-size: 18px;
-border-bottom: 1px solid #B6B6B6;
-}
+.btn-twitter {background-color: #1da1f2;width:30%;color: #fff;}
+.btn-twitter {background-color: #da671a; color: #fff;}
 

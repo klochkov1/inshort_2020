@@ -13,7 +13,7 @@ def add_url(request):
     try:
         dest_url = request.POST['long_url']
         short_url = request.POST['short_url']
-        time = request.POST['time']
+        #time = request.POST['time']
     except (KeyError, CustomUrl.DoesNotExist):
         return HttpResponseBadRequest("Bad request")
     else:
@@ -27,7 +27,7 @@ def add_url(request):
         c = CustomUrl(owner=owner, session=session,
                       long_url=dest_url, short_url=short_url)
         c.save()
-        return HttpResponseRedirect(reverse('user_urls'))
+        return HttpResponseRedirect(reverse('home'))
 
 
 def delete_url(request, short_url):

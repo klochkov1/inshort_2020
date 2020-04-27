@@ -16,16 +16,7 @@ window.onclick = function (event) {
        modal.style.display = "none";
    }
 }
-function copyToClipboard1(btn) {
-    var ta=btn.previousSibling;
-    console.log(btn);
-    console.log(ta);
-    var range = document.createRange();
-    range.selectNode(ta); 
-    window.getSelection().addRange(range); 
-    document.execCommand('copy'); 
-    window.getSelection().removeAllRanges();
-  }
+
  function copyToClipboard(elem) {
   var ta = document.getElementById(elem);
   var range = document.createRange();

@@ -2,32 +2,43 @@
 <html lang="ru">
     {% load static %}    
     <head>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/faq.css' %}" />
         <link rel="stylesheet" href="{% static "css/reg.css" %}" />
+        <script src="{% static 'script/jquery.js' %}" defer></script>
+        <script src="{% static 'script/history.js' %}" defer></script>
+        <script src="{% static 'script/menu.js' %}" defer></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
 <body>
+  <body>
     <div class="row head">
-        <div class="col-6 col-md-4 title">
-            inSHORT
+      <div class="col-6 col-md-4 title">
+          inSHORT
+      </div>
+      <div class="col-6 col-md-6">
+        <div class="content-menu">
+          <div class="col-6 col-md-4 menu-item"><a href="/home/">Home</a></div>
+      <div class="col-6 col-md-4 menu-item"><a href="/home/FAQ/">FAQ</a></div>
         </div>
-        <div class="col-6 col-md-6">
-          <div class="content-menu">
-            <div class="col-6 col-md-4 menu-item"><a href="#">Home</a></div>
-            <div  class="col-6 col-md-4 menu-item"><a href="#">FAQ</a></div>
-          </div>
-          <div class="animation"></div>
-        </div>	
-        <div class="header-block btn-group col-6 col-md-2"  role="group" aria-label="...">
+        <div class="animation"></div>
+      </div>	
+      <div class="header-block btn-group col-6 col-md-2"  role="group" aria-label="...">
           {% if request.user.is_authenticated %}
+              <div class="btn-group" role="group">
+                  <a type="button" href="/accounts/logout/" class="btn btn-success">Вийти</a>
+              </div>
           {% else %}
-          <a type="button" href="/accounts/login/" class="btn btn-success">Увійти</a>
-        </div>
-        <div class="btn-group" role="group">
-          <a type="button" href="/accounts/register/" class="btn btn-info">Реєтрація </a>
-        </div>
+              <div class="btn-group" role="group">
+                  <a type="button" href="/accounts/login/" class="btn btn-success">Увійти</a>
+              </div>
+              <div class="btn-group" role="group">
+                  <a type="button" href="/accounts/register/" class="btn btn-info">Реєтрація </a>
+              </div>
           {% endif %}
-        </div>
-    </div>
-    
-    </body>
+      </div>
+  </div>
+  {% block content %}
+  {% endblock %}
+  </body>

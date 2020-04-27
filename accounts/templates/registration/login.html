@@ -1,4 +1,3 @@
-{% load static %} <!--This for routing-->
 <!DOCTYPE html>
 <html lang="ru">
     {% load static %}    
@@ -26,14 +25,14 @@
                 <div class="btn-group" role="group">
                     <a type="button" href="/accounts/login/" class="btn btn-success">Вийти</a>
                 </div>
-            {% else %}
+             {% else %}
                 <div class="btn-group" role="group">
                     <a type="button" href="/accounts/login/" class="btn btn-success">Увійти</a>
                 </div>
                 <div class="btn-group" role="group">
                     <a type="button" href="/accounts/register/" class="btn btn-info">Реєтрація </a>
                 </div>
-            {% endif %}
+        {% endif %}
         </div>
     </div>
     <div class="row registrate">
@@ -59,15 +58,12 @@
                 </div>
                 <div class="text-center col-xs-12 container">
                     <a  href="" class="btn btn-facebook">Facebook</a>
-                   
                     <button type="submit" class="btn btn-success">Зайти</button>
-                    <a  href="" class=" btn btn-twitter">Google</a>
+                    <a  href="" class=" btn btn-google">Google</a>
                 </div>
             </form>
         </div>
         </div>
     </div>
-</body>
-
 </body>
 </html>
