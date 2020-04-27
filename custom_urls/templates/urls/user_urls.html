@@ -25,14 +25,14 @@
         <div class="col-6 col-md-6">
             {{ url.long_url }}
         </div>
-        <div class="col-6 col-md-2">
+        <div id="copyTarget1" class="col-6 col-md-2">
             => {{ url.short_url }}
         </div>
         <div class="col-6 col-md-2">
             меньше місяця
         </div>
-        <div class="col-6 col-md-1">
-            <a>Copy </a>
+        <div onclick="copyToClipboard('copyTarget1')" class="col-6 col-md-1">
+            <button>Copy</button>
         </div>
         <div class="dropdownlink row">
             <div class="col-6 col-md-1">

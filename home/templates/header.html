@@ -1,4 +1,3 @@
-{% load static %} <!--This for routing-->
 <!DOCTYPE html>
 <html lang="ru">
     {% load static %}    
@@ -20,12 +19,15 @@
           <div class="animation"></div>
         </div>	
         <div class="header-block btn-group col-6 col-md-2"  role="group" aria-label="...">
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-success">Увійти</button>
-          </div>
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-info">Реєтрація </button>
-          </div>
+          {% if request.user.is_authenticated %}
+          {% else %}
+          <a type="button" href="/accounts/login/" class="btn btn-success">Увійти</a>
+        </div>
+        <div class="btn-group" role="group">
+          <a type="button" href="/accounts/register/" class="btn btn-info">Реєтрація </a>
+        </div>
+          {% endif %}
         </div>
     </div>
+    
     </body>

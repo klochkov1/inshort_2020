@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <head>
     {% load static %}    
-    <head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta charset="utf-8">
-        <link rel="stylesheet" href="{% static "css/faq.css" %}" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script href="{% static "script/script.js" %}"></script>
-    </head>
-<title>inShort</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="{% static "css/faq.css" %}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script href="{% static "script/script.js" %}"></script>
+	<title>inShort</title>
 </head>
 <body>
 	<div class="row head">
 		<div class="col-6 col-md-4 title">
-			inSHORT
+		  inSHORT
 		</div>
-			<div class="col-6 col-md-6">
+		<div class="col-6 col-md-6">
 		  <div class="content-menu">
-			<div class="col-6 col-md-4 menu-item"><a href="#">Home</a></div>
-			<div  class="col-6 col-md-4 menu-item"><a href="#">FAQ</a></div>
+			<div class="col-6 col-md-4 menu-item"><a href="/home/">Home</a></div>
+			<div class="col-6 col-md-4 menu-item"><a href="/home/FAQ/">FAQ</a></div>
 		  </div>
 		  <div class="animation"></div>
-		</div>	
-		<div class="header-block btn-group col-6 col-md-2"  role="group" aria-label="...">
-		  <div class="btn-group" role="group">
-			<button type="button" class="btn btn-success">Увійти</button>
-		  </div>
-		  <div class="btn-group" role="group">
-			<button type="button" class="btn btn-info">Реєтрація </button>
-		  </div>
 		</div>
-	</div>
+		<div class="header-block btn-group col-6 col-md-2" role="group" aria-label="...">
+		  {% if request.user.is_authenticated %}
+			<div class="btn-group" role="group">
+			  <a type="button" href="/accounts/login/" class="btn btn-success">Вийти</a>
+			</div>
+		  {% else %}
+			<div class="btn-group" role="group">
+			  <a type="button" href="/accounts/login/" class="btn btn-success">Увійти</a>
+			</div>
+			<div class="btn-group" role="group">
+			  <a type="button" href="/accounts/register/" class="btn btn-info">Реєтрація </a>
+			</div>
+		  {% endif %}
+		</div>
+	  </div>
 <div class="search_field">
     <div class="headline">
-      <h1 align="center">Чим можемо допомогти?</h1>
+      <h1 class="text-center">Чим можемо допомогти?</h1>
 	</div>
-	  <div class="form">
+	<div class="form">
 	  <form>
         <div class="col">
           <div class="input-group">
-            <p><input type="search" class="form-control" name="q" size="80%" placeholder="Введіть ключові слова для пошуку"></p>
+            <p><input type="search" class="form-control" name="q" size="80%" placeholder="Що вас турбує?"></p>
 		  </div>
 		</div>
       </form>		
 	</div>
-	<div class="one_string">
+	<div class="headline">
 	<p>Ви також можете переглянути теми нижче, щоб знайти те, що шукаєте </p>
 	</div>
 	<hr>

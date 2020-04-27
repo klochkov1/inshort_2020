@@ -1,110 +1,99 @@
-
 body {
-    margin: 0;
-    padding: 0;
-	background-color:#f9ffff;
-    overflow-x: hidden;	
+  margin: 0;
+  padding: 0;
+background-color:#f9ffff;
+  overflow-x: hidden;	
 }
 .title{
-    font-size: 20px; 
-    color:white;
+  font-size: 20px; 
+  color:white;
 }
-.header 
-{
-   width: 100%;
-   height: 15%;
+.head{
+background-color: #20b1aa;
+position: relative;
+padding-top: 2.5%;
+padding-bottom: 2.5%;
+padding-left:2.5%;
+
+height: 15%;
 }
+
 .menu{
-   
-    border-radius: 2%;
-   
+ 
+  border-radius: 2%;
+ 
 }
 .menu-item{
-    padding-left: 5%;
+  padding-left: 5%;
 }
 .form-group{
-    width: 40%;
-    margin: 0 auto;
-    border-radius: 10%;
-    background:#c0e4e4;
+  width: 40%;
+  margin: 0 auto;
+  border-radius: 10%;
+  background:#c0e4e4;
 }
-  .content-menu .menu-item a {
-    position: relative;
+.content-menu .menu-item a {
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  color:white;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.content-menu .menu-item a:hover {
+  color: #fff;
+}
+.content-menu .menu-item a:hover::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  background: #258fd6;
+  transition: 0.5s;
+  animation: animate .5s linear forwards; 
+}
+@keyframes animate {
+  0% {
+    top: calc(50% - 2px);
+    left: -100%;
+    height: 4px;
     z-index: 1;
-    text-transform: uppercase;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    color:white;
-    font-size: 20px;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: 0.5s;
   }
-  .content-menu .menu-item a:hover {
-    color: #fff;
+  50% {
+    top: calc(50% - 2px);
+    left: 0;
+    height: 4px;
+    z-index: 1;
   }
-  .content-menu .menu-item a:hover::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    background: #258fd6;
-    transition: 0.5s;
-    animation: animate .5s linear forwards; 
-  }
-  @keyframes animate {
-    0% {
-      top: calc(50% - 2px);
-      left: -100%;
-      height: 4px;
-      z-index: 1;
-    }
-    50% {
-      top: calc(50% - 2px);
-      left: 0;
-      height: 4px;
-      z-index: 1;
-    }
-    100% {
-      top: 0;
-      left: 0;
-      height: 100%;
-      z-index: -1;
-    }
-  }
-  .menu .animation {
-    position: absolute;
+  100% {
+    top: 0;
+    left: 0;
     height: 100%;
-    transition: all .5s ease 0s;
-    border-radius: 8px;
+    z-index: -1;
+  }
 }
-
-
-
+.menu .animation {
+  position: absolute;
+  height: 100%;
+  transition: all .5s ease 0s;
+  border-radius: 8px;
+}
 .header-block1
 {
   width: 100px;
   height: 18%;
   border: 0px;
-  float:left;
+
   margin-right:0;
   margin-left:0;
   padding-left:10%;
 }
-a{
-	padding-right:110px;
-}
 
 
-.header-block{
-  width: 100px;
-  height: 18%;
-  border: 0px;
-  float:left;
-  font-size: 40px;
-  color:white;
-  padding-left:20px;
-}
 .header-block1{
 	 padding-left:10%;
 }
@@ -120,9 +109,7 @@ a{
 .search_field{
 	background-color:#fcf6f3;
 }
-.one_string{
-	margin-top:30px;
-}
+
 .question{
 	text-align:center;
 	padding-top:2%; 
@@ -133,30 +120,12 @@ a{
 .text{
 	width:100%;
 }
-.row
-{
-    position: relative;
-    background-color: #20b1aa;
-    padding: 1.5%;
-	height: 15%;
-}
 .col-xs-4
 {
     position: relative;
 	left: 15%;
     font-size: 28px;	
 }
-.col-md-4{
-	position: relative;
-    padding-left:15%;
-	padding-right:0;
-	margin-top:10px;
-}
-
-.btn-group{
-    padding-right: 2%;
-}
-
 .text-block {
 padding: 10px 0;
 color: #000;
@@ -215,7 +184,6 @@ label{
 .hidden {
   display: none;
 }
-/*для FAQ*/
  hr {
     border: none;
     background-color: #20b1aa;

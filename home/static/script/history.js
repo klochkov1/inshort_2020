@@ -1,5 +1,6 @@
 $(function () {
   load_user_urls();
+  
 });
 
 function load_user_urls() {
@@ -29,5 +30,4 @@ function load_user_urls() {
 
     var accordion = new Accordion($('.accordion-menu'), false);
   });
-
 }
