@@ -6,10 +6,10 @@ from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.utils import timezone
 from .models import CustomUrl, Visit
-from .url_generator.rand_string import StringGenerator
 
 
 def add_url(request):
+    return HttpResponseRedirect(reverse('user_urls'))
     try:
         dest_url = request.POST['long_url']
         short_url = request.POST['short_url']
