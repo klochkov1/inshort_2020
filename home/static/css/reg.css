@@ -5,13 +5,12 @@ background-color:#f9ffff;
   overflow-x: hidden;	
 }
 .title{
-  font-size: 20px; 
+
   color:white;
 }
 .head{
 background-color: #20b1aa;
 position: relative;
-padding-top: 2.5%;
 padding-bottom: 2.5%;
 padding-left:2.5%;
 
@@ -86,7 +85,6 @@ height: 15%;
    }
    
    .registrate{
-     padding-top:5%;
     color:#20b1aa;
     background:#f9ffff;
    }
