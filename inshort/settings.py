@@ -25,7 +25,7 @@ SECRET_KEY = 'n(9n62jpw4!5b_!y%7u^evc^9p7=nbc^cvpfnay11u#ee@)zvt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -107,10 +107,21 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db_developing.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db_developing.sqlite3'),
+#    }
+#}
 
 
 # Password validation
