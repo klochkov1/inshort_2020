@@ -8,6 +8,8 @@ from django.contrib.sessions.models import Session
 from django.utils import timezone
 import datetime
 
+def get_default_expire_date():
+    return timezone.now() + datetime.timedelta(days=30)
 
 class CustomUrl(models.Model):
     """ Model representing mapping bitwing short url and destination url """
@@ -19,7 +21,7 @@ class CustomUrl(models.Model):
     short_url = models.CharField(primary_key=True, unique=True, max_length=20)
     creation_date = models.DateTimeField(auto_now=True)
     expiration_date = models.DateTimeField(
-        null=True, default=timezone.now() + datetime.timedelta(days=30))
+        null=True, default=get_default_expire_date)
 
     def __str__(self):
         return "{}: {} -> {}".format(self.owner, self.short_url, self.long_url)
