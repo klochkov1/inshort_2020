@@ -12,18 +12,21 @@ window.onload = function () {
          display_modal_window();
       }
    });
-   
+
    btn.addEventListener('click', function () {
       display_modal_window();
    });
 
    function display_modal_window() {
       console.log(el[0]);
-      if (el[0].value != "") {
-         btn_error.style.border = null;
-         modal.style.display = "block";
-      } else {
-         btn_error.style.borderBottom = "3px solid red";
+      long_url.reportValidity();
+      if (long_url.checkValidity()) {
+         if (el[0].value != "") {
+            btn_error.style.border = null;
+            modal.style.display = "block";
+         } else {
+            btn_error.style.borderBottom = "3px solid red";
+         }
       }
    }
 

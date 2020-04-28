@@ -11,8 +11,8 @@ from .url_generator.rand_string import StringGenerator
 
 def add_url(request):
     try:
-        dest_url = request.POST['long_url']
-        short_url = request.POST['short_url']
+        dest_url = request.POST['long_url'].strip()
+        short_url = request.POST['short_url'].strip()
         #time = request.POST['time']
     except (KeyError, CustomUrl.DoesNotExist):
         return HttpResponseBadRequest("Bad request")
@@ -45,12 +45,6 @@ def add_url_form(request):
     if not request.session.session_key:
         request.session.create()
     return render(request, 'urls/add_url_form.html')
-
-
-def history(request, short_url):
-    custom_urls = get_list_or_404(Visit, custom_url__short_url=short_url)
-    context = {'visits': custom_urls}
-    return render(request, 'urls/url_history.html', context)
 
 
 def user_urls(request):
