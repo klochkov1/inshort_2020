@@ -7,3 +7,6 @@ from django.http import HttpResponse
 
 def index(request):
     return render(request, "index.html")
+
+def FAQ(request):
+    return render(request,"FAQ.html")
