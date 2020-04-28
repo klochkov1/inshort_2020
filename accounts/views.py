@@ -21,9 +21,9 @@ class LoginView(TemplateView):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect(reverse("add_url_form"))
+                return redirect(reverse("home"))
             else:
-                context['error'] = "Логин или пароль неправильные"
+                context['error'] = "Невірний логін або пароль"
         return render(request, self.template_name, context)
 
 
@@ -46,9 +46,9 @@ class RegisterView(TemplateView):
                 for u in urls:
                     u.owner = new_user
                     u.save()       
-                return redirect(reverse("login"))
+                return redirect(reverse("home"))
         return render(request, self.template_name, context)
 
 def logout_user(request):
     logout(request)
-    return HttpResponseRedirect(reverse('add_url_form'))
+    return HttpResponseRedirect(reverse('home'))

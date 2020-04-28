@@ -5,15 +5,15 @@ background-color:#f9ffff;
   overflow-x: hidden;	
 }
 .title{
-  font-size: 20px; 
+
   color:white;
 }
 .head{
 background-color: #20b1aa;
 position: relative;
-padding-top: 2.5%;
 padding-bottom: 2.5%;
 padding-left:2.5%;
+padding-top: 2.5%;
 
 height: 15%;
 }
@@ -22,6 +22,7 @@ height: 15%;
 }
 .menu-item{
   padding-left: 5%;
+  padding-top: 2%;
 }
 .form-group{
   width: 40%;
@@ -79,51 +80,21 @@ height: 15%;
   transition: all .5s ease 0s;
   border-radius: 8px;
 }
-.col-xs-6
-{
-    position: absolute;
-    left: 15%;
-}
-.btn-group{
-    padding-right: 2%;
-}
 
-.container{
-    width: 100%;
-}
-   #button {
-    border: 1px solid #ccc;
-    padding: 6px 12px;
-    color: #666;
-    text-shadow: 0 1px #fff;
-    cursor: pointer;
-    border-radius: 3px 3px;
-    box-shadow: 0 1px #fff inset, 0 1px #ddd;
-    background: #f5f5f5;
-   }
-   .main-form{
-    
-    position: absolute;
-    margin-top: 30px;
-    margin: 0 auto;
-    max-width: 400px;
-    padding: 10px 40px;
-
-   color: #FFF;
-   }
    span.input-group-addon i {
     color: #7ca772;
     font-size: 17px;
    }
-   .login-button{
-    margin-top: 5px;
-   }
+   
    .registrate{
     color:#20b1aa;
     background:#f9ffff;
    }
    .container{
-    padding:3%;
+    padding-top:3%;
+    padding-bottom:3%;
+    padding-left:3%;
+    padding-right:3%;
     border-radius: 10%;
     background:#c0e4e4;
    }
@@ -134,6 +105,6 @@ height: 15%;
    .btn-facebook {background-color: #4267b2;width:30%;color: #fff;}
 .btn-facebook:hover {background-color: #365899; color: #fff;}
  
-.btn-twitter {background-color: #1da1f2;width:30%;color: #fff;}
-.btn-twitter {background-color: #da671a; color: #fff;}
+.btn-google {background-color: #1da1f2;width:30%;color: #fff;}
+.btn-google {background-color: #da671a; color: #fff;}
  

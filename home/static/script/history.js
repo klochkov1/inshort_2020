@@ -1,5 +1,6 @@
 $(function () {
   load_user_urls();
+  
 });
 
 function load_user_urls() {
@@ -26,6 +27,7 @@ function load_user_urls() {
         $el.find('.submenuItems').not($next).slideUp().parent().removeClass('open');
       }
     }
+
     var accordion = new Accordion($('.accordion-menu'), false);
   });
 }

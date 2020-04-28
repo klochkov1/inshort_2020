@@ -11,9 +11,9 @@ from .models import CustomUrl, Visit
 def add_url(request):
     return HttpResponseRedirect(reverse('user_urls'))
     try:
-        dest_url = request.POST['long_url']
-        short_url = request.POST['short_url']
-        time = request.POST['time']
+        dest_url = request.POST['long_url'].strip()
+        short_url = request.POST['short_url'].strip()
+        #time = request.POST['time']
     except (KeyError, CustomUrl.DoesNotExist):
         return HttpResponseBadRequest("Bad request")
     else:
@@ -27,7 +27,7 @@ def add_url(request):
         c = CustomUrl(owner=owner, session=session,
                       long_url=dest_url, short_url=short_url)
         c.save()
-        return HttpResponseRedirect(reverse('user_urls'))
+        return HttpResponseRedirect(reverse('home'))
 
 
 def delete_url(request, short_url):
@@ -45,12 +45,6 @@ def add_url_form(request):
     if not request.session.session_key:
         request.session.create()
     return render(request, 'urls/add_url_form.html')
-
-
-def history(request, short_url):
-    custom_urls = get_list_or_404(Visit, custom_url__short_url=short_url)
-    context = {'visits': custom_urls}
-    return render(request, 'urls/url_history.html', context)
 
 
 def user_urls(request):
