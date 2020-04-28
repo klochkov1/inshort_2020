@@ -9,7 +9,6 @@ from .models import CustomUrl, Visit
 
 
 def add_url(request):
-    return HttpResponseRedirect(reverse('user_urls'))
     try:
         dest_url = request.POST['long_url'].strip()
         short_url = request.POST['short_url'].strip()
@@ -25,7 +24,7 @@ def add_url(request):
         if request.user.is_authenticated:
             owner = User.objects.get(username=request.user.username)
         c = CustomUrl(owner=owner, session=session,
-                      long_url=dest_url, short_url=short_url)
+                      long_url=dest_url, short_url=short_url, is_active=True)
         c.save()
         return HttpResponseRedirect(reverse('home'))
 
