@@ -21,9 +21,9 @@ class LoginView(TemplateView):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect(reverse("login"))
+                return redirect(reverse("home"))
             else:
-                context['error'] = "Логин или пароль неправильные"
+                context['error'] = "Невірний логін або пароль"
         return render(request, self.template_name, context)
 
 

@@ -1,8 +1,7 @@
+{% extends "header.html" %}    
 
-{% extends "header.html" %}
+{% load static %}   
 
-  {% load static %}
-    
 {% block content %}
   <div class="headline">
     <h1 class="text-center">INSHORT</h1>
@@ -11,11 +10,11 @@
                {% csrf_token %}
         <div class="input-group col-md-10">
           <div class="input_url">
-          <input   name="long_url" required class="form-control"  size="300px"   required  placeholder="Paste long URL and shorten it">
+          <input  id="long_url" type="url" name="long_url" required class="form-control"  size="300px"   required  placeholder="Введіть URL для скорочення.">
           </div>
           <span class="input-group-btn">
             <button type="button" data-toggle="tooltip" pattern="^h"class="btn btn-info btn_modal_window " required type="button">
-              shorten
+              Скоротити
             </button>
           </span>
         </div>
