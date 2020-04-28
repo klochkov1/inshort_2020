@@ -23,6 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         python3-pip \
         python3-dev \
         python3-venv \
+        postgresql-client\
         git \
         && \
     apt-get clean && \
@@ -33,4 +34,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install project dependencies
 RUN pip install -r requirements.txt
-RUN git clone https://gl.knu.ua/klochkov/inshort.git
+RUN mkdir inshort
+ADD ./ /app/inshort
+#RUN git clone https://gl.knu.ua/klochkov/inshort.git
+#RUN cd  ./inshort && python3 manage.py makemigrations custom_urls admin auth contenttypes sessions social_django && python manage.py migrate

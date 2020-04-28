@@ -1,14 +1,18 @@
-'version: '3'
+version: '3'
 services:
     web:
+        environment:
+          - DJANGO_SUPERUSER_PASSWORD=www12345
+          - DJANGO_SUPERUSER_ADMIN=admin
         build: ./
-        command: python ./manage.py runserver 0.0.0.0:8000
         ports:
         - 8000:8000
         volumes:
         - ./:/app
         depends_on:
         - db
+        command: ["./start.sh"]
+
     db:
         image: postgres
         environment:
