@@ -13,6 +13,7 @@ background-color: #20b1aa;
 position: relative;
 padding-bottom: 2.5%;
 padding-left:2.5%;
+padding-top: 2.5%;
 
 height: 15%;
 }
@@ -21,6 +22,7 @@ height: 15%;
 }
 .menu-item{
   padding-left: 5%;
+  padding-top: 2%;
 }
 .form-group{
   width: 40%;
