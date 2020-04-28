@@ -6,13 +6,12 @@ from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.utils import timezone
 from .models import CustomUrl, Visit
-from .url_generator.rand_string import StringGenerator
 
 
 def add_url(request):
     try:
-        dest_url = request.POST['long_url']
-        short_url = request.POST['short_url']
+        dest_url = request.POST['long_url'].strip()
+        short_url = request.POST['short_url'].strip()
         #time = request.POST['time']
     except (KeyError, CustomUrl.DoesNotExist):
         return HttpResponseBadRequest("Bad request")
@@ -25,7 +24,7 @@ def add_url(request):
         if request.user.is_authenticated:
             owner = User.objects.get(username=request.user.username)
         c = CustomUrl(owner=owner, session=session,
-                      long_url=dest_url, short_url=short_url)
+                      long_url=dest_url, short_url=short_url, is_active=True)
         c.save()
         return HttpResponseRedirect(reverse('home'))
 
@@ -45,12 +44,6 @@ def add_url_form(request):
     if not request.session.session_key:
         request.session.create()
     return render(request, 'urls/add_url_form.html')
-
-
-def history(request, short_url):
-    custom_urls = get_list_or_404(Visit, custom_url__short_url=short_url)
-    context = {'visits': custom_urls}
-    return render(request, 'urls/url_history.html', context)
 
 
 def user_urls(request):

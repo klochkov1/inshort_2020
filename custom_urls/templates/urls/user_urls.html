@@ -7,7 +7,7 @@
             <a href="{{ url.long_url }}"> {{ url.long_url }} </a>
         </div>
         <div id='copyTarget{{ forloop.counter }}'class="col-6 col-md-2  ">
-            {{ url.short_url }}
+            inshort.com/{{ url.short_url }}
         </div>
         <div class="col-6 col-md-2  ">
             меньше місяця
@@ -16,8 +16,8 @@
             <button>Copy</button>
         </div>
         <div class="dropdownlink row" >
-            <div class="col-5 col-md-1  for_border_item4">
-                Клік: 5
+            <div class="col-5 col-md-2  for_border_item4">
+                Переходів: <a>{{ url.visit_set.count }}</a>
             </div>
         </div>
 

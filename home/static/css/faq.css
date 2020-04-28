@@ -6,8 +6,9 @@ body {
 }
 
 #main-name {
+    /* font-family: Maven Pro;  */
     font-size: 48px;
-    font-weight: bold;
+    font-weight: 500;
     font-style: normal;
     font-variant: normal;
     line-height: 1;
