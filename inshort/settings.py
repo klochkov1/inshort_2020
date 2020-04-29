@@ -107,7 +107,7 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',

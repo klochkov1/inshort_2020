@@ -1,20 +1,32 @@
 version: '3'
 services:
+    nginx:
+        image: nginx:latest
+        container_name: ng01
+        ports:
+          - "8000:8000"
+        volumes:
+          - ./:/app
+          - ./config/nginx:/etc/nginx/conf.d
+        depends_on:
+          - web
     web:
         environment:
           - DJANGO_SUPERUSER_PASSWORD=www12345
           - DJANGO_SUPERUSER_ADMIN=admin
+        container_name: dg01
         build: ./
-        ports:
-        - 8000:8000
         volumes:
         - ./:/app
         depends_on:
         - db
         command: ["./start.sh"]
+        expose:
+          - "8000"
 
     db:
         image: postgres
+        container_name: ps01
         environment:
           - POSTGRES_DB=postgres
           - POSTGRES_USER=postgres

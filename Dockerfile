@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         python3-dev \
         python3-venv \
         postgresql-client\
+	nginx\
         git \
         && \
     apt-get clean && \
