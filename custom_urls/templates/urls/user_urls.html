@@ -39,7 +39,9 @@
                 {% for visit in url.visit_set.all %}
                 <div class="row title">
                     <div class="col-6 col-md-3">
-                        {{ visit.datetime }}
+                        {% timezone "Europe/Kiev" %} <!--to Ukraine time-->
+                        {{ visit.datetime | date:"H:i d.m.Y" }} <!--set time format-->
+                        {% endtimezone %}<!--to Ukraine time-->
                     </div>
                     <div class="col-6 col-md-3">
                        {{ visit.visitor_ip }}
