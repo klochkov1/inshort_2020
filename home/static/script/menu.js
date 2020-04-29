@@ -39,6 +39,26 @@ window.onload = function () {
          modal.style.display = "none";
       }
    }
+
+   //async check url availability
+   $('#short_url').keyup(delay(function (e) {
+      var $su = $("#short_url");
+      var url = "/" + $su.val();
+      $.ajax({
+         type: "GET",
+         url: url,
+         data: {},
+         error: function (xhr, statusText, err) {
+            // if response code 404 than url is free
+            if (xhr.status == 404) {
+               $("#short_url")[0].setCustomValidity("");
+            }
+            else {
+               $("#short_url")[0].setCustomValidity("Це скорочення вже зайняте");
+            }
+         }
+      });
+   }, 500));
 }
 
 function copyToClipboard(elem) {
@@ -48,4 +68,17 @@ function copyToClipboard(elem) {
    window.getSelection().addRange(range);
    document.execCommand('copy');
    window.getSelection().removeAllRanges();
+}
+
+
+//delay funcktion runs callback after n ms
+function delay(callback, ms) {
+   var timer = 0;
+   return function () {
+      var context = this, args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+         callback.apply(context, args);
+      }, ms || 0);
+   };
 }

@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, Http404
+from django.http import JsonResponse
 from django.contrib.sessions.backends.db import SessionStore
 from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
@@ -24,9 +25,14 @@ def add_url(request):
         if request.user.is_authenticated:
             owner = User.objects.get(username=request.user.username)
         c = CustomUrl(owner=owner, session=session,
-                      long_url=dest_url, short_url=short_url, is_active=True)
+                      long_url=dest_url, short_url=short_url, active=True)
         c.save()
         return HttpResponseRedirect(reverse('home'))
+
+
+def get_new_shortin(request):
+    url = CustomUrl.get_random_url()
+    return JsonResponse({ 'url': url })
 
 
 def delete_url(request, short_url):
@@ -68,11 +74,5 @@ def redirect(request, requested_url):
         # custom_url.delete()
         raise Http404("Заданого посилання не існує")
     # Get visitor ip wheter he's using proxy or not
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    visit = Visit(custom_url=custom_url, visitor_ip=ip)
-    visit.save()
+    Visit.log_visit(custom_url=custom_url, request=request)
     return HttpResponseRedirect(custom_url.long_url)
