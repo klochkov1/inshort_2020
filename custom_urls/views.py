@@ -34,6 +34,9 @@ def get_new_shortin(request):
     url = CustomUrl.get_random_url()
     return JsonResponse({ 'url': url })
 
+def check_url(request, short_url):
+    get_list_or_404(CustomUrl, pk=short_url)
+    return HttpResponse()
 
 def delete_url(request, short_url):
     try:

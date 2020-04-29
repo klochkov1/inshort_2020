@@ -30,6 +30,10 @@ window.onload = function () {
       }
    }
 
+   $.getJSON("/urls/generate", function (data) {
+      $("#short_url").val(data['url'])
+   });
+
    span.addEventListener('click', function () {
       modal.style.display = "none";
    });

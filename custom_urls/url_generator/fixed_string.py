@@ -1,7 +1,8 @@
 import random 
 
 _alphabet = \
-    "-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz" 
+    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" 
+    # "-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz" 
     # this alphabet based on base64, but changed 2 last char
 _alph_len = len(_alphabet)
 
