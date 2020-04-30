@@ -105,20 +105,13 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db_developing.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'inshort',
         'USER': 'inshort',
-        'PASSWORD': 'www12345',
-        'HOST': '192.168.100.221',
+        'PASSWORD': 'j3qq4h7h2v',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
