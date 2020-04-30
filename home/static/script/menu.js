@@ -47,18 +47,19 @@ window.onload = function () {
    //async check url availability
    $('#short_url').keyup(delay(function (e) {
       var $su = $("#short_url");
-      var url = "/" + $su.val();
+      var url = "/urls/" + $su.val();
       $.ajax({
          type: "GET",
          url: url,
          data: {},
+         success: function (xhr, statusText, err) {
+            console.log("sucsess");
+            $("#short_url")[0].setCustomValidity("Це скорочення вже зайняте");
+         },
          error: function (xhr, statusText, err) {
-            // if response code 404 than url is free
+            console.log("error");
             if (xhr.status == 404) {
                $("#short_url")[0].setCustomValidity("");
-            }
-            else {
-               $("#short_url")[0].setCustomValidity("Це скорочення вже зайняте");
             }
          }
       });

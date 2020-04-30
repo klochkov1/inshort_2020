@@ -9,9 +9,12 @@ from django.db.models.functions import Length
 import datetime
 
 
-def get_default_expire_date():
-    return timezone.now() + datetime.timedelta(days=30)
+def get_expire_date(minutes=10080):
+    return timezone.now() + timezone.timedelta(minutes=minutes)
 
+#for backward compatibility, remove after migrating from sqlite
+def get_default_expire_date(minutes=10080):
+    return timezone.now() + datetime.timedelta(minutes=10080)
 
 class CustomUrl(models.Model):
     """ Model representing mapping bitwing short url and destination url """
@@ -23,8 +26,25 @@ class CustomUrl(models.Model):
     short_url = models.CharField(primary_key=True, unique=True, max_length=20)
     creation_date = models.DateTimeField(auto_now=True)
     expiration_date = models.DateTimeField(
-        null=True, default=get_default_expire_date)
+        null=True, default=get_expire_date)
     active = models.BooleanField()
+
+    @classmethod
+    def create(cls, min_active, *args, **kwargs):
+        if min_active:
+            if min_active == -1:
+                exp_date = None
+            else:   
+                exp_date = get_expire_date(min_active)
+                print(exp_date)
+        if not "short_url" in kwargs:
+            raise ValueError("short_url required.")
+        elif cls.objects.filter(pk=kwargs["short_url"]).exists():
+            raise Exception("short_url must be unique")
+        print(exp_date)
+        custom_url = cls(expiration_date=exp_date, *args, **kwargs)
+        custom_url.save()
+        return custom_url
 
     @classmethod
     def clear_expired(cls):
@@ -49,7 +69,7 @@ class CustomUrl(models.Model):
 
     @classmethod
     def try_add_url(cls, url, redirect_url, user=None, min_active=60):
-        is_free = not CustomUrl.objects.get(url).exists()
+        is_free = not CustomUrl.objects.filter(pk=url).exists()
         if is_free:
             t_expired = timezone.now() + timezone.timedelta(minutes=min_active)
             u_active = cls()

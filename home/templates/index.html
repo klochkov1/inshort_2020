@@ -30,13 +30,13 @@
             <input id="short_url" type="text" name="short_url" class="form-control short_url" />
             <legend>Виберіть час</legend>
             <label>Буде дійсна </label>
-            <select id="myList">
-              <option value="0">5хв</option>
-              <option value="1">День</option>
-              <option value="2">Тиждень</option>
-              <option value="3">Місяць</option>
-              <option value="4">Рік</option>
-              <option value="4">Назавжди</option>
+            <select id="myList" name="time">
+              <option value="5">5хв</option>
+              <option value="1440">День</option>
+              <option value="10080">Тиждень</option>
+              <option value="43200">Місяць</option>
+              <option value="525600">Рік</option>
+              <option value="-1">Назавжди</option>
             </select>
             <button type="submit" class="btn btn-success">Створити</button>
           </div>
