@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'custom_urls',
-    'social_django', #social auth
+    'social_django',  # social auth
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware', # social auth
+    'social_django.middleware.SocialAuthExceptionMiddleware',  # social auth
 ]
 
 ROOT_URLCONF = 'inshort.urls'
@@ -67,7 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends', # social auth            
+                'social_django.context_processors.backends',  # social auth
             ],
         },
     },
@@ -94,21 +94,32 @@ SOCIAL_AUTH_FACEBOOK_KEY = "223299425671840"
 SOCIAL_AUTH_FACEBOOK_SECRET = "dc0ddf5e9dfc3af5524195b4fb0d1f2d"
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-            'fields': 'id,name,email',
-            }
+    'fields': 'id,name,email',
+}
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 
-#won't forget change next in release !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+# won't forget change next in release !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db_developing.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db_developing.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'inshort',
+        'USER': 'inshort',
+        'PASSWORD': 'www12345',
+        'HOST': '192.168.100.221',
+        'PORT': '3306',
     }
 }
 

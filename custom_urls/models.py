@@ -12,7 +12,7 @@ import datetime
 def get_expire_date(minutes=10080):
     return timezone.now() + timezone.timedelta(minutes=minutes)
 
-#for backward compatibility, remove after migrating from sqlite
+# for backward compatibility, remove after migrating from sqlite
 def get_default_expire_date(minutes=10080):
     return timezone.now() + datetime.timedelta(minutes=10080)
 
@@ -34,14 +34,12 @@ class CustomUrl(models.Model):
         if min_active:
             if min_active == -1:
                 exp_date = None
-            else:   
+            else:
                 exp_date = get_expire_date(min_active)
-                print(exp_date)
         if not "short_url" in kwargs:
             raise ValueError("short_url required.")
         elif cls.objects.filter(pk=kwargs["short_url"]).exists():
             raise Exception("short_url must be unique")
-        print(exp_date)
         custom_url = cls(expiration_date=exp_date, *args, **kwargs)
         custom_url.save()
         return custom_url
