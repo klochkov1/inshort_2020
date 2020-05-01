@@ -12,7 +12,7 @@ window.onload = function () {
          event.preventDefault();
          display_modal_window();
       }
-   });
+   });   
    btn.addEventListener('click', function () {
       console.log(el[0]);
       if(el[0].value!="")

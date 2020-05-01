@@ -9,14 +9,12 @@
         </div>
 
         <div id='copyTarget{{ forloop.counter }}'class="col-6 col-md-3 word-break ">
-
-
             {{ url.full_inshort_url }}
         </div>
-        <div class="col-6 col-md-2">
+        <div class="col-6 col-md-2 ">
             меньше місяця
         </div>
-        <div onclick="copyToClipboard('copyTarget{{ forloop.counter }}')" class="col-6 col-md-1">
+        <div onclick="copyToClipboard('copyTarget{{ forloop.counter}}')" class="col-6 col-md-1 ">
             <button class="btn">Copy</button>
         </div>
         <div class="dropdownlink row" >
