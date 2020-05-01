@@ -51,4 +51,4 @@ class RegisterView(TemplateView):
 
 def logout_user(request):
     logout(request)
-    return HttpResponseRedirect(reverse('home'))
+    return HttpResponseRedirect(reverse('login'))
