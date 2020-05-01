@@ -1,3 +1,4 @@
+
 window.onload = function () {
    var modal = document.querySelector(".modal");
    var btn = document.querySelector(".btn_modal_window");
@@ -12,23 +13,20 @@ window.onload = function () {
          display_modal_window();
       }
    });
-
    btn.addEventListener('click', function () {
-      display_modal_window();
-   });
-
-   function display_modal_window() {
       console.log(el[0]);
-      long_url.reportValidity();
-      if (long_url.checkValidity()) {
-         if (el[0].value != "") {
-            btn_error.style.border = null;
-            modal.style.display = "block";
-         } else {
-            btn_error.style.borderBottom = "3px solid red";
-         }
+      if(el[0].value!="")
+      {
+         btn_error.style.border=null;
+         modal.style.display = "block";
+      }else
+      {
+       
+        btn_error.style.borderBottom="3px solid red";
+        
+
       }
-   }
+   })
 
    $.getJSON("/urls/generate", function (data) {
       $("#short_url").val(data['url'])
@@ -36,7 +34,7 @@ window.onload = function () {
 
    span.addEventListener('click', function () {
       modal.style.display = "none";
-   });
+   })
 
    window.onclick = function (event) {
       if (event.target == modal) {
@@ -65,18 +63,17 @@ window.onload = function () {
       });
    }, 500));
 }
-
 function copyToClipboard(elem) {
    var ta = document.getElementById(elem);
    var range = document.createRange();
-   range.selectNode(ta);
-   window.getSelection().addRange(range);
-   document.execCommand('copy');
+   range.selectNode(ta); 
+   window.getSelection().addRange(range); 
+   document.execCommand('copy'); 
    window.getSelection().removeAllRanges();
 }
 
 
-//delay funcktion runs callback after n ms
+
 function delay(callback, ms) {
    var timer = 0;
    return function () {
