@@ -138,7 +138,7 @@ class Visit(models.Model):
     def get_ip_from_request(request):
         forwaded = request.META.get('HTTP_X_FORWARDED_FOR')
         if forwaded:
-            ip = forwaded(',')[0]
+            ip = forwaded.split(',')[0]
         else:
             ip = request.META.get('REMOTE_ADDR')
         return ip
