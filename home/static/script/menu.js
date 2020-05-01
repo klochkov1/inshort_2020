@@ -13,19 +13,22 @@ window.onload = function () {
          display_modal_window();
       }
    });   
-   btn.addEventListener('click', function () {
-      console.log(el[0]);
-      if(el[0].value!="")
+   btn.addEventListener('click', function (e) {
+      
+      var inp=document.getElementById('long_url');
+      if(inp.checkValidity())
       {
-         btn_error.style.border=null;
-         modal.style.display = "block";
-      }else
-      {
-       
-        btn_error.style.borderBottom="3px solid red";
-        
+       modal.style.display = "block";
+       return false;
+      }else{
+      
+        inp.reportValidity();
+         // результат функции валидации
+  
+      
 
       }
+     
    })
 
    $.getJSON("/urls/generate", function (data) {
