@@ -119,12 +119,11 @@ margin-bottom:5%;
 .form
 {
   padding-top: 5%;
-  position: relative;
+position: relative;
   display: flex;
   justify-content: center; 	
 }
 .modal {
-  font-family: Arial;
   display: none;
   position: fixed;
   z-index: 1;
@@ -152,13 +151,19 @@ color: #aaa;
  
   cursor: pointer;
 }
+
   .form-control
 {
+
   padding-top: 5%;
   position: relative;
   display: flex;
   justify-content: center;  
-} 
+
+ 
+}
+ 
+
 .input-group{
   margin: 0 auto;
  }

@@ -1,4 +1,5 @@
 <ul class="accordion-menu">
+    {% load tz %} <!--for localtime-->
     {% for url in user_urls %}
     
     <li class="for_border">
@@ -6,8 +7,13 @@
         <div class="col-6 col-md-5 word-break">
             <a href="{{ url.long_url }}"> {{ url.long_url }} </a>
         </div>
+<<<<<<< HEAD
         <div id='copyTarget{{ forloop.counter }}'class="col-6 col-md-2 word-break ">
             {{ url.short_url }}
+=======
+        <div id='copyTarget{{ forloop.counter }}'class="col-6 col-md-2  ">
+            {{ url.full_inshort_url }}
+>>>>>>> 45de3fec3303715c60196d89f81f09cac43b34f7
         </div>
         <div class="col-6 col-md-2  ">
             меньше місяця
@@ -19,8 +25,8 @@
             <button>QR</button>
         </div>
         <div class="dropdownlink row" >
-            <div class="col-5 col-md-1  for_border_item4">
-                Клік: 5
+            <div class="col-5 col-md-2  for_border_item4">
+                Переходів: <a>{{ url.visit_set.count }}</a>
             </div>
         </div>
 
@@ -41,7 +47,9 @@
                 {% for visit in url.visit_set.all %}
                 <div class="row title">
                     <div class="col-6 col-md-3">
-                        {{ visit.datetime }}
+                        {% timezone "Europe/Kiev" %} <!--to Ukraine time-->
+                        {{ visit.datetime | date:"H:i d.m.Y" }} <!--set time format-->
+                        {% endtimezone %}<!--to Ukraine time-->
                     </div>
                     <div class="col-6 col-md-3">
                        {{ visit.visitor_ip }}

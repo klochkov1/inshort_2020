@@ -25,7 +25,9 @@ SECRET_KEY = 'n(9n62jpw4!5b_!y%7u^evc^9p7=nbc^cvpfnay11u#ee@)zvt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+# There is must be valid host!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ALLOWED_HOSTS = ["127.0.0.1", "localhost","inshort.pp.ua"]
 
 
 # Application definition
@@ -82,13 +84,17 @@ SOCIAL_AUTH_STRATEGY = 'social_django.strategy.DjangoStrategy'
 SOCIAL_AUTH_STORAGE = 'social_django.models.DjangoStorage'
 
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.github.GithubOAuth2',
+    #'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 ]
-SOCIAL_AUTH_GITHUB_KEY = '1ee2094b8264ba92efd2'
-SOCIAL_AUTH_GITHUB_SECRET = 'ca012adc67e8c9d2a56f6d4b393e7c32bcadac3a'
-SOCIAL_AUTH_GITHUB_SCOPE = ['user:email']
+#SOCIAL_AUTH_GITHUB_KEY = '1ee2094b8264ba92efd2'
+#SOCIAL_AUTH_GITHUB_SECRET = 'ca012adc67e8c9d2a56f6d4b393e7c32bcadac3a'
+#SOCIAL_AUTH_GITHUB_SCOPE = ['user:email']
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '595113866288-gokf4bvt3lkl28clkh74pv0ugoue91f7.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'UZB3C7ANB0WNhmwulFpuTPMj'
 
 SOCIAL_AUTH_FACEBOOK_KEY = "223299425671840"
 SOCIAL_AUTH_FACEBOOK_SECRET = "dc0ddf5e9dfc3af5524195b4fb0d1f2d"
@@ -98,8 +104,8 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
             }
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 
-#won't forget change next in release !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://localhost:8000/'
+#won't forget change next in release !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://inshort.pp.ua/'
 
 
 # Database
