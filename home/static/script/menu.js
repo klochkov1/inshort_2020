@@ -10,21 +10,20 @@ window.onload = function () {
    long_url.addEventListener("keydown", function (event) {
       if (event.keyCode === 13) {
          event.preventDefault();
-         display_modal_window();
+         if (el[0].value != "") {
+            btn_error.style.border = null;
+            modal.style.display = "block";
+         } else {
+            btn_error.style.borderBottom = "3px solid red";
+         }
       }
    });
    btn.addEventListener('click', function () {
-      console.log(el[0]);
-      if(el[0].value!="")
-      {
-         btn_error.style.border=null;
+      if (el[0].value != "") {
+         btn_error.style.border = null;
          modal.style.display = "block";
-      }else
-      {
-       
-        btn_error.style.borderBottom="3px solid red";
-        
-
+      } else {
+         btn_error.style.borderBottom = "3px solid red";
       }
    })
 
@@ -66,9 +65,9 @@ window.onload = function () {
 function copyToClipboard(elem) {
    var ta = document.getElementById(elem);
    var range = document.createRange();
-   range.selectNode(ta); 
-   window.getSelection().addRange(range); 
-   document.execCommand('copy'); 
+   range.selectNode(ta);
+   window.getSelection().addRange(range);
+   document.execCommand('copy');
    window.getSelection().removeAllRanges();
 }
 
