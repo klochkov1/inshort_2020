@@ -4,29 +4,21 @@
     
     <li class="for_border">
         
-        <div class="col-6 col-md-5 word-break">
+        <div class="col-6 col-md-4 word-break">
             <a href="{{ url.long_url }}"> {{ url.long_url }} </a>
         </div>
-<<<<<<< HEAD
-        <div id='copyTarget{{ forloop.counter }}'class="col-6 col-md-2 word-break ">
-            {{ url.short_url }}
-=======
-        <div id='copyTarget{{ forloop.counter }}'class="col-6 col-md-2  ">
+        <div id='copyTarget{{ forloop.counter }}'class="col-6 col-md-3 word-break ">
             {{ url.full_inshort_url }}
->>>>>>> 45de3fec3303715c60196d89f81f09cac43b34f7
         </div>
-        <div class="col-6 col-md-2  ">
+        <div class="col-6 col-md-2">
             меньше місяця
         </div>
         <div onclick="copyToClipboard('copyTarget{{ forloop.counter }}')" class="col-6 col-md-1">
-            <button>Copy</button>
-        </div>
-        <div onclick="copyToClipboard('copyTarget{{ forloop.counter }}')" class="col-6 col-md-1">
-            <button>QR</button>
+            <button class="btn">Copy</button>
         </div>
         <div class="dropdownlink row" >
-            <div class="col-5 col-md-2  for_border_item4">
-                Переходів: <a>{{ url.visit_set.count }}</a>
+            <div class="col-5 col-md-2  for_border_item4  word-break">
+                Переходів:<a>{{ url.visit_set.count }}</a>
             </div>
         </div>
 

@@ -138,7 +138,7 @@ class Visit(models.Model):
     def get_ip_from_request(request):
         forwaded = request.META.get('HTTP_X_FORWARDED_FOR')
         if forwaded:
-            ip = forwaded(',')[0]
+            ip = forwaded.split(',')[0]
         else:
             ip = request.META.get('REMOTE_ADDR')
         return ip
@@ -151,7 +151,7 @@ class Visit(models.Model):
                 "Заданого посилання не існує або воно більше не є дійсним.")
         url_redir = cls()
         url_redir.custom_url = custom_url
-        url_redir.visitor_ip = cls.get_ip_from_request(request)
+        url_redir.visitor_ip = get_ip_from_request(request)
         url_redir.save()
         return custom_url.short_url
 

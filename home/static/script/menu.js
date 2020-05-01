@@ -72,8 +72,6 @@ function copyToClipboard(elem) {
    window.getSelection().removeAllRanges();
 }
 
-
-
 function delay(callback, ms) {
    var timer = 0;
    return function () {
