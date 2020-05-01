@@ -30,6 +30,10 @@ window.onload = function () {
       }
    }
 
+   $.getJSON("/urls/generate", function (data) {
+      $("#short_url").val(data['url'])
+   });
+
    span.addEventListener('click', function () {
       modal.style.display = "none";
    });
@@ -39,6 +43,27 @@ window.onload = function () {
          modal.style.display = "none";
       }
    }
+
+   //async check url availability
+   $('#short_url').keyup(delay(function (e) {
+      var $su = $("#short_url");
+      var url = "/urls/" + $su.val();
+      $.ajax({
+         type: "GET",
+         url: url,
+         data: {},
+         success: function (xhr, statusText, err) {
+            console.log("sucsess");
+            $("#short_url")[0].setCustomValidity("Це скорочення вже зайняте");
+         },
+         error: function (xhr, statusText, err) {
+            console.log("error");
+            if (xhr.status == 404) {
+               $("#short_url")[0].setCustomValidity("");
+            }
+         }
+      });
+   }, 500));
 }
 
 function copyToClipboard(elem) {
@@ -48,4 +73,17 @@ function copyToClipboard(elem) {
    window.getSelection().addRange(range);
    document.execCommand('copy');
    window.getSelection().removeAllRanges();
+}
+
+
+//delay funcktion runs callback after n ms
+function delay(callback, ms) {
+   var timer = 0;
+   return function () {
+      var context = this, args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+         callback.apply(context, args);
+      }, ms || 0);
+   };
 }

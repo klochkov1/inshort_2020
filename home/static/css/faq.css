@@ -5,15 +5,6 @@ body {
     overflow-x: hidden;
 }
 
-#main-name {
-    /* font-family: Maven Pro;  */
-    font-size: 48px;
-    font-weight: 500;
-    font-style: normal;
-    font-variant: normal;
-    line-height: 1;
-}
-
 .header-block1 {
     width: 100px;
     height: 18%;
