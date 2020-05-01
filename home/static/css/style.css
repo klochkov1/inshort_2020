@@ -119,49 +119,46 @@ margin-bottom:5%;
 .form
 {
   padding-top: 5%;
-position: relative;
+  position: relative;
   display: flex;
   justify-content: center; 	
 }
 .modal {
+  font-family: Arial;
   display: none;
   position: fixed;
   z-index: 1;
   width: 100%;
   height: 100%;
-
+  font-size: 15px;
   background-color: rgba(0,0,0,0.6);
   z-index: 1000;
 }
+
 .modal .modal_content {
 
   border-radius: 5%;
   border: 3px solid #20aca6;
   background:#c0e4e4;
   margin: 25% auto;
-  width: 30%;
+  margin-top: 20%;
+  width: 20%;
   height: 44%;
   z-index: 99999;
 }
 .modal .modal_content .close_modal_window {
 color: #aaa;
-  font-size: 28px;
+
  
   cursor: pointer;
 }
-
   .form-control
 {
-
   padding-top: 5%;
   position: relative;
   display: flex;
   justify-content: center;  
-
- 
-}
- 
-
+} 
 .input-group{
   margin: 0 auto;
  }
