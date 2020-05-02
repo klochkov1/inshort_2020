@@ -6,7 +6,9 @@ from django.contrib.sessions.backends.db import SessionStore
 from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.utils import timezone
-from .models import CustomUrl, Visit
+from .models import CustomUrl, Visit, is_valid_status
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 
 def add_url(request):
@@ -35,9 +37,13 @@ def get_new_shortin(request):
     return JsonResponse({'url': url})
 
 
-def check_url(request, short_url):
-    get_list_or_404(CustomUrl, pk=short_url)
-    return HttpResponse()
+@csrf_exempt
+def check_url(request):
+    if request.method == 'POST':
+        url = json.loads(request.body).get('url', '')
+        is_valid, status = CustomUrl.is_valid_url(url)
+        return JsonResponse({'is_valid':is_valid, 'status':is_valid_status[status]})
+    return HttpResponseRedirect(reverse('home'))
 
 
 def delete_url(request, short_url):
