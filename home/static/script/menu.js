@@ -47,20 +47,25 @@ window.onload = function () {
    //async check url availability
    $('#short_url').keyup(delay(function (e) {
       var $su = $("#short_url");
-      var url = "/urls/" + $su.val();
+      var url = "/urls/check/";
       $.ajax({
-         type: "GET",
+         type: 'POST',
+         dataType: 'json',
+         contentType: 'application/json; charset=utf-8',
          url: url,
-         data: {},
+         data: JSON.stringify({'url':$su.val()}),
          success: function (xhr, statusText, err) {
-            console.log("sucsess");
-            $("#short_url")[0].setCustomValidity("Це скорочення вже зайняте");
+            //xhr have is_valid - bool
+            //xhr have status - string (tell what excectly is wrong)
+            if (xhr.is_valid){
+               $("#short_url")[0].setCustomValidity("");
+            }else{
+               console.log("bed"); // when fix setCostomValidity delete this line
+               $("#short_url")[0].setCustomValidity(xhr.status);
+            }
          },
          error: function (xhr, statusText, err) {
-            console.log("error");
-            if (xhr.status == 404) {
-               $("#short_url")[0].setCustomValidity("");
-            }
+            console.log("connection error");
          }
       });
    }, 500));
