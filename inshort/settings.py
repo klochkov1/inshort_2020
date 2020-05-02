@@ -107,14 +107,25 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'inshort',
+        'USER': 'inshort',
+        'PASSWORD': 'j3qq4h7h2v',
         'HOST': 'db',
-        'PORT': 5432,
+        'PORT': '3306',
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'postgres',
+#        'USER': 'postgres',
+#        'PASSWORD': 'postgres',
+#        'HOST': 'db',
+#        'PORT': 5432,
+#    }
+#}
 
 #DATABASES = {
 #    'default': {

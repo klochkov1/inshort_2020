@@ -2,7 +2,7 @@ version: '3'
 services:
     nginx:
         image: nginx:latest
-        container_name: ng01
+        container_name: nginx
         ports:
           - "8000:8000"
         volumes:
@@ -14,7 +14,7 @@ services:
         environment:
           - DJANGO_SUPERUSER_PASSWORD=www12345
           - DJANGO_SUPERUSER_ADMIN=admin
-        container_name: dg01
+        container_name: django
         build: ./
         volumes:
         - ./:/app
@@ -25,9 +25,12 @@ services:
           - "8000"
 
     db:
-        image: postgres
-        container_name: ps01
+        container_name: mysql
+        image: mysql:5.7 
+        ports:
+          - '3306:3306'
         environment:
-          - POSTGRES_DB=postgres
-          - POSTGRES_USER=postgres
-          - POSTGRES_PASSWORD=postgres
+          MYSQL_DATABASE: 'inshort'
+          MYSQL_USER: 'inshort'
+          MYSQL_PASSWORD: 'j3qq4h7h2v'
+          MYSQL_ROOT_PASSWORD: 'password'
