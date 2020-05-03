@@ -213,6 +213,7 @@ li {
 }
 /* Footer */
 .footer{
+  margin-top: 10%;
   background-color:#DDECE9;
   overflow-x: hidden;
   width:100%;
@@ -221,6 +222,12 @@ li {
   padding-left: 3%;
   
  }
+ .networks_block{
+ width: 32px;
+ height:32px;
+
+ padding-right:1%;
+}
  .networks{
     background-color:#DDECE9;
  }
@@ -228,8 +235,13 @@ li {
  .own{
   width:100%;
   text-align: center;
+  color: #20B1AA;
+  font-size: 25px;
  }
  .created_by{
+  font-style: normal;
+  text-align: right;
+  color: #45C2B9;
   width:100%;
   text-align: right;
  }
