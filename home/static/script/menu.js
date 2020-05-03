@@ -50,13 +50,13 @@ window.onload = function () {
          dataType: 'json',
          contentType: 'application/json; charset=utf-8',
          url: url,
-         data: JSON.stringify({'url':$su.val()}),
+         data: JSON.stringify({ 'url': $su.val() }),
          success: function (xhr, statusText, err) {
             //xhr have is_valid - bool
             //xhr have status - string (tell what excectly is wrong)
-            if (xhr.is_valid){
+            if (xhr.is_valid) {
                $("#short_url")[0].setCustomValidity("");
-            }else{
+            } else {
                console.log("bed");
                $("#short_url")[0].setCustomValidity(xhr.status);
             }
