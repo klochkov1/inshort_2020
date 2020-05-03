@@ -8,13 +8,13 @@ from .url_generator.fixed_string import is_walid_url, RandFixedLenStrStorage as 
 from django.db.models.functions import Length
 import datetime
 
-
 def get_expire_date(minutes=10080):
     return timezone.now() + timezone.timedelta(minutes=minutes)
 
-#for backward compatibility, remove after migrating from sqlite
-def get_default_expire_date(minutes=10080):
-    return timezone.now() + datetime.timedelta(minutes=10080)
+reserved_url = {"home", "accounts", "admin", "urls"}
+
+is_valid_status = {0:"Ok", 1:"short url is empty string", 2:"short url is reserved", 3:"short url is not match alphabet", 4:"short url is already used"}
+
 
 class CustomUrl(models.Model):
     """ Model representing mapping bitwing short url and destination url """
@@ -23,7 +23,7 @@ class CustomUrl(models.Model):
     session = models.ForeignKey(
         Session, null=True, blank=True, on_delete=models.SET_NULL)
     long_url = models.URLField(max_length=2000)
-    short_url = models.CharField(primary_key=True, unique=True, max_length=20)
+    short_url = models.CharField(unique=True, max_length=20)
     creation_date = models.DateTimeField(auto_now=True)
     expiration_date = models.DateTimeField(
         null=True, default=get_expire_date)
@@ -39,12 +39,27 @@ class CustomUrl(models.Model):
                 print(exp_date)
         if not "short_url" in kwargs:
             raise ValueError("short_url required.")
-        elif cls.objects.filter(pk=kwargs["short_url"]).exists():
-            raise Exception("short_url must be unique")
+        else:
+            is_valide, status = cls.is_valid_url(kwargs["short_url"])
+            if not is_valide:
+                raise Exception(is_valid_status[status])
         print(exp_date)
         custom_url = cls(expiration_date=exp_date, *args, **kwargs)
         custom_url.save()
         return custom_url
+
+    @classmethod
+    def is_valid_url(cls, url):
+        "return (is_valid, status)"
+        if url is None or len(url) == 0:
+            return (False, 1)
+        elif url in reserved_url:
+            return (False, 2)
+        elif not is_walid_url(url):
+            return (False, 3)
+        elif CustomUrl.objects.filter(short_url=url, active=True).exists():
+            return (False, 4)
+        return (True, 0)
 
     @classmethod
     def clear_expired(cls):
@@ -69,7 +84,7 @@ class CustomUrl(models.Model):
 
     @classmethod
     def try_add_url(cls, url, redirect_url, user=None, min_active=60):
-        is_free = not CustomUrl.objects.filter(pk=url).exists()
+        is_free = not CustomUrl.objects.filter(short_url=url).exists()
         if is_free:
             t_expired = timezone.now() + timezone.timedelta(minutes=min_active)
             u_active = cls()
@@ -145,7 +160,7 @@ class Visit(models.Model):
 
     @classmethod
     def get_redirect_url(cls, short_url, request):
-        custom_url = CustomUrl.objects.get(pk=short_url)
+        custom_url = CustomUrl.objects.get(short_url=short_url)
         if not custom_url.active:
             raise Http404(
                 "Заданого посилання не існує або воно більше не є дійсним.")

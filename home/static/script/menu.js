@@ -10,7 +10,12 @@ window.onload = function () {
    long_url.addEventListener("keydown", function (event) {
       if (event.keyCode === 13) {
          event.preventDefault();
-         display_modal_window();
+         if (el[0].value != "") {
+            btn_error.style.border = null;
+            modal.style.display = "block";
+         } else {
+            btn_error.style.borderBottom = "3px solid red";
+         }
       }
    });   
    btn.addEventListener('click', function (e) {
@@ -48,20 +53,25 @@ window.onload = function () {
    //async check url availability
    $('#short_url').keyup(delay(function (e) {
       var $su = $("#short_url");
-      var url = "/urls/" + $su.val();
+      var url = "/urls/check/";
       $.ajax({
-         type: "GET",
+         type: 'POST',
+         dataType: 'json',
+         contentType: 'application/json; charset=utf-8',
          url: url,
-         data: {},
+         data: JSON.stringify({ 'url': $su.val() }),
          success: function (xhr, statusText, err) {
-            console.log("sucsess");
-            $("#short_url")[0].setCustomValidity("Це скорочення вже зайняте");
+            //xhr have is_valid - bool
+            //xhr have status - string (tell what excectly is wrong)
+            if (xhr.is_valid) {
+               $("#short_url")[0].setCustomValidity("");
+            } else {
+               console.log("bed");
+               $("#short_url")[0].setCustomValidity(xhr.status);
+            }
          },
          error: function (xhr, statusText, err) {
-            console.log("error");
-            if (xhr.status == 404) {
-               $("#short_url")[0].setCustomValidity("");
-            }
+            console.log("connection error");
          }
       });
    }, 500));
@@ -69,9 +79,9 @@ window.onload = function () {
 function copyToClipboard(elem) {
    var ta = document.getElementById(elem);
    var range = document.createRange();
-   range.selectNode(ta); 
-   window.getSelection().addRange(range); 
-   document.execCommand('copy'); 
+   range.selectNode(ta);
+   window.getSelection().addRange(range);
+   document.execCommand('copy');
    window.getSelection().removeAllRanges();
 }
 

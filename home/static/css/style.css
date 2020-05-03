@@ -1,22 +1,23 @@
 body {
   margin: 0;
   padding: 0;
-  background-color:#f9ffff;
-  overflow-x: hidden;	
+  background-color: #f9ffff;
+  overflow-x: hidden;
 }
-.title{
-  font-size: 20px; 
-  color:white;
+
+.title {
+  font-size: 20px;
+  color: white;
 }
-.head{
+
+.head {
   background-color: #20b1aa;
   position: relative;
   padding-bottom: 2.5%;
-  padding-left:2.5%;
+  padding-left: 2.5%;
   padding-top: 2.5%;
-  
   height: 15%;
-  }
+}
 
 .headline{
 position: relative;
@@ -28,7 +29,7 @@ position: relative;
   padding-top: 2%;
   padding-bottom: 3%;
   position: relative;
-  justify-content: center; 	
+  justify-content: center;
   display: flex;
 }
 
@@ -37,25 +38,28 @@ position: relative;
   padding-top: 5%;
   position: relative;
   display: flex;
-  justify-content: center; 	
-  width:700px;
+  justify-content: center;
+  width: 700px;
   margin: 0 auto;
 }
-.input-group{
+
+.input-group {
   margin-left: 0 auto;
  }
 .menu{
   border-radius: 2%;
 }
-.menu-item{
+
+.menu-item {
   padding-left: 5%;
 }
 .data-ur-group{
   width: 40%;
   margin: 0 auto;
   border-radius: 10%;
-  background:#c0e4e4;
+  background: #c0e4e4;
 }
+
 .content-menu .menu-item a {
   position: relative;
   z-index: 1;
@@ -63,23 +67,26 @@ position: relative;
   text-align: center;
   color: white;
   cursor: pointer;
-  color:white;
+  color: white;
   font-size: 20px;
   text-decoration: none;
   text-transform: uppercase;
   transition: 0.5s;
 }
+
 .content-menu .menu-item a:hover {
   color: #fff;
 }
+
 .content-menu .menu-item a:hover::before {
   content: '';
   position: absolute;
   width: 100%;
   background: #258fd6;
   transition: 0.5s;
-  animation: animate .5s linear forwards; 
+  animation: animate .5s linear forwards;
 }
+
 @keyframes animate {
   0% {
     top: calc(50% - 2px);
@@ -100,6 +107,7 @@ position: relative;
     z-index: -1;
   }
 }
+
 .menu .animation {
   position: absolute;
   height: 100%;
@@ -118,7 +126,7 @@ position: relative;
   width: 100%;
   height: 100%;
   font-size: 15px;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1000;
 }
 .text-center{
@@ -127,7 +135,7 @@ position: relative;
 .modal .modal_content {
   border-radius: 5%;
   border: 3px solid #20aca6;
-  background:#c0e4e4;
+  background: #c0e4e4;
   margin: 25% auto;
   margin-top: 20%;
   padding-top:3%;
@@ -152,6 +160,7 @@ position: relative;
 ul { 
 list-style: none;
 }
+
 .accordion-menu {
  padding-top: 2%;
 padding-bottom: 2%;
@@ -190,17 +199,19 @@ li {
   padding-left:3%;
   padding-right:3%;
   border-radius: 10%;
-  background:#c0e4e4;
- }
- .btn-default{
-     background-color:green;
- }
- 
- .long_url{
-  background:rgb(126, 9, 9);
+  background: #c0e4e4;
+}
+
+.btn-default {
+  background-color: green;
+}
+
+.long_url {
+  background: rgb(126, 9, 9);
   text-decoration: blink;
- }
- .tooltip {
+}
+
+.tooltip {
   position: fixed;
   padding: 10px 20px;
   border: 1px solid #b3c9ce;
@@ -246,3 +257,41 @@ li {
   text-align: right;
  }
 
+#short_url:valid {
+  border-color: #5cb85c;
+}
+
+#short_url:invalid {
+  border-color: red;
+}
+
+#short_url:focus:invalid {
+  outline: none !important;
+  border: 1px solid red;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+#short_url:focus:valid {
+  outline: none !important;
+  border: 1px solid #5cb85c;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+#main-name {
+  font-family: Maven Pro; 
+  font-size: 48px;
+  font-weight: 500;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Maven Pro';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/mavenpro/v20/7Auup_AqnyWWAxW2Wk3swUz56MS91Eww8Yzx1nejog.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
