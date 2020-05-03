@@ -211,4 +211,26 @@ li {
   background: #fff;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
 }
+/* Footer */
+.footer{
+  background-color:#DDECE9;
+  overflow-x: hidden;
+  width:100%;
+  height: 90%;
+  padding-top: 1%;
+  padding-left: 3%;
+  
+ }
+ .networks{
+    background-color:#DDECE9;
+ }
+ 
+ .own{
+  width:100%;
+  text-align: center;
+ }
+ .created_by{
+  width:100%;
+  text-align: right;
+ }
 
