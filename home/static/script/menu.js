@@ -60,7 +60,6 @@ window.onload = function () {
             if (xhr.is_valid){
                $("#short_url")[0].setCustomValidity("");
             }else{
-               console.log("bed"); // when fix setCostomValidity delete this line
                $("#short_url")[0].setCustomValidity(xhr.status);
             }
          },
