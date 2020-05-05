@@ -14,6 +14,7 @@ services:
         environment:
           - DJANGO_SUPERUSER_PASSWORD=www12345
           - DJANGO_SUPERUSER_ADMIN=admin
+          - INSHORT_ENV=docker
         container_name: django
         build: ./
         volumes:
