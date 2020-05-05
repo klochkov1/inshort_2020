@@ -1,12 +1,12 @@
-{% extends "header.html" %}    
+{% extends "header.html" %}
 {% block content %}
-    <div class="row registrate">
-        <div class="headlin">
-            <h3 class="text-center">Войти</h3>
-        </div>
-       <div >
-        <div class="container col-md-4 col-md-offset-4 "> 
-            <form method="post" >
+<div class="row registrate">
+    <div class="headlin">
+        <h3 class="text-center">Войти</h3>
+    </div>
+    <div>
+        <div class="container col-md-4 col-md-offset-4 ">
+            <form method="post">
                 {% csrf_token %}
                 {% if error %}
                 <div style="color:red;">{{ error }}</div>
@@ -14,7 +14,7 @@
                 <div class="col-xs-12">
                     <div class="form-group regis-group">
                         <label for="username" class="cols-sm-2 control-label">Ім'я</label>
-                    <input type="text"  name="username" class="form-control" />
+                        <input type="text" name="username" class="form-control" />
                     </div>
                 </div>
                 <div class="col-xs-12">
@@ -24,12 +24,12 @@
                     </div>
                 </div>
                 <div class="text-center col-xs-12 container">
-                    <a  href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook">Facebook</a>
+                    <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook">Facebook</a>
                     <button type="submit" class="btn btn-success">Зайти</button>
-                    <a  href="{% url 'social:begin' 'google-oauth2' %}" class=" btn btn-google">Google</a>
+                    <a href="{% url 'social:begin' 'google-oauth2' %}" class=" btn btn-google">Google</a>
                 </div>
             </form>
         </div>
-        </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}
