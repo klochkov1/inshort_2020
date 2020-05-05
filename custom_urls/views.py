@@ -15,7 +15,7 @@ def add_url(request):
     try:
         dest_url = request.POST['long_url'].strip()
         short_url = request.POST['short_url'].strip()
-        min_active = int(request.POST['time'])
+        min_active = 5
     except (KeyError, CustomUrl.DoesNotExist):
         return HttpResponseBadRequest("Bad request")
     else:

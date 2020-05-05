@@ -49,7 +49,7 @@ window.onload = function () {
          modal.style.display = "none";
       }
    }
-
+   
    //async check url availability
    $('#short_url').keyup(delay(function (e) {
       var $su = $("#short_url");
