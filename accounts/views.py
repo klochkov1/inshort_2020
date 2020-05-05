@@ -4,7 +4,6 @@ from django.shortcuts import redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.views.generic import TemplateView
-from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib.auth.models import User
 from custom_urls.models import CustomUrl

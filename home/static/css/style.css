@@ -6,20 +6,8 @@ body {
 }
 
 .title {
-  font-size: 48px;
+  font-size: 20px;
   color: white;
-  font-weight: 900;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-
-#main-name {
-  font-family: Maven Pro; 
-  font-size: 48px;
-  font-weight: 500;
-  font-style: normal;
-  font-variant: normal;
-  line-height: 1;
 }
 
 .head {
@@ -29,26 +17,6 @@ body {
   padding-left: 2.5%;
   padding-top: 2.5%;
   height: 15%;
-}
-
-#short_url:invalid {
-  border-color: red;
-}
-
-#short_url:valid {
-  border-color: #5cb85c;
-}
-
-#short_url:focus:invalid {
-  outline: none !important;
-  border:1px solid red;
-  box-shadow: 0 0 10px #719ECE;
-}
-
-#short_url:focus:valid {
-  outline: none !important;
-  border:1px solid #5cb85c;
-  box-shadow: 0 0 10px #719ECE;
 }
 
 .headline {
@@ -167,25 +135,24 @@ body {
   z-index: 1;
   width: 100%;
   height: 100%;
-
-  background-color: rgba(0,0,0,0.6);
+  font-size: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1000;
 }
 
 .modal .modal_content {
-  background: #c0e4e4;
   border-radius: 5%;
   border: 3px solid #20aca6;
+  background: #c0e4e4;
   margin: 25% auto;
-  width: 30%;
+  margin-top: 20%;
+  width: 20%;
   height: 44%;
   z-index: 99999;
 }
 
 .modal .modal_content .close_modal_window {
-color: #aaa;
-  font-size: 28px;
- 
+  color: #aaa;
   cursor: pointer;
 }
 
@@ -213,35 +180,37 @@ ul {
   border-radius: 4px;
 }
 
-  .word-break{
-      word-break: break-all;
-  
-  }
-  
-  .submenuItems {
-    display: none;
-    background: #2aa7a0;
-    border-radius: 1px;
-    }
-    li {
-    padding-top: 2%;
-    padding-bottom: 2%;
-    width: 100%;
-    font-size: 18px;
-    border-bottom: 1px solid #B6B6B6;
-    }
-    .for_border{
-    border: 3px solid #20aca6;
-    margin-bottom: 3.5%;
-    width: 100%;	
-    border-radius:0;
-    background-color:#fdfaf7;
-  }
-.container{
-  padding-top:3%;
-  padding-bottom:3%;
-  padding-left:3%;
-  padding-right:3%;
+.word-break {
+  word-break: break-all;
+}
+
+.submenuItems {
+  display: none;
+  background: #2aa7a0;
+  border-radius: 1px;
+}
+
+li {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 100%;
+  font-size: 18px;
+  border-bottom: 1px solid #B6B6B6;
+}
+
+.for_border {
+  border: 3px solid #20aca6;
+  margin-bottom: 3.5%;
+  width: 100%;
+  border-radius: 0;
+  background-color: #fdfaf7;
+}
+
+.container {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  padding-left: 3%;
+  padding-right: 3%;
   border-radius: 10%;
   background: #c0e4e4;
 }
@@ -265,6 +234,35 @@ ul {
   color: #333;
   background: #fff;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+}
+
+#short_url:valid {
+  border-color: #5cb85c;
+}
+
+#short_url:invalid {
+  border-color: red;
+}
+
+#short_url:focus:invalid {
+  outline: none !important;
+  border: 1px solid red;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+#short_url:focus:valid {
+  outline: none !important;
+  border: 1px solid #5cb85c;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+#main-name {
+  font-family: Maven Pro; 
+  font-size: 48px;
+  font-weight: 500;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
 }
 
 /* vietnamese */
