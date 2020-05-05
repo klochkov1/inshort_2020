@@ -1,5 +1,5 @@
 # INSHORT
-Service for creating and managing short links. It is also provide statistics 
+Service for creating and managing short links. It also provides statistics 
 about visits.
 
 ## About
