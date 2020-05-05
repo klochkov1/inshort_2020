@@ -9,6 +9,8 @@ body {
   color:white;
 }
 .head{
+  display: flex;
+  justify-content: center;
   background-color: #20b1aa;
   position: relative;
   padding-bottom: 2.5%;
