@@ -1,69 +1,36 @@
-<!DOCTYPE html>
-<html>
-    {% load static %}    
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static "css/reg.css" %}" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    </head>
-    <body>
-        <div class="row head">
-            <div class="col-6 col-md-4 title">
-                inSHORT
-            </div>
-                <div class="col-6 col-md-6">
-              <div class="content-menu">
-                <div class="col-6 col-md-4 menu-item"><a href="/home/">Home</a></div>
-                <div class="col-6 col-md-4 menu-item"><a href="/home/FAQ/">FAQ</a></div>
-              </div>
-              <div class="animation"></div>
-            </div>	
-            <div class="header-block btn-group col-6 col-md-2"  role="group" aria-label="...">
-                {% if request.user.is_authenticated %}
-                    <div class="btn-group" role="group">
-                        <a type="button" href="/accounts/login/" class="btn btn-success">Вийти</a>
-                    </div>
-                {% else %}
-                    <div class="btn-group" role="group">
-                        <a type="button" href="/accounts/login/" class="btn btn-success">Увійти</a>
-                    </div>
-                    <div class="btn-group" role="group">
-                        <a type="button" href="/accounts/register/" class="btn btn-info">Реєтрація </a>
-                    </div>
-                {% endif %}
-            </div>
+{% extends "header.html" %}    
+{% block content %}
+        <div class="registrate">
+        <div class="headlin">
+            <h3 class="text-center">Регістрація</h3>
         </div>
-        <div class="row registrate">
-            <h3 class="text-center ">Регістрація</h3>
            <div >
             <div class="container col-md-4 col-md-offset-4 "> 
-                <form method="post" class="form">
+                <form method="post">
                     {% csrf_token %}
                     {% if error %}
                     <div style="color:red;">{{ error }}</div>
                     {% endif %}
                     <div class="col-xs-12">
-                        <div class="form-group">
+                        <div class="form-group regis-group">
                             <label for="username" class="cols-sm-2 control-label" required>Ім'я</label>
                         <input type="text"  name="username" class="form-control" required/>
                         </div>
                     </div>
                     <div class="col-xs-12">
-                        <div class="form-group">
+                        <div class="form-group regis-group">
                             <label for="username" class="cols-sm-2 control-label" required>Email</label>
                             <input type="email" name="email" class="form-control" required/>
                         </div>
                     </div>
                     <div class="col-xs-12">
-                        <div class="form-group">
+                        <div class="form-group regis-group">
                             <label for="username" class="cols-sm-2 control-label" required>Пароль</label>
                             <input type="password" name="password" class="form-control" required/>
                         </div>
                     </div>
                     <div class="col-xs-12">
-                        <div class="form-group">
+                        <div class="form-group regis-group">
                             <label for="username" class="cols-sm-2 control-label" required>Підтвердження паролю</label>
                             <input type="password" name="password2" class="form-control" required />
                         </div>
@@ -77,9 +44,7 @@
             </div>
             </div>
         </div>
-    </body>
-</html>
-
+        {% endblock %}
 
 
 
