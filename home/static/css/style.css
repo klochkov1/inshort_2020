@@ -1,3 +1,4 @@
+/*header */
 body {
   margin: 0;
   padding: 0;
@@ -146,8 +147,8 @@ li {
     margin-left: 17.5%;
     text-decoration:underline;
 
-background: #fff;
-border-radius: 4px;
+    background: #fff;
+    border-radius: 4px;
 
   }
   .static-elem{
@@ -166,7 +167,6 @@ border-radius: 4px;
  padding-left:1%;
  padding-right:1%;
   font-size: 16px;
-  
  }
  .btn-default{
      background-color:green;

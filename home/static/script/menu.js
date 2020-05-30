@@ -1,4 +1,4 @@
-
+/* скрипт по открытию окна для добавление url */
 window.onload = function () {
    var modal = document.querySelector(".window");
    var btn = document.querySelector(".btn_modal_window");
@@ -8,6 +8,8 @@ window.onload = function () {
          event.preventDefault();
       }
    });   
+       /* добавление  ошибки,
+         потому что при типе кнопке button пропадает возможность валидации с фронта */
    btn.addEventListener('click', function (e) {
       
       var inp=document.getElementById('long_url');
@@ -18,8 +20,9 @@ window.onload = function () {
       }
       else
       {
+     
         inp.reportValidity();
-         // результат функции валидации
+        
       }
    })
    $.getJSON("/urls/generate", function (data) {
@@ -51,6 +54,7 @@ window.onload = function () {
       });
    }, 500));
 }
+/* на копирование url */
 function copyToClipboard(elem) {
    var element = document.getElementById(elem);
    var new_range = document.createRange();

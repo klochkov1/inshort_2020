@@ -1,12 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-background-color:#f9ffff;
+  background-color:#f9ffff;
   overflow-x: hidden;	
   height: 100%;
 }
 .title{
-
   color:white;
 }
 .head{
@@ -32,8 +31,7 @@ height: 15%;
   border-radius: 10%;
   background:#c0e4e4;
 }
-
-   .registrate{
+  .registrate{
     color:#20b1aa;
     background:#f9ffff;
    }
@@ -62,8 +60,10 @@ height: 15%;
 .btn-google {
   background-color: #1da1f2;
   width:30%;
-  color: #fff;}
+  color: #fff;
+}
 .btn-google {
   background-color: #da671a; 
-  color: #fff;}
+  color: #fff;
+}
  

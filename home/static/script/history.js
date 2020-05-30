@@ -1,6 +1,6 @@
+/* скрипт по загрузке истории */
 $(function () {
   load_user_urls();
-  
 });
 function load_user_urls() {
   $("#urls_container").load('/urls/my', function () {
@@ -15,7 +15,6 @@ function load_user_urls() {
         },
         this.dropdown);
     };
-
     History.prototype.dropdown = function (e) {
       var $el = e.data.elem,
         $this = $(this),
