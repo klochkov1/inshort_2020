@@ -2,32 +2,29 @@ $(function () {
   load_user_urls();
   
 });
-
 function load_user_urls() {
   $("#urls_container").load('/urls/my', function () {
-    var Accordion = function (el, multiple) {
-      this.el = el || {};
-      this.multiple = multiple || false;
-
-      var dropdownlink = this.el.find('.dropdownlink');
+    var History = function (elem) {
+      this.elem = elem;
+      var dropdownlink = this.elem.find('.dropdownlink');
       console.log(dropdownlink);
-      dropdownlink.on('click',
-        { el: this.el, multiple: this.multiple },
+      dropdownlink.on(
+        'click',
+        { 
+          elem: this.elem, 
+        },
         this.dropdown);
     };
 
-    Accordion.prototype.dropdown = function (e) {
-      var $el = e.data.el,
+    History.prototype.dropdown = function (e) {
+      var $el = e.data.elem,
         $this = $(this),
         $next = $this.next();
       console.log(5);
       $next.slideToggle();
       $this.parent().toggleClass('open');
-      if (!e.data.multiple) {
         $el.find('.submenuItems').not($next).slideUp().parent().removeClass('open');
-      }
     }
-
-    var accordion = new Accordion($('.accordion-menu'), false);
+    var history = new History($('.history-items'));
   });
 }
