@@ -1,13 +1,15 @@
-$('#short_url').keyup(delay(function (e) {
-    var $su = $("#short_url");
+$('#sent_email').click(delay(function (e) {
+    var $su = $("#body_messege");
     var url = "/FAQ";
+    console.log('good');
     $.ajax({
        type: 'POST',
        dataType: 'json',
        contentType: 'application/json; charset=utf-8',
        url: url,
-       data: JSON.stringify({ 'message': $su.val() }),
+       data: JSON.stringify({ 'message': "jira" }),
        success: function (xhr, statusText, err) {
+         console.log('good');
           //xhr have is_valid - bool
           //xhr have status - string (tell what excectly is wrong)
           if (!xhr.status) {

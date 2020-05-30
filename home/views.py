@@ -14,14 +14,9 @@ def index(request):
 def FAQ(request):
     if request.method == 'POST':
         body_messege = json.loads(request.body).get('message', '')
-        email = EmailMessage('Subject', 'Body', to=['your@email.com'])
+        email = EmailMessage('Support_Messege', body_messege, to=['amurahovskiy@gmail.com'])
         email.send()
         return JsonResponse({'status':True})
     else:
         return render(request,"FAQ.html")
 
-def Support_Sent_Email(request):
-    
-    email = EmailMessage('Subject', 'Body', to=['your@email.com'])
-    email.send()
-    return render(request,"FAQ.html")
