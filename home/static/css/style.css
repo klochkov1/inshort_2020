@@ -34,12 +34,7 @@ body {
 
 }
 
-.form-control
-{
-  padding-top: 5%;
-  position: relative;
-  margin: 0 auto;
-}
+
  
 .menu{
   border-radius: 2%;
@@ -95,6 +90,9 @@ body {
  
 .form-control
 {
+  max-width: 94%;
+  padding-top: 5%;
+  margin-left:  6%;
   padding-bottom: 5%;
   position: relative;
   display: flex;
@@ -116,6 +114,7 @@ border-radius: 4px;
 }
 .word-break{
   word-break: break-all;
+  font-size: 16px;
 }
   
 .submenuItems 
