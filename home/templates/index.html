@@ -9,7 +9,7 @@
                {% csrf_token %}
         <div class="input-group col-md-10">
           <div id="input_url" class="input_url">
-            <input  id="long_url" type="url" name="long_url" class="form-control"  size="300px"   required  placeholder="Введіть URL для скорочення.">
+            <input  id="long_url" type="url" name="long_url" class="form-control"   required  placeholder="Введіть URL для скорочення.">
           </div>
           <span class="input-group-btn">
             <button type="button"   data-toggle="tooltip"   class="btn btn-info btn_modal_window " required>
@@ -17,11 +17,11 @@
             </button>
           </span>
         </div>
-        <div id="my_modal" class="modal">
-          <div class="modal_content">
+        <div id="my_modal" class="window modal">
+          <div class="modal_content window_content">
             <label class="text-center cols-sm-12 ">Заповніть<label>
             <div class="close_modal_window"></div>
-             <div class="form-group data-ur-group">
+             <div class="form-group data-group">
                 <label for="username" class="cols-sm-2 control-label">Скорочення</label>
                 <input type="text" name="short_url" class="form-control" />
                 <label>Буде дійсна </label>
@@ -33,7 +33,7 @@
                   <option value="4">Рік</option>
                   <option value="5">Назавжди</option>
                 </select>
-                <button type="submit" class="btn btn-success">Створити</button>
+                <button type="submit" class="btn btn-success btn-sum">Створити</button>
               </div>
             </div>
           </div>

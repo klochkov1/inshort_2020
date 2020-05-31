@@ -1,55 +1,38 @@
-
+/* скрипт по открытию окна для добавление url */
 window.onload = function () {
-   var modal = document.querySelector(".modal");
+   var modal = document.querySelector(".window");
    var btn = document.querySelector(".btn_modal_window");
-   var span = document.querySelector(".close_modal_window");
-   var el = document.getElementsByName('long_url');
    var long_url = document.getElementById('long_url');
-   var btn_error = document.getElementsByName('long_url')[0];
-
    long_url.addEventListener("keydown", function (event) {
       if (event.keyCode === 13) {
          event.preventDefault();
-         if (el[0].value != "") {
-            btn_error.style.border = null;
-            modal.style.display = "block";
-         } else {
-            btn_error.style.borderBottom = "3px solid red";
-         }
       }
    });   
+       /* добавление  ошибки,
+         потому что при типе кнопке button пропадает возможность валидации с фронта */
    btn.addEventListener('click', function (e) {
       
       var inp=document.getElementById('long_url');
       if(inp.checkValidity())
       {
        modal.style.display = "block";
-       return false;
-      }else{
-      
-        inp.reportValidity();
-         // результат функции валидации
-  
-      
-
+       
       }
+      else
+      {
      
+        inp.reportValidity();
+        
+      }
    })
-
    $.getJSON("/urls/generate", function (data) {
       $("#short_url").val(data['url'])
    });
-
-   span.addEventListener('click', function () {
-      modal.style.display = "none";
-   })
-
    window.onclick = function (event) {
       if (event.target == modal) {
          modal.style.display = "none";
       }
    }
-   
    //async check url availability
    $('#short_url').keyup(delay(function (e) {
       var $su = $("#short_url");
@@ -76,12 +59,13 @@ window.onload = function () {
       });
    }, 500));
 }
+/* на копирование url */
 function copyToClipboard(elem) {
-   var ta = document.getElementById(elem);
-   var range = document.createRange();
-   range.selectNode(ta);
-   window.getSelection().addRange(range);
-   document.execCommand('copy');
+   var element = document.getElementById(elem);
+   var new_range = document.createRange();
+   new_range.selectNode(element); 
+   window.getSelection().addRange(new_range); 
+   document.execCommand('copy'); 
    window.getSelection().removeAllRanges();
 }
 

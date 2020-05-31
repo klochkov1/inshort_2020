@@ -8,6 +8,7 @@
         <script src="{% static 'script/jquery.js' %}" defer></script>
         <script src="{% static 'script/history.js' %}" defer></script>
         <script src="{% static 'script/menu.js' %}" defer></script>
+        <script src="{% static 'script/sent_email.js' %}" defer></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
@@ -21,7 +22,7 @@
                 <div class="col-6 col-md-4 menu-item"><a href="{% url 'home' %}">Home</a></div>
                 <div class="col-6 col-md-4 menu-item"><a href="{% url 'FAQ' %}">FAQ</a></div>
             </div>
-            <div class="animation"></div>
+           
         </div>	
         <div class="header-block btn-group col-6 col-md-2"  role="group" aria-label="...">
           {% if request.user.is_authenticated %}
@@ -46,16 +47,16 @@
   <div class="footer">
     <div class="row networks">
         <div class="col-md-1 networks_block1">
-            <a href="#"><img src="{% static "img/instagram.png" %}" alt="instagram"></a>
+            <a href="https://www.instagram.com/vlad1998.myrahovski/?igshid=tgl5aohlp262"><img src="{% static "img/instagram.png" %}" alt="instagram"></a>
         </div>
         <div class="col-md-1 networks_block2">
-            <a href="#"><img src="{% static "img/telegram.png" %}" alt="telegram"></a>
+            <a href="https://web.telegram.org/#/im?p=@amurahovskiy1998"><img src="{% static "img/telegram.png" %}" alt="telegram"></a>
         </div>
         <div class="col-md-1 networks_block3"> 
             <a href="#"><img src="{% static "img/facebook.png" %}" alt="facebook"></a>
          </div>
          <div class="col-md-1 networks_block">
-            <a href="#"><img src="{% static "img/gmail.png" %}" alt="gmail"></a>
+            <a href="https://mail.google.com/mail/u/1/#inbox"><img src="{% static "img/gmail.png" %}" alt="gmail"></a>
         </div>
         <div class="col-md-1 networks_block">
             <a href="#"><img src="{% static "img/help.png" %}" alt="help"></a>
