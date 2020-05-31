@@ -154,6 +154,8 @@ class Visit(models.Model):
         forwaded = request.META.get('HTTP_X_FORWARDED_FOR')
         if forwaded:
             ip = forwaded.split(',')[0]
+        elif 'X-Real-IP' in request.headers and request.headers['X-Real-IP']:
+            ip = request.headers['X-Real-IP']
         else:
             ip = request.META.get('REMOTE_ADDR')
         return ip
