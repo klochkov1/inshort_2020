@@ -72,11 +72,15 @@ def user_urls(request):
 
 def redirect(request, requested_url):
     # Check if requested_url exists
-    custom_url = get_object_or_404(CustomUrl, short_url=requested_url, active=True)
+    #custom_url = get_object_or_404(CustomUrl, short_url=requested_url, active=True)
     # Check expiration
-    # if custom_url.expiration_date <= timezone.now():
-    #     # custom_url.delete()
-    #     raise Http404("Заданого посилання не існує")
+    custom_url = CustomUrl.objects.filter(short_url=requested_url, active=True)
+    if len(custom_url) == 0:
+        return render(request, "urls/404.html", {"url":requested_url})
+    if custom_url.expiration_date <= timezone.now():
+        custom_url.delete()
+        return render(request, "urls/404.html", {"url":requested_url})
+    #   raise Http404("Заданого посилання не існує")
     # Get visitor ip wheter he's using proxy or not
     Visit.log_visit(custom_url=custom_url, request=request)
     return HttpResponseRedirect(custom_url.long_url)

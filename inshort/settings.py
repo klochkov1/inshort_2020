@@ -27,7 +27,7 @@ DEBUG = True
 
 
 # There is must be valid host!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-ALLOWED_HOSTS = ["127.0.0.1", "localhost","inshort.pp.ua"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "web", "inshort.pp.ua"]
 
 
 # Application definition
@@ -111,12 +111,30 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://inshort.pp.ua/'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db_developing.sqlite3'),
+DATABASES = {}
+INSHORT_ENV = os.getenv("INSHORT_ENV", "testing")
+
+# Database switching according to the enviroment
+if INSHORT_ENV == "testing":
+    DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.sqlite3',
+           'NAME': os.path.join(BASE_DIR, 'db_developing.sqlite3'),
+       }
     }
-}
+elif INSHORT_ENV == "docker":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'inshort',
+            'USER': 'inshort',
+            'PASSWORD': 'j3qq4h7h2v',
+            'HOST': 'db',
+            'PORT': '3306',
+        }
+    }
+else:
+    raise KeyError("INSHORT_ENV enviroment variable must be provided!")
 
 
 # Password validation

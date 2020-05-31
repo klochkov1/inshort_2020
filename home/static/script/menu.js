@@ -48,8 +48,7 @@ window.onload = function () {
             //xhr have status - string (tell what excectly is wrong)
             if (xhr.is_valid) {
                $("#short_url")[0].setCustomValidity("");
-            } else {
-               console.log("bed");
+            }else{
                $("#short_url")[0].setCustomValidity(xhr.status);
             }
          },
