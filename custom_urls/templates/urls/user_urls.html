@@ -1,9 +1,9 @@
 <div class="static  ">
     <div class="col-6 col-md-6 text-align static-elem">
-        Загальна кількість скорочень:5  
+        Загальна кількість скорочень: 5  
         </div>
         <div class="col-6 col-md-6 text-align static-elem">
-            Закальна кількість активних скорочень:5  
+        Кількість активних скорочень: 5  
         </div>
     
 </div>
@@ -36,16 +36,16 @@
         <ul class="submenuItems">
             <div class="row title">
                 <div class="col-6 col-md-3">
-                    Время
+                    Час
                 </div>
                 <div class="col-6 col-md-3">
-                    IP
+                    IP-адреса
                 </div>
                 <div class="col-6 col-md-3">
-                    Город
+                    Місто
                 </div>
                 <div class="col-6 col-md-3">
-                    Страна
+                    Країна
                 </div>
                 {% for visit in url.visit_set.all %}
                 <div class="row title">
@@ -58,10 +58,10 @@
                        {{ visit.visitor_ip }}
                     </div>
                     <div class="col-6 col-md-3">
-                        Запорожжя
+                        {{ visit.visitor_city }}
                     </div>
                     <div class="col-6 col-md-3">
-                        Не Україна
+                        {{ visit.visitor_country }}
                     </div>
                 </div>
                 {% endfor %}
