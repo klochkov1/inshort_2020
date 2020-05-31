@@ -1,15 +1,20 @@
+
 $('#sent_email').click(delay(function (e) {
-    var $su = $("#body_messege");
-    var url = "/FAQ";
+   console.log(5);
+   
+    var su = document.getElementById('sent_messege');
+    if(su.checkValidity())
+    {
+    var url = "/FAQ/";
+    console.log(su);
     console.log('good');
     $.ajax({
        type: 'POST',
        dataType: 'json',
        contentType: 'application/json; charset=utf-8',
        url: url,
-       data: JSON.stringify({ 'message': "jira" }),
+       data: JSON.stringify({ 'message': su.value }),
        success: function (xhr, statusText, err) {
-         console.log('good');
           //xhr have is_valid - bool
           //xhr have status - string (tell what excectly is wrong)
           if (!xhr.status) {
@@ -20,4 +25,7 @@ $('#sent_email').click(delay(function (e) {
           console.log("Don't work");
        }
     });
+   }else{
+      su.reportValidity();
+   }
  }, 500));
