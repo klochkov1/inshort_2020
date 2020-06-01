@@ -107,11 +107,8 @@ class CustomUrl(models.Model):
 
     @classmethod
     def clear_expired(cls):
-        expired_urls = cls.objects.filter(expiration_date__lte=timezone.now(),
-                                          active=True)
-        for url in expired_urls:
-            url.update(active=False)
-            url.save()
+        cls.objects.filter(expiration_date__lte=timezone.now(),
+                           active=True).update(active=False)
 
     @classmethod
     def get_random_url(cls, def_len=4):

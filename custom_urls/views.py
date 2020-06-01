@@ -89,10 +89,5 @@ def redirect(request, requested_url):
     #     custom_url.active = False
     #     custom_url.save()
     #     return render(request, "urls/404.html", {"url":requested_url})
-<<<<<<< HEAD
-=======
-    #   raise Http404("Заданого посилання не існує")
-    # Get visitor ip wheter he's using proxy or not
->>>>>>> 43b3b85ceef6a06a4669fedba476da8120edbf75
     Visit.log_visit(custom_url=custom_url, request=request)
     return HttpResponseRedirect(custom_url.long_url)
