@@ -6,7 +6,9 @@ from django.contrib.sessions.backends.db import SessionStore
 from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.utils import timezone
-from .models import CustomUrl, Visit
+from .models import CustomUrl, Visit, is_valid_status
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 
 def add_url(request):
@@ -35,9 +37,13 @@ def get_new_shortin(request):
     return JsonResponse({'url': url})
 
 
-def check_url(request, short_url):
-    get_list_or_404(CustomUrl, pk=short_url)
-    return HttpResponse()
+@csrf_exempt
+def check_url(request):
+    if request.method == 'POST':
+        url = json.loads(request.body).get('url', '')
+        is_valid, status = CustomUrl.is_valid_url(url)
+        return JsonResponse({'is_valid':is_valid, 'status':is_valid_status[status]})
+    return HttpResponseRedirect(reverse('home'))
 
 
 def delete_url(request, short_url):
@@ -66,11 +72,15 @@ def user_urls(request):
 
 def redirect(request, requested_url):
     # Check if requested_url exists
-    custom_url = get_object_or_404(CustomUrl, short_url=requested_url, active=True)
+    #custom_url = get_object_or_404(CustomUrl, short_url=requested_url, active=True)
     # Check expiration
-    # if custom_url.expiration_date <= timezone.now():
-    #     # custom_url.delete()
-    #     raise Http404("Заданого посилання не існує")
+    custom_url = CustomUrl.objects.filter(short_url=requested_url, active=True)
+    if len(custom_url) == 0:
+        return render(request, "urls/404.html", {"url":requested_url})
+    if custom_url.expiration_date <= timezone.now():
+        custom_url.delete()
+        return render(request, "urls/404.html", {"url":requested_url})
+    #   raise Http404("Заданого посилання не існує")
     # Get visitor ip wheter he's using proxy or not
     Visit.log_visit(custom_url=custom_url, request=request)
     return HttpResponseRedirect(custom_url.long_url)

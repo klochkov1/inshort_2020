@@ -7,18 +7,21 @@ body {
   
   min-width: 590px;
 }
+
+.title {
+  font-size: 20px;
+  color: white;
  
-.title{
-  font-size: 20px; 
-  color:white;
 }
 .head{
   display: flex;
   justify-content: center;
   background-color: #20b1aa;
   position: relative;
+ 
   padding-bottom: 2%;
   padding-left:2.5%;
+ 
   padding-top: 2.5%;
   height: 15%;
   }
@@ -33,7 +36,6 @@ body {
   
   padding-bottom: 2%;
   position: relative;
-
 }
 .menu{
   border-radius: 2%;
@@ -43,8 +45,9 @@ body {
   width: 40%;
   margin: 0 auto;
   border-radius: 10%;
-  background:#c0e4e4;
+  background: #c0e4e4;
 }
+
 .content-menu .menu-item a {
   position: relative;
   z-index: 1;
@@ -68,7 +71,7 @@ body {
   width: 100%;
   height: 100%;
   font-size: 15px;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1000;
 }
 .text-center{
@@ -78,7 +81,7 @@ body {
   min-width: 200px;
   border-radius: 5%;
   border: 3px solid #20aca6;
-  background:#c0e4e4;
+  background: #c0e4e4;
   margin: 25% auto;
   margin-top: 20%;
   padding-top:3%;
@@ -175,8 +178,9 @@ li {
  .long_url{
   background:rgb(126, 9, 9);
   text-decoration: blink;
- }
- .tooltip {
+}
+
+.tooltip {
   position: fixed;
   padding: 10px 20px;
   border: 1px solid #b3c9ce;

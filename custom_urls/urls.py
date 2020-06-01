@@ -6,7 +6,7 @@ base_urls = [
     path('<slug:short_url>/delete', views.delete_url, name="delete"),
     path('my', views.user_urls, name="user_urls"),
     path('generate', views.get_new_shortin, name="generate"),
-    path('<slug:short_url>', views.check_url, name="check_url")
+    path('check/', views.check_url, name="check_url"),
 ]
 
 urlpatterns = [
