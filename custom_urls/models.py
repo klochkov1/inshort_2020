@@ -37,11 +37,6 @@ class CustomUrl(models.Model):
     def get_time_to_live(self):
         ttl = "Меньше "
         delta = self.expiration_date - timezone.now()
-        print(timezone.now())
-        # print(self.expiration_date)
-        # print(delta > timezone.timedelta(days=14))
-        # print(f"delta: {delta.days}")
-        # print(timezone.timedelta(days=14))
         if delta < timezone.timedelta(days=365):
             if delta > timezone.timedelta(days=31):
                 print(delta.days)
@@ -67,9 +62,10 @@ class CustomUrl(models.Model):
             elif delta >= timezone.timedelta(minutes=30):
                 ttl = f" півгодини"
             else:
-                if 2 <= (delta.seconds//60) % 60 % 10 <= 4:
+                end = ((delta.seconds // 60) % 60) % 10
+                if end > 1 and end < 5 and (delta.seconds // 60) % 60 // 10 != 1  :
                     ttl = f"{(delta.seconds//60)%60} хвилини"
-                if (delta.seconds//60) % 60 % 10 == 1:
+                elif end == 1:
                     ttl = f"{(delta.seconds//60)%60} хвилинy"
                 else:
                     ttl = f"{(delta.seconds//60)%60} хвилин"
