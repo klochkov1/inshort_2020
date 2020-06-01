@@ -15,7 +15,7 @@ body {
   justify-content: center;
   background-color: #20b1aa;
   position: relative;
-  padding-bottom: 2.5%;
+  padding-bottom: 2%;
   padding-left:2.5%;
   padding-top: 2.5%;
   height: 15%;
@@ -23,19 +23,16 @@ body {
 .headline{
 
   position: relative;
-  margin-top: 2%;
-  margin-bottom:2%;
+ 
+ 
 }
 .form
 {
-  padding-top: 2%;
+  
   padding-bottom: 2%;
   position: relative;
 
 }
-
-
- 
 .menu{
   border-radius: 2%;
 }
@@ -90,16 +87,15 @@ body {
  
 .form-control
 {
-  max-width: 94%;
-  padding-top: 5%;
-  margin-left:  6%;
+  max-width: 75.5%;
+  margin-left:  24.5%;
   padding-bottom: 5%;
   position: relative;
   display: flex;
   justify-content: center;  
 }
-.input-group{
-  margin: 0 auto;
+.input-group-btn{
+  margin-left: auto;
  }
 ul { 
 list-style: none;
@@ -107,7 +103,7 @@ list-style: none;
 .history-items {
  padding-top: 2%;
 padding-bottom: 2%;
-width: 70%;
+width: 67%;
 margin: 20px auto 20px;
 background: #fff;
 border-radius: 4px;
@@ -191,11 +187,11 @@ li {
 }
 /* Footer */
 .footer{
-  margin-top: 10%;
+  margin-top: 15%;
   background-color:#DDECE9;
-  overflow-x: hidden;
+
   width:100%;
-  height: 90%;
+  height: 100%;
   padding-top: 1%;
   padding-left: 3%;
   
