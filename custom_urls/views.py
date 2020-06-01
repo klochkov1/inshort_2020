@@ -42,7 +42,7 @@ def check_url(request):
     if request.method == 'POST':
         url = json.loads(request.body).get('url', '')
         is_valid, status = CustomUrl.is_valid_url(url)
-        return JsonResponse({'is_valid':is_valid, 'status':is_valid_status[status]})
+        return JsonResponse({'is_valid': is_valid, 'status': is_valid_status[status]})
     return HttpResponseRedirect(reverse('home'))
 
 
@@ -82,12 +82,17 @@ def redirect(request, requested_url):
     CustomUrl.clear_expired()
     custom_url = CustomUrl.objects.filter(short_url=requested_url, active=True)
     if len(custom_url) == 0:
-        return render(request, "urls/404.html", {"url":requested_url})
+        return render(request, "urls/404.html", {"url": requested_url})
     else:
         custom_url = custom_url[0]
     # if custom_url.expiration_date <= timezone.now():
     #     custom_url.active = False
     #     custom_url.save()
     #     return render(request, "urls/404.html", {"url":requested_url})
+<<<<<<< HEAD
+=======
+    #   raise Http404("Заданого посилання не існує")
+    # Get visitor ip wheter he's using proxy or not
+>>>>>>> 43b3b85ceef6a06a4669fedba476da8120edbf75
     Visit.log_visit(custom_url=custom_url, request=request)
     return HttpResponseRedirect(custom_url.long_url)
