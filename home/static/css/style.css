@@ -227,3 +227,23 @@ li {
   width:100%;
   text-align: right;
  }
+
+ #short_url:invalid {
+  border-color: red;
+}
+
+#short_url:valid {
+  border-color: #5cb85c;
+}
+
+#short_url:focus:invalid {
+  outline: none !important;
+  border:1px solid red;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+#short_url:focus:valid {
+  outline: none !important;
+  border:1px solid #5cb85c;
+  box-shadow: 0 0 10px #719ECE;
+}

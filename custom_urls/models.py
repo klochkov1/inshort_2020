@@ -127,7 +127,7 @@ class CustomUrl(models.Model):
         return res
 
     def __str__(self):
-        return "{}: {} -> {}".format(self.owner, self.short_url, self.long_url)
+        return "{}: {} -> {} active? {}".format(self.owner, self.short_url, self.long_url, self.active)
 
     def is_expired(self):
         return timezone.now() >= self.expiration_date
