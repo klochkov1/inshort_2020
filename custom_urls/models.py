@@ -63,7 +63,7 @@ class CustomUrl(models.Model):
                 ttl = f" півгодини"
             else:
                 end = ((delta.seconds // 60) % 60) % 10
-                if end > 1 and end < 5 and (delta.seconds // 60) % 60 // 10 != 1  :
+                if end > 1 and end < 5 and (delta.seconds // 60) % 60 // 10 != 1:
                     ttl = f"{(delta.seconds//60)%60} хвилини"
                 elif end == 1:
                     ttl = f"{(delta.seconds//60)%60} хвилинy"
@@ -107,8 +107,11 @@ class CustomUrl(models.Model):
 
     @classmethod
     def clear_expired(cls):
-        cls.objects.filter(expiration_date__lte=timezone.now(),
-                           active=True).update(active=False)
+        expired_urls = cls.objects.filter(expiration_date__lte=timezone.now(),
+                                          active=True)
+        for url in expired_urls:
+            url.update(active=False)
+            url.save()
 
     @classmethod
     def get_random_url(cls, def_len=4):
