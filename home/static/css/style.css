@@ -5,7 +5,7 @@ body {
   background-color:#f9ffff;
   overflow-x: hidden;	
   
-  min-width: 590px;
+
 }
 
 .title {
@@ -78,7 +78,7 @@ body {
   padding-bottom: 3%;
 }
 .window .window_content {
-  min-width: 200px;
+  min-width: 300px;
   border-radius: 5%;
   border: 3px solid #20aca6;
   background: #c0e4e4;
@@ -86,11 +86,11 @@ body {
   margin-top: 20%;
   padding-top:3%;
   padding-bottom:3%;
-  width: 20%;
+  width: 25%;
   z-index: 99998;
 }
  
-.form-control
+.input-url
 {
   max-width: 75.5%;
   margin-left:  24.5%;
@@ -190,6 +190,9 @@ li {
   color: #333;
   background: #fff;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+}
+.foot{
+  min-height: calc(100vh - 80px);
 }
 /* Footer */
 .footer{
