@@ -23,16 +23,16 @@
             <div class="close_modal_window"></div>
              <div class="form-group data-group">
                 <label for="username" class="cols-sm-2 control-label">Скорочення</label>
-                <input type="text" name="short_url" class="form-control" />
+                <input type="text" name="short_url" class="form-control short_url" id="short_url"/>
                 <label>Буде дійсна </label>
-                <select id="myList">
-                  <option value="0">5хв</option>
-                  <option value="1">День</option>
-                  <option value="2">Тиждень</option>
-                  <option value="3">Місяць</option>
-                  <option value="4">Рік</option>
-                  <option value="5">Назавжди</option>
-                </select>
+                <select id="myList" name="time">
+                  <option value="5">5 хв</option>
+                  <option value="1440">День</option>
+                  <option value="10080">Тиждень</option>
+                  <option value="43200">Місяць</option>
+                  <option value="525600">Рік</option>
+                  <option value="-1">Назавжди</option>
+                </select>    
                 <button type="submit" class="btn btn-success btn-sum">Створити</button>
               </div>
             </div>

@@ -15,7 +15,7 @@ def add_url(request):
     try:
         dest_url = request.POST['long_url'].strip()
         short_url = request.POST['short_url'].strip()
-        min_active = 5
+        min_active = int(request.POST['time'].strip())
     except (KeyError, CustomUrl.DoesNotExist):
         return HttpResponseBadRequest("Bad request")
     else:
@@ -66,19 +66,27 @@ def user_urls(request):
             raise Http404()
         custom_urls = get_list_or_404(
             CustomUrl, session__pk=request.session.session_key)
-    context = {'user_urls': custom_urls}
+    active_urls = [u for u in custom_urls if u.active == True]
+    for url in active_urls:
+        setattr(url, 'ttl', url.get_time_to_live())
+    for u in active_urls:
+        u.get_time_to_live()
+    context = {'active_urls': active_urls, 'urls_total': len(custom_urls)}
     return render(request, 'urls/user_urls.html', context)
 
 
 def redirect(request, requested_url):
     # Check if requested_url exists
-    #custom_url = get_object_or_404(CustomUrl, short_url=requested_url, active=True)
+    # custom_url = get_object_or_404(CustomUrl, short_url=requested_url, active=True)
     # Check expiration
     custom_url = CustomUrl.objects.filter(short_url=requested_url, active=True)
     if len(custom_url) == 0:
         return render(request, "urls/404.html", {"url":requested_url})
+    else:
+        custom_url = custom_url[0]
     if custom_url.expiration_date <= timezone.now():
-        custom_url.delete()
+        custom_url.active = False
+        custom_url.save()
         return render(request, "urls/404.html", {"url":requested_url})
     #   raise Http404("Заданого посилання не існує")
     # Get visitor ip wheter he's using proxy or not

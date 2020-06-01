@@ -1,21 +1,15 @@
 <div class="static  ">
     <div class="col-6 col-md-6 text-align static-elem">
-        Загальна кількість скорочень:5  
+        Загальна кількість скорочень: {{ urls_total }}
         </div>
-    <div class="col-6 col-md-6 text-align static-elem">
-        Загальна кількість активних скорочень:5  
-    </div>
-    <div class="col-6 col-md-6 text-align static-elem">
-        Кількість скорочень,які зникнуть через добу:5 
+        <div class="col-6 col-md-6 text-align static-elem">
+        Кількість активних скорочень: {{ active_urls|length }} 
         </div>
-    <div class="col-6 col-md-6 text-align static-elem">
-        Кількість скорочень,які зникнуть через годину:5
-    </div>
 </div>
 <ul class="history-items">
     
     {% load tz %} <!--for locСтатистика for locСтатистика:5:5altime-->
-    {% for url in user_urls %}
+    {% for url in active_urls %}
     
     <li class="for_border">
         
@@ -24,49 +18,51 @@
         </div>
 
         <div id='copyTarget{{ forloop.counter }}'class="col-6 col-md-3 word-break ">
-            {{ url.full_inshort_url }}
+            <a href="{{ url.full_inshort_url }}">{{ url.full_inshort_url }}</a>
         </div>
         <div onclick="copyToClipboard('copyTarget{{ forloop.counter}}')" class="col-6 col-md-1  ">
             <button class="btn-copy">Copy</button>
         </div>
         <div class="col-6 col-md-2 word-break ">
-            меньше місяця
+            {% timezone "Europe/Kiev" %} <!--to Ukraine time-->
+            <a title="Дійсна до {{ url.expiration_date | date:'d.m.Y H:i' }}">Дійсна ще {{ url.ttl }} </a>
+            {% endtimezone %}<!--to Ukraine time-->
         </div>
         <div class="dropdownlink row" >
             <div class="col-5 col-md-2  for_border_item4  word-break">
-                Переходів:<a>{{ url.visit_set.count }}</a>
+                <a>Переходи: {{ url.visit_set.count }}</a>
             </div>
         </div>
 
         <ul class="submenuItems">
             <div class="row title">
                 <div class="col-6 col-md-3">
-                    Время
+                    Дата Час
                 </div>
                 <div class="col-6 col-md-3">
-                    IP
+                    IP-адреса
                 </div>
                 <div class="col-6 col-md-3">
-                    Город
+                    Місто
                 </div>
                 <div class="col-6 col-md-3">
-                    Страна
+                    Країна
                 </div>
                 {% for visit in url.visit_set.all %}
                 <div class="row title">
                     <div class="col-6 col-md-3">
                         {% timezone "Europe/Kiev" %} <!--to Ukraine time-->
-                        {{ visit.datetime | date:"H:i d.m.Y" }} <!--set time format-->
+                        {{ visit.datetime | date:"d.m.Y H:i" }} <!--set time format-->
                         {% endtimezone %}<!--to Ukraine time-->
                     </div>
                     <div class="col-6 col-md-3">
-                       {{ visit.visitor_ip }}
+                        {{ visit.visitor_ip }}
                     </div>
                     <div class="col-6 col-md-3">
-                        Запорожжя
+                        {{ visit.visitor_city }}
                     </div>
                     <div class="col-6 col-md-3">
-                        Не Україна
+                        {{ visit.visitor_country }}
                     </div>
                 </div>
                 {% endfor %}
