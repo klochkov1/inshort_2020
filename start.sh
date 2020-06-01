@@ -25,7 +25,7 @@ done
 
 echo "Mysql is up - executing on"
 
-python3 manage.py makemigrations
+python3 manage.py makemigrations custom_urls accounts
 python3 manage.py migrate
 createsuperuser "admin" "admin@inshort.com" "www12345"
 python3 manage.py runserver 0.0.0.0:8000

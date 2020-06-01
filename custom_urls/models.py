@@ -7,13 +7,18 @@ from django.utils import timezone
 from .url_generator.fixed_string import is_walid_url, RandFixedLenStrStorage as RandStr
 from django.db.models.functions import Length
 import datetime
+import requests
+from .url_generator.fixed_string import is_walid_url, RandFixedLenStrStorage as RandStr
+
 
 def get_expire_date(minutes=10080):
     return timezone.now() + timezone.timedelta(minutes=minutes)
 
+
 reserved_url = {"home", "accounts", "admin", "urls"}
 
-is_valid_status = {0:"Ok", 1:"short url is empty string", 2:"short url is reserved", 3:"short url is not match alphabet", 4:"short url is already used"}
+is_valid_status = {0: "Ok", 1: "short url is empty string", 2: "short url is reserved",
+                   3: "short url is not match alphabet", 4: "short url is already used"}
 
 
 class CustomUrl(models.Model):
@@ -77,9 +82,9 @@ class CustomUrl(models.Model):
         if min_active:
             if min_active == -1:
                 exp_date = None
-            else:   
+            else:
                 exp_date = get_expire_date(min_active)
-                print(f"----------------- {exp_date}")
+                print(exp_date)
         if not "short_url" in kwargs:
             raise ValueError("short_url required.")
         else:
@@ -166,14 +171,14 @@ class CustomUrl(models.Model):
         return res
 
     def __str__(self):
-        return "{}: {} -> {}".format(self.owner, self.short_url, self.long_url)
+        return "{}: {} -> {} active? {}".format(self.owner, self.short_url, self.long_url, self.active)
 
     def is_expired(self):
         return timezone.now() >= self.expiration_date
 
     @property
     def full_inshort_url(self):
-        return "http://127.0.0.1:8000/" + self.short_url
+        return "http://inshort.pp.ua/" + self.short_url
 
     class Meta:
         ordering = ["active", "owner", "expiration_date"]
@@ -184,20 +189,17 @@ class Visit(models.Model):
     custom_url = models.ForeignKey(CustomUrl, on_delete=models.CASCADE)
     datetime = models.DateTimeField(auto_now=True)
     visitor_ip = models.GenericIPAddressField(null=True)
-    visitor_location = models.CharField(null=True, max_length=200)
+    visitor_city = models.CharField(null=True, max_length=200)
+    visitor_country = models.CharField(null=True, max_length=200)
 
     @classmethod
     def log_visit(cls, request, custom_url):
         ip = cls.get_ip_from_request(request)
-<<<<<<< Updated upstream
-        visit = Visit(custom_url=custom_url, visitor_ip=ip)
-=======
         location = requests.get('http://ip-api.com/json/' + ip).json()
         ip_city = location.get('city', "Unknown")
         ip_country = location.get('country', "Unknown")
         visit = Visit(custom_url=custom_url, visitor_ip=ip,
                       visitor_city=ip_city, visitor_country=ip_country)
->>>>>>> Stashed changes
         visit.save()
 
     @staticmethod

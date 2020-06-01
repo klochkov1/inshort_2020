@@ -66,22 +66,18 @@ def user_urls(request):
             raise Http404()
         custom_urls = get_list_or_404(
             CustomUrl, session__pk=request.session.session_key)
-<<<<<<< Updated upstream
-    context = {'user_urls': custom_urls}
-=======
     active_urls = [u for u in custom_urls if u.active == True]
     for url in active_urls:
         setattr(url, 'ttl', url.get_time_to_live())
     for u in active_urls:
         u.get_time_to_live()
     context = {'active_urls': active_urls, 'urls_total': len(custom_urls)}
->>>>>>> Stashed changes
     return render(request, 'urls/user_urls.html', context)
 
 
 def redirect(request, requested_url):
     # Check if requested_url exists
-    #custom_url = get_object_or_404(CustomUrl, short_url=requested_url, active=True)
+    # custom_url = get_object_or_404(CustomUrl, short_url=requested_url, active=True)
     # Check expiration
     custom_url = CustomUrl.objects.filter(short_url=requested_url, active=True)
     if len(custom_url) == 0:
