@@ -15,7 +15,7 @@ def add_url(request):
     try:
         dest_url = request.POST['long_url'].strip()
         short_url = request.POST['short_url'].strip()
-        min_active = 5
+        min_active = int(request.POST['time'].strip())
     except (KeyError, CustomUrl.DoesNotExist):
         return HttpResponseBadRequest("Bad request")
     else:
@@ -66,7 +66,16 @@ def user_urls(request):
             raise Http404()
         custom_urls = get_list_or_404(
             CustomUrl, session__pk=request.session.session_key)
+<<<<<<< Updated upstream
     context = {'user_urls': custom_urls}
+=======
+    active_urls = [u for u in custom_urls if u.active == True]
+    for url in active_urls:
+        setattr(url, 'ttl', url.get_time_to_live())
+    for u in active_urls:
+        u.get_time_to_live()
+    context = {'active_urls': active_urls, 'urls_total': len(custom_urls)}
+>>>>>>> Stashed changes
     return render(request, 'urls/user_urls.html', context)
 
 

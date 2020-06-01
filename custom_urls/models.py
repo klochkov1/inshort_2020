@@ -29,6 +29,49 @@ class CustomUrl(models.Model):
         null=True, default=get_expire_date)
     active = models.BooleanField()
 
+    def get_time_to_live(self):
+        ttl = "Меньше "
+        delta = self.expiration_date - timezone.now()
+        print(timezone.now())
+        # print(self.expiration_date)
+        # print(delta > timezone.timedelta(days=14))
+        # print(f"delta: {delta.days}")
+        # print(timezone.timedelta(days=14))
+        if delta < timezone.timedelta(days=365):
+            if delta > timezone.timedelta(days=31):
+                print(delta.days)
+                m = int(delta.days // 30.1)
+                ttl = f"{m} місяців"
+            elif delta > timezone.timedelta(days=14):
+                w = delta.days // 7
+                ttl = f"{w} тиждня"
+            elif delta > timezone.timedelta(days=4):
+                ttl = f"{delta.days} днів"
+            elif delta >= timezone.timedelta(days=2):
+                ttl = f"{delta.days} дні"
+            elif delta >= timezone.timedelta(hours=22):
+                ttl = f"{delta.seconds // 3600 } години"
+            elif delta >= timezone.timedelta(hours=21):
+                ttl = f"{delta.seconds // 3600 } година"
+            elif delta >= timezone.timedelta(hours=5):
+                ttl = f"{delta.seconds // 3600 } годин"
+            elif delta >= timezone.timedelta(hours=2):
+                ttl = f"{delta.seconds // 3600 } години"
+            elif delta >= timezone.timedelta(hours=1):
+                ttl = f"1 годину"
+            elif delta >= timezone.timedelta(minutes=30):
+                ttl = f" півгодини"
+            else:
+                if 2 <= (delta.seconds//60) % 60 % 10 <= 4:
+                    ttl = f"{(delta.seconds//60)%60} хвилини"
+                if (delta.seconds//60) % 60 % 10 == 1:
+                    ttl = f"{(delta.seconds//60)%60} хвилинy"
+                else:
+                    ttl = f"{(delta.seconds//60)%60} хвилин"
+        else:
+            ttl = "Більше року"
+        return ttl
+
     @classmethod
     def create(cls, min_active, *args, **kwargs):
         if min_active:
@@ -36,7 +79,7 @@ class CustomUrl(models.Model):
                 exp_date = None
             else:   
                 exp_date = get_expire_date(min_active)
-                print(exp_date)
+                print(f"----------------- {exp_date}")
         if not "short_url" in kwargs:
             raise ValueError("short_url required.")
         else:
@@ -146,7 +189,15 @@ class Visit(models.Model):
     @classmethod
     def log_visit(cls, request, custom_url):
         ip = cls.get_ip_from_request(request)
+<<<<<<< Updated upstream
         visit = Visit(custom_url=custom_url, visitor_ip=ip)
+=======
+        location = requests.get('http://ip-api.com/json/' + ip).json()
+        ip_city = location.get('city', "Unknown")
+        ip_country = location.get('country', "Unknown")
+        visit = Visit(custom_url=custom_url, visitor_ip=ip,
+                      visitor_city=ip_city, visitor_country=ip_country)
+>>>>>>> Stashed changes
         visit.save()
 
     @staticmethod

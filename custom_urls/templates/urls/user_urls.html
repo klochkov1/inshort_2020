@@ -25,7 +25,9 @@
             <button class="btn-copy">Copy</button>
         </div>
         <div class="col-6 col-md-2 word-break ">
-            меньше місяця
+            {% timezone "Europe/Kiev" %} <!--to Ukraine time-->
+            <a title="Дійсна до {{ url.expiration_date | date:'d.m.Y H:i' }}">Дійсна ще {{ url.ttl }} </a>
+            {% endtimezone %}<!--to Ukraine time-->
         </div>
         <div class="dropdownlink row" >
             <div class="col-5 col-md-2  for_border_item4  word-break">
@@ -36,7 +38,7 @@
         <ul class="submenuItems">
             <div class="row title">
                 <div class="col-6 col-md-3">
-                    Время
+                    Дата Час
                 </div>
                 <div class="col-6 col-md-3">
                     IP
@@ -51,7 +53,7 @@
                 <div class="row title">
                     <div class="col-6 col-md-3">
                         {% timezone "Europe/Kiev" %} <!--to Ukraine time-->
-                        {{ visit.datetime | date:"H:i d.m.Y" }} <!--set time format-->
+                        {{ visit.datetime | date:"d.m.Y H:i" }} <!--set time format-->
                         {% endtimezone %}<!--to Ukraine time-->
                     </div>
                     <div class="col-6 col-md-3">
