@@ -63,7 +63,7 @@ class CustomUrl(models.Model):
                 ttl = f" півгодини"
             else:
                 end = ((delta.seconds // 60) % 60) % 10
-                if end > 1 and end < 5 and (delta.seconds // 60) % 60 // 10 != 1  :
+                if end > 1 and end < 5 and (delta.seconds // 60) % 60 // 10 != 1:
                     ttl = f"{(delta.seconds//60)%60} хвилини"
                 elif end == 1:
                     ttl = f"{(delta.seconds//60)%60} хвилинy"

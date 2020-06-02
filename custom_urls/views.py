@@ -42,7 +42,7 @@ def check_url(request):
     if request.method == 'POST':
         url = json.loads(request.body).get('url', '')
         is_valid, status = CustomUrl.is_valid_url(url)
-        return JsonResponse({'is_valid':is_valid, 'status':is_valid_status[status]})
+        return JsonResponse({'is_valid': is_valid, 'status': is_valid_status[status]})
     return HttpResponseRedirect(reverse('home'))
 
 
@@ -58,6 +58,8 @@ def delete_url(request, short_url):
 
 
 def user_urls(request):
+    # Remove clearign when db lavel clearing added
+    CustomUrl.clear_expired()
     if request.user.is_authenticated:
         custom_urls = get_list_or_404(
             CustomUrl, owner__username=request.user.username)
@@ -76,19 +78,16 @@ def user_urls(request):
 
 
 def redirect(request, requested_url):
-    # Check if requested_url exists
-    # custom_url = get_object_or_404(CustomUrl, short_url=requested_url, active=True)
-    # Check expiration
+    # Remove clearign when db lavel clearing added
+    CustomUrl.clear_expired()
     custom_url = CustomUrl.objects.filter(short_url=requested_url, active=True)
     if len(custom_url) == 0:
-        return render(request, "urls/404.html", {"url":requested_url})
+        return render(request, "urls/404.html", {"url": requested_url})
     else:
         custom_url = custom_url[0]
-    if custom_url.expiration_date <= timezone.now():
-        custom_url.active = False
-        custom_url.save()
-        return render(request, "urls/404.html", {"url":requested_url})
-    #   raise Http404("Заданого посилання не існує")
-    # Get visitor ip wheter he's using proxy or not
+    # if custom_url.expiration_date <= timezone.now():
+    #     custom_url.active = False
+    #     custom_url.save()
+    #     return render(request, "urls/404.html", {"url":requested_url})
     Visit.log_visit(custom_url=custom_url, request=request)
     return HttpResponseRedirect(custom_url.long_url)
