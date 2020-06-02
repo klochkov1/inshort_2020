@@ -28,7 +28,7 @@ DEBUG = os.environ.get('DEBUG', True)
 
 
 # There is must be valid host!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "web", "inshort.pp.ua"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "web", "shortly.pp.ua", "inshort.pp.ua"]
 
 
 # Application definition
@@ -114,7 +114,7 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 
 # won't forget change next in release !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://inshort.pp.ua/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'https://shortly.pp.ua/'
 
 
 # Database
