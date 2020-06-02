@@ -3,26 +3,25 @@ window.onload = function () {
    var modal = document.querySelector(".window");
    var btn = document.querySelector(".btn_modal_window");
    var long_url = document.getElementById('long_url');
+   
+   //open modal window when Enter pressed
    long_url.addEventListener("keydown", function (event) {
       if (event.keyCode === 13) {
          event.preventDefault();
+         if (event.target.checkValidity()) {
+            modal.style.display = "block";
+         }
       }
-   });   
-       /* добавление  ошибки,
-         потому что при типе кнопке button пропадает возможность валидации с фронта */
+   });
+   /* добавление  ошибки,
+     потому что при типе кнопке button пропадает возможность валидации с фронта */
    btn.addEventListener('click', function (e) {
-      
-      var inp=document.getElementById('long_url');
-      if(inp.checkValidity())
-      {
-       modal.style.display = "block";
-       
+      var inp = document.getElementById('long_url');
+      if (inp.checkValidity()) {
+         modal.style.display = "block";
       }
-      else
-      {
-     
-        inp.reportValidity();
-        
+      else {
+         inp.reportValidity();
       }
    })
    $.getJSON("/urls/generate", function (data) {
@@ -48,7 +47,7 @@ window.onload = function () {
             //xhr have status - string (tell what excectly is wrong)
             if (xhr.is_valid) {
                $("#short_url")[0].setCustomValidity("");
-            }else{
+            } else {
                $("#short_url")[0].setCustomValidity(xhr.status);
             }
          },
@@ -62,9 +61,9 @@ window.onload = function () {
 function copyToClipboard(elem) {
    var element = document.getElementById(elem);
    var new_range = document.createRange();
-   new_range.selectNode(element); 
-   window.getSelection().addRange(new_range); 
-   document.execCommand('copy'); 
+   new_range.selectNode(element);
+   window.getSelection().addRange(new_range);
+   document.execCommand('copy');
    window.getSelection().removeAllRanges();
 }
 
