@@ -7,13 +7,18 @@ from django.utils import timezone
 from .url_generator.fixed_string import is_walid_url, RandFixedLenStrStorage as RandStr
 from django.db.models.functions import Length
 import datetime
+import requests
+from .url_generator.fixed_string import is_walid_url, RandFixedLenStrStorage as RandStr
+
 
 def get_expire_date(minutes=10080):
     return timezone.now() + timezone.timedelta(minutes=minutes)
 
+
 reserved_url = {"home", "accounts", "admin", "urls"}
 
-is_valid_status = {0:"Ok", 1:"short url is empty string", 2:"short url is reserved", 3:"short url is not match alphabet", 4:"short url is already used"}
+is_valid_status = {0: "Ok", 1: "short url is empty string", 2: "short url is reserved",
+                   3: "short url is not match alphabet", 4: "short url is already used"}
 
 
 class CustomUrl(models.Model):
@@ -29,12 +34,51 @@ class CustomUrl(models.Model):
         null=True, default=get_expire_date)
     active = models.BooleanField()
 
+    def get_time_to_live(self):
+        ttl = "Меньше "
+        delta = self.expiration_date - timezone.now()
+        if delta < timezone.timedelta(days=365):
+            if delta > timezone.timedelta(days=31):
+                print(delta.days)
+                m = int(delta.days // 30.1)
+                ttl = f"{m} місяців"
+            elif delta > timezone.timedelta(days=14):
+                w = delta.days // 7
+                ttl = f"{w} тиждня"
+            elif delta > timezone.timedelta(days=4):
+                ttl = f"{delta.days} днів"
+            elif delta >= timezone.timedelta(days=2):
+                ttl = f"{delta.days} дні"
+            elif delta >= timezone.timedelta(hours=22):
+                ttl = f"{delta.seconds // 3600 } години"
+            elif delta >= timezone.timedelta(hours=21):
+                ttl = f"{delta.seconds // 3600 } година"
+            elif delta >= timezone.timedelta(hours=5):
+                ttl = f"{delta.seconds // 3600 } годин"
+            elif delta >= timezone.timedelta(hours=2):
+                ttl = f"{delta.seconds // 3600 } години"
+            elif delta >= timezone.timedelta(hours=1):
+                ttl = f"1 годину"
+            elif delta >= timezone.timedelta(minutes=30):
+                ttl = f" півгодини"
+            else:
+                end = ((delta.seconds // 60) % 60) % 10
+                if end > 1 and end < 5 and (delta.seconds // 60) % 60 // 10 != 1:
+                    ttl = f"{(delta.seconds//60)%60} хвилини"
+                elif end == 1:
+                    ttl = f"{(delta.seconds//60)%60} хвилинy"
+                else:
+                    ttl = f"{(delta.seconds//60)%60} хвилин"
+        else:
+            ttl = "Більше року"
+        return ttl
+
     @classmethod
     def create(cls, min_active, *args, **kwargs):
         if min_active:
             if min_active == -1:
                 exp_date = None
-            else:   
+            else:
                 exp_date = get_expire_date(min_active)
                 print(exp_date)
         if not "short_url" in kwargs:
@@ -123,14 +167,14 @@ class CustomUrl(models.Model):
         return res
 
     def __str__(self):
-        return "{}: {} -> {}".format(self.owner, self.short_url, self.long_url)
+        return "{}: {} -> {} active? {}".format(self.owner, self.short_url, self.long_url, self.active)
 
     def is_expired(self):
         return timezone.now() >= self.expiration_date
 
     @property
     def full_inshort_url(self):
-        return "http://127.0.0.1:8000/" + self.short_url
+        return "http://inshort.pp.ua/" + self.short_url
 
     class Meta:
         ordering = ["active", "owner", "expiration_date"]
@@ -141,12 +185,17 @@ class Visit(models.Model):
     custom_url = models.ForeignKey(CustomUrl, on_delete=models.CASCADE)
     datetime = models.DateTimeField(auto_now=True)
     visitor_ip = models.GenericIPAddressField(null=True)
-    visitor_location = models.CharField(null=True, max_length=200)
+    visitor_city = models.CharField(null=True, max_length=200)
+    visitor_country = models.CharField(null=True, max_length=200)
 
     @classmethod
     def log_visit(cls, request, custom_url):
         ip = cls.get_ip_from_request(request)
-        visit = Visit(custom_url=custom_url, visitor_ip=ip)
+        location = requests.get('http://ip-api.com/json/' + ip).json()
+        ip_city = location.get('city', "Unknown")
+        ip_country = location.get('country', "Unknown")
+        visit = Visit(custom_url=custom_url, visitor_ip=ip,
+                      visitor_city=ip_city, visitor_country=ip_country)
         visit.save()
 
     @staticmethod
@@ -154,6 +203,8 @@ class Visit(models.Model):
         forwaded = request.META.get('HTTP_X_FORWARDED_FOR')
         if forwaded:
             ip = forwaded.split(',')[0]
+        elif 'X-Real-IP' in request.headers and request.headers['X-Real-IP']:
+            ip = request.headers['X-Real-IP']
         else:
             ip = request.META.get('REMOTE_ADDR')
         return ip

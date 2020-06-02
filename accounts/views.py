@@ -45,9 +45,9 @@ class RegisterView(TemplateView):
                 for u in urls:
                     u.owner = new_user
                     u.save()       
-                return redirect(reverse("home"))
+                return redirect(reverse("login"))
         return render(request, self.template_name, context)
 
 def logout_user(request):
     logout(request)
-    return HttpResponseRedirect(reverse('login'))
+    return HttpResponseRedirect(reverse('home'))
