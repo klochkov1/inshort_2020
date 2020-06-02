@@ -79,11 +79,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'inshort.wsgi.application'
 
 # Force https redirect
-SECURE_SSL_REDIRECT = True
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# Force HTTPS in the final URIs
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+SECURE_SSL_REDIRECT = os.environ('SSL', True)
+if SECURE_SSL_REDIRECT:
+    # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # Force HTTPS in the final URIs
+    SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 # Next from LOGIN_URL to SOCIAL_AUTH_LOGIN_REDIRECT_URL using for social auth
 LOGIN_URL = '/login/'
