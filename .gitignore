@@ -31,5 +31,9 @@ local_settings.py
 
 *.sqlite3
 
+#ssl certs
+config/data/certbot/www/*
+config/data/certbot/conf/*
 
+#vscode config
 .vscode

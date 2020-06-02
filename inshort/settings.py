@@ -20,10 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'n(9n62jpw4!5b_!y%7u^evc^9p7=nbc^cvpfnay11u#ee@)zvt'
+SECRET_KEY = os.environ(
+    'SECRET_KEY', 'n(9n62jpw4!5b_!y%7u^evc^9p7=nbc^cvpfnay11u#ee@)zvt')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ('DEBUG', True)
 
 
 # There is must be valid host!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -36,7 +37,7 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'custom_urls',
-    'social_django', #social auth
+    'social_django',  # social auth
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware', # social auth
+    'social_django.middleware.SocialAuthExceptionMiddleware',  # social auth
 ]
 
 ROOT_URLCONF = 'inshort.urls'
@@ -69,7 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends', # social auth            
+                'social_django.context_processors.backends',  # social auth
             ],
         },
     },
@@ -91,7 +92,7 @@ SOCIAL_AUTH_STRATEGY = 'social_django.strategy.DjangoStrategy'
 SOCIAL_AUTH_STORAGE = 'social_django.models.DjangoStorage'
 
 AUTHENTICATION_BACKENDS = [
-    #'social_core.backends.github.GithubOAuth2',
+    # 'social_core.backends.github.GithubOAuth2',
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
@@ -107,11 +108,11 @@ SOCIAL_AUTH_FACEBOOK_KEY = "223299425671840"
 SOCIAL_AUTH_FACEBOOK_SECRET = "dc0ddf5e9dfc3af5524195b4fb0d1f2d"
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-            'fields': 'id,name,email',
-            }
+    'fields': 'id,name,email',
+}
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 
-#won't forget change next in release !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+# won't forget change next in release !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://inshort.pp.ua/'
 
 
@@ -124,10 +125,10 @@ INSHORT_ENV = os.getenv("INSHORT_ENV", "testing")
 # Database switching according to the enviroment
 if INSHORT_ENV == "testing":
     DATABASES = {
-       'default': {
-           'ENGINE': 'django.db.backends.sqlite3',
-           'NAME': os.path.join(BASE_DIR, 'db_developing.sqlite3'),
-       }
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db_developing.sqlite3'),
+        }
     }
 elif INSHORT_ENV == "docker":
     DATABASES = {
