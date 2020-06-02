@@ -82,16 +82,6 @@ def redirect(request, requested_url):
     CustomUrl.clear_expired()
     custom_url = CustomUrl.objects.filter(short_url=requested_url, active=True)
     if len(custom_url) == 0:
-<<<<<<< HEAD
-        return render(request, "urls/404.html", {"url":requested_url})
-    custom_url = custom_url[0]
-    if custom_url.expiration_date <= timezone.now():
-        custom_url.active = False
-        custom_url.save()
-        return render(request, "urls/404.html", {"url":requested_url})
-    #   raise Http404("Заданого посилання не існує")
-    # Get visitor ip wheter he's using proxy or not
-=======
         return render(request, "urls/404.html", {"url": requested_url})
     else:
         custom_url = custom_url[0]
@@ -99,6 +89,5 @@ def redirect(request, requested_url):
     #     custom_url.active = False
     #     custom_url.save()
     #     return render(request, "urls/404.html", {"url":requested_url})
->>>>>>> e6654c5b3c9a3955622e7eacca378f5b609f3417
     Visit.log_visit(custom_url=custom_url, request=request)
     return HttpResponseRedirect(custom_url.long_url)

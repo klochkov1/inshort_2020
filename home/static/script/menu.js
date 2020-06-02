@@ -47,11 +47,7 @@ window.onload = function () {
             //xhr have status - string (tell what excectly is wrong)
             if (xhr.is_valid) {
                $("#short_url")[0].setCustomValidity("");
-<<<<<<< HEAD
-            }else{
-=======
             } else {
->>>>>>> e6654c5b3c9a3955622e7eacca378f5b609f3417
                $("#short_url")[0].setCustomValidity(xhr.status);
             }
          },
