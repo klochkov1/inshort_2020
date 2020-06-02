@@ -5,6 +5,7 @@ services:
     container_name: nginx
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     ports:
+      - "80:80"
       - "443:443"
     volumes:
       - ./:/app
@@ -42,7 +43,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_configBASE: "inshort"
+      MYSQL_DATABASE: "inshort"
       MYSQL_USER: "inshort"
       MYSQL_PASSWORD: "j3qq4h7h2v"
       MYSQL_ROOT_PASSWORD: "password"
