@@ -79,7 +79,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'inshort.wsgi.application'
 
 # Force https redirect
+<<<<<<< HEAD
 SECURE_SSL_REDIRECT = os.environ('SSL', True)
+=======
+SECURE_SSL_REDIRECT = os.environ('SSL', False)
+>>>>>>> master
 if SECURE_SSL_REDIRECT:
     # Honor the 'X-Forwarded-Proto' header for request.is_secure()
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
