@@ -50,25 +50,9 @@ class CustomUrl(models.Model):
             elif delta >= timezone.timedelta(days=2):
                 ttl = f"{delta.days} дні"
             elif delta >= timezone.timedelta(hours=22):
-                ttl = f"{delta.seconds // 3600 } години"
-            elif delta >= timezone.timedelta(hours=21):
-                ttl = f"{delta.seconds // 3600 } година"
-            elif delta >= timezone.timedelta(hours=5):
-                ttl = f"{delta.seconds // 3600 } годин"
-            elif delta >= timezone.timedelta(hours=2):
-                ttl = f"{delta.seconds // 3600 } години"
-            elif delta >= timezone.timedelta(hours=1):
-                ttl = f"1 годину"
-            elif delta >= timezone.timedelta(minutes=30):
-                ttl = f" півгодини"
+                ttl = f"{delta.seconds // 3600 } год."
             else:
-                end = ((delta.seconds // 60) % 60) % 10
-                if end > 1 and end < 5 and (delta.seconds // 60) % 60 // 10 != 1:
-                    ttl = f"{(delta.seconds//60)%60} хвилини"
-                elif end == 1:
-                    ttl = f"{(delta.seconds//60)%60} хвилинy"
-                else:
-                    ttl = f"{(delta.seconds//60)%60} хвилин"
+                ttl = f"{(delta.seconds//60)%60} хв."
         else:
             ttl = "Більше року"
         return ttl
@@ -174,7 +158,7 @@ class CustomUrl(models.Model):
 
     @property
     def full_inshort_url(self):
-        return "http://shortly.pp.ua/" + self.short_url
+        return "http://inshort.pp.ua/" + self.short_url
 
     class Meta:
         ordering = ["active", "owner", "expiration_date"]
