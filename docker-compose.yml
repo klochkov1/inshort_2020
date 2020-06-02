@@ -43,7 +43,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_configBASE: "inshort"
+      MYSQL_DATABASE: "inshort"
       MYSQL_USER: "inshort"
       MYSQL_PASSWORD: "j3qq4h7h2v"
       MYSQL_ROOT_PASSWORD: "password"
