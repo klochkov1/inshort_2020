@@ -28,7 +28,7 @@ class CustomUrl(models.Model):
     session = models.ForeignKey(
         Session, null=True, blank=True, on_delete=models.SET_NULL)
     long_url = models.URLField(max_length=2000)
-    short_url = models.CharField(unique=True, max_length=20)
+    short_url = models.CharField(max_length=20)
     creation_date = models.DateTimeField(auto_now=True)
     expiration_date = models.DateTimeField(
         null=True, default=get_expire_date)
