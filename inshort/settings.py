@@ -81,6 +81,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'inshort.wsgi.application'
 
+
+USE_X_FORWARDED_HOST = True #For Host
+
 # Force https redirect
 SECURE_SSL_REDIRECT = os.environ.get('SSL', False)
 if SECURE_SSL_REDIRECT:
