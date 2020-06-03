@@ -158,7 +158,7 @@ class CustomUrl(models.Model):
 
     @property
     def full_inshort_url(self):
-        return "http://inshort.pp.ua/" + self.short_url
+        return "https://shortly.pp.ua/" + self.short_url
 
     class Meta:
         ordering = ["active", "owner", "expiration_date"]
