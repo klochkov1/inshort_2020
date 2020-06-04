@@ -23,7 +23,7 @@ is_valid_status = {0: "Ok", 1: "short url is empty string", 2: "short url is res
 
 class CustomUrl(models.Model):
     """ Model representing mapping bitwing short url and destination url """
-    owner           = models.ForeignKey(
+    owner = models.ForeignKey(
         User, null=True, blank=True, max_length=20, on_delete=models.CASCADE)
     session = models.ForeignKey(
         Session, null=True, blank=True, on_delete=models.SET_NULL)
@@ -150,51 +150,6 @@ class CustomUrl(models.Model):
             res.append(cur_dict)
         return res
 
-    @classmethod
-    def try_add_url(cls, url, redirect_url, user=None, min_active=60):
-        is_free = cls.is_word_unused(url)
-        if is_free:
-            t_expired = timezone.now() + timezone.timedelta(minutes=min_active)
-            u_active = cls()
-            if user is not None and not user.is_anonymous:
-                u_active.owner = user
-            else:
-                u_active.owner = None
-            u_active.long_url  = redirect_url
-            u_active.short_url        = url
-            u_active.expiration_date  = t_expired
-            u_active.is_active        = True
-            u_active.save()
-        return is_free
-
-    @classmethod
-    def is_word_unused(cls, word):
-        if not is_walid_url(word):
-            raise Exception(f"Word {word} is not walid")
-        return cls.objects.filter(short_url=word, is_active=True).count() == 0
-
-    @classmethod
-    def get_all_in_dict_list_with_visits(cls, user):
-        if user is None or user.is_anonymous:
-            return None
-        query = CustomUrl.objects.filter(owner=user)
-        res = []
-        for i in query:
-            if i.is_expired(): 
-                i.is_active = False
-                i.save()
-            cur_dict = {}
-            cur_dict["owner_username"]   = i.owner.username
-            cur_dict["long_url"]  = i.long_url
-            cur_dict["short_url"]        = i.short_url      
-            cur_dict["creation_date"]    = i.creation_date  
-            cur_dict["expiration_date"]  = i.expiration_date
-            cur_dict["is_active"]        = i.is_active 
-            hist = list(Visit.objects.filter(custom_url=i).values("visitor_ip", "datetime", "visitor_location"))     
-            cur_dict["attempt_hist"]     = hist
-            res.append(cur_dict)
-        return res
-       
     def __str__(self):
         return "{}: {} -> {} active? {}".format(self.owner, self.short_url, self.long_url, self.active)
 
@@ -203,7 +158,7 @@ class CustomUrl(models.Model):
 
     @property
     def full_inshort_url(self):
-        return "https://shortly.pp.ua/" + self.short_url
+        return "https://inshort.herokuapp.com/" + self.short_url
 
     class Meta:
         ordering = ["active", "owner", "expiration_date"]
@@ -249,39 +204,6 @@ class Visit(models.Model):
         url_redir.visitor_ip = get_ip_from_request(request)
         url_redir.save()
         return custom_url.short_url
-
-    @classmethod
-    def get_redir__by_hist(cls, history):
-        return [(i.visitor_ip, i.datetime) for i in cls.get_redir_by_hist(history)]
-
-    @classmethod
-    def get_redir_by_hist(cls, history):
-        return cls.objects.filter(hist=history)\
-
-    @staticmethod
-    def get_ip_from_request(request):
-        forwaded = request.META.get('HTTP_X_FORWARDED_FOR')
-        if forwaded:
-            ip = forwaded(',')[0]
-        else:
-            ip = request.META.get('REMOTE_ADDR')
-        return ip
-
-    @classmethod
-    def get_redirect_url(cls, short_url, request):
-        query = CustomUrl.objects.filter(short_url=short_url, is_active=True)
-        q_len = len(query)
-        if q_len == 0:
-            return None
-        elif q_len == 1:
-            custom_url = query[0]
-            url_redir = cls()
-            url_redir.custom_url = custom_url
-            url_redir.visitor_ip = cls.get_ip_from_request(request)
-            url_redir.save()
-            return custom_url.short_url
-        else:
-            raise Exception(f"there is {q_len} active short url, must be one")
 
     def __str__(self):
         return "{} - {}".format(self.datetime, self.custom_url)

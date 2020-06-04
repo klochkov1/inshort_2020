@@ -4,7 +4,7 @@ body {
   padding: 0;
   background-color:#f9ffff;
   overflow-x: hidden;	
-  
+
 
 }
 
@@ -35,7 +35,8 @@ body {
 {
   
   padding-bottom: 2%;
-  position: relative;
+  padding-right:3.5%;
+   
 }
 .menu{
   border-radius: 2%;
@@ -59,10 +60,7 @@ body {
  
   transition: 0.5s;
 }
-.headline{
-  position: relative;
-}
-
+ 
 .window {
   padding: 5%;
   display: none;
@@ -92,8 +90,9 @@ body {
  
 .input-url
 {
-  max-width: 75.5%;
-  margin-left:  24.5%;
+  max-width: 69.5%;
+  margin-left:  30.5%;
+
   padding-bottom: 5%;
   position: relative;
   display: flex;
