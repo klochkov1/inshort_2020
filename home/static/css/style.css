@@ -4,7 +4,7 @@ body {
   padding: 0;
   background-color:#f9ffff;
   overflow-x: hidden;	
-  
+
 
 }
 
@@ -60,10 +60,7 @@ body {
  
   transition: 0.5s;
 }
-.headline{
-  position: relative;
-}
-
+ 
 .window {
   padding: 5%;
   display: none;
@@ -194,7 +191,7 @@ li {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
 }
 .foot{
-  min-height: calc(105vh - 80px);
+  min-height: calc(100vh - 80px);
 }
 /* Footer */
 .footer{
