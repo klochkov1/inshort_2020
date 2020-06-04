@@ -28,7 +28,10 @@ DEBUG = os.environ.get('DEBUG', True)
 
 
 # There is must be valid host!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "web", "shortly.pp.ua", "inshort.pp.ua"]
+ALLOWED_HOSTS = ["shortly.pp.ua", "web"]
+
+# FOR SOCIAL AUTH
+USE_X_FORWARDED_HOST = True
 
 
 # Application definition
@@ -77,6 +80,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'inshort.wsgi.application'
+
+
+USE_X_FORWARDED_HOST = True #For Host
 
 # Force https redirect
 SECURE_SSL_REDIRECT = os.environ.get('SSL', False)
