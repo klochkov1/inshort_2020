@@ -4,10 +4,7 @@ body {
   padding: 0;
   background-color:#f9ffff;
   overflow-x: hidden;	
-
-
 }
-
 .title {
   font-size: 20px;
   color: white;
@@ -26,17 +23,12 @@ body {
   height: 15%;
   }
 .headline{
-
   position: relative;
- 
- 
 }
 .form
 {
-  
   padding-bottom: 2%;
-  padding-right:4%;
-   
+  padding-right:4%; 
 }
 .menu{
   border-radius: 2%;
@@ -105,12 +97,12 @@ ul {
 list-style: none;
 }
 .history-items {
- padding-top: 2%;
-padding-bottom: 2%;
-width: 67%;
-margin: 20px auto 20px;
-background: #fff;
-border-radius: 4px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 67%;
+  margin: 20px auto 20px;
+  background: #fff;
+  border-radius: 4px;
 }
 .word-break{
   word-break: break-all;
@@ -123,20 +115,22 @@ border-radius: 4px;
     background: #2aa7a0;
     border-radius: 1px;
 }
-li {
+li 
+{
     padding-top: 2%;
     padding-bottom: 2%;
     width: 100%;
     font-size: 18px;
     border-bottom: 1px solid #B6B6B6;
     }
-    .for_border{
+.for_border
+{
     border: 3px solid #20aca6;
     margin-bottom: 3.5%;
     width: 100%;	
     border-radius:0;
     background-color:#fdfaf7;
-  }
+}
   .static{
     font-size: 18px;
     text-align:center;
@@ -191,7 +185,7 @@ li {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
 }
 .foot{
-  min-height: calc(100vh - 80px);
+  min-height: calc(105vh - 80px);
 }
 /* Footer */
 .footer{
@@ -199,19 +193,16 @@ li {
   background-color:#DDECE9;
   padding-top: 1%;
   padding-left: 3%;
-   max-height: 100%;
+  max-height: 100%;
   position: relative;
  }
- 
  .networks{
  
    height: 100%;
    display: flex;
-  justify-content: end;
-  position: relative;
- 
+   justify-content: end;
+   position: relative;
     background-color:#DDECE9;
-
  }
   
  .own{

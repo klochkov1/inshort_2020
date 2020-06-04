@@ -3,7 +3,6 @@ window.onload = function () {
    var modal = document.querySelector(".window");
    var btn = document.querySelector(".btn_modal_window");
    var long_url = document.getElementById('long_url');
-   
    //open modal window when Enter pressed
    long_url.addEventListener("keydown", function (event) {
       if (event.keyCode === 13) {
