@@ -25,12 +25,12 @@
         </div>
         <div class="col-6 col-md-2 word-break ">
             {% timezone "Europe/Kiev" %} <!--to Ukraine time-->
-            <a title="Дійсна до {{ url.expiration_date | date:'d.m.Y H:i' }}">Дійсна ще {{ url.ttl }} </a>
+            Дійсна ще:<a title="До {{ url.expiration_date | date:'d.m.Y H:i' }}"> {{ url.ttl }} </a>
             {% endtimezone %}<!--to Ukraine time-->
         </div>
         <div class="dropdownlink row" >
             <div class="col-5 col-md-2  for_border_item4  word-break">
-                <a>Переходи: {{ url.visit_set.count }}</a>
+                Переходи: <a title="Подробиці"> {{ url.visit_set.count }}</a>
             </div>
         </div>
 
