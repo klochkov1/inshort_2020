@@ -8,7 +8,7 @@
       <form method="POST" action="{% url 'add_url' %}"  class="form">
                {% csrf_token %}
         <div class="input-group col-md-10">
-          <div id="input_url" class="input_url">
+          <div id="input_url">
             <input  id="long_url" type="url" name="long_url" class="form-control input-url"   required  placeholder="Введіть URL для скорочення.">
           </div>
           <span class="input-group-btn">
@@ -23,7 +23,9 @@
             <div class="close_modal_window"></div>
              <div class="form-group data-group">
                 <label for="username" class="cols-sm-2 control-label">Скорочення</label>
-                <input type="text" name="short_url" class="form-control short_url" id="short_url"/>
+ 
+                <input type="text" name="short_url" class="form-control  " id="short_url"/>
+ 
                 <label>Буде дійсна </label>
                 <select id="myList" name="time">
                   <option value="5">5 хв</option>

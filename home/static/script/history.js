@@ -15,14 +15,11 @@ function load_user_urls() {
         },
         this.dropdown);
     };
-    History.prototype.dropdown = function (e) {
-      var $el = e.data.elem,
-        $this = $(this),
-        $next = $this.next();
-      console.log(5);
-      $next.slideToggle();
-      $this.parent().toggleClass('open');
-        $el.find('.submenuItems').not($next).slideUp().parent().removeClass('open');
+     History.prototype.dropdown = function (e) {
+      var el = e.data.elem;
+      var next = $(this).next();
+        next.slideToggle();
+        el.find('.submenuItems').not(next).slideUp().removeClass('open');
     }
     var history = new History($('.history-items'));
   });

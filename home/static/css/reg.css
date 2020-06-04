@@ -52,17 +52,10 @@ height: 15%;
      width:30%;
      color: #fff;
     }
-.btn-facebook:hover {
-  background-color: #365899; 
-  color: #fff;
-}
+ 
  
 .btn-google {
-  background-color: #1da1f2;
-  width:30%;
-  color: #fff;
-}
-.btn-google {
+  width: 30%;
   background-color: #da671a; 
   color: #fff;
 }

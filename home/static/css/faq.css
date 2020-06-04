@@ -12,15 +12,7 @@ body {
     padding-left: 10%;
 }
 
-.header-block2 {
-    width: 100px;
-    height: 18%;
-    border: 0px;
-    float: left;
-    margin-top: 12px;
-    margin-left: auto;
-    float: right;
-}
+
 
 .search_field {
     background-color: #fcf6f3;
