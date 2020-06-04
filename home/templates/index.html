@@ -8,7 +8,7 @@
       <form method="POST" action="{% url 'add_url' %}"  class="form">
                {% csrf_token %}
         <div class="input-group col-md-10">
-          <div id="input_url" class="input_url">
+          <div id="input_url" >
             <input  id="long_url" type="url" name="long_url" class="form-control input-url"   required  placeholder="Введіть URL для скорочення.">
           </div>
           <span class="input-group-btn">
