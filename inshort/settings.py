@@ -28,7 +28,7 @@ DEBUG = os.environ.get('DEBUG', True)
 
 
 # There is must be valid host!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-ALLOWED_HOSTS = ["inshort.herokuapp.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "web", "shortly.pp.ua", "inshort.pp.ua"]
 
 
 # Application definition
@@ -82,6 +82,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'inshort.wsgi.application'
 
+# Force https redirect
+SECURE_SSL_REDIRECT = os.environ.get('SSL', False)
+if SECURE_SSL_REDIRECT:
+    # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # Force HTTPS in the final URIs
+    SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 # Next from LOGIN_URL to SOCIAL_AUTH_LOGIN_REDIRECT_URL using for social auth
 LOGIN_URL = '/login/'
@@ -173,5 +180,3 @@ os.makedirs(STATIC_TMP, exist_ok=True) #for heroku
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-import django_heroku#for heroku
-django_heroku.settings(locals()) #for heroku
